@@ -1,5 +1,6 @@
 package com.example.pgm
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -23,6 +24,12 @@ class AdminTraineeActivity : AppCompatActivity() {
         toolBar   =   findViewById(R.id.toolbar)
         toolBar.title = "Trainees"
         setSupportActionBar(toolBar)
+
+
+        fabAdd.setOnClickListener {
+            navigateToAddTrainee()
+        }
+
         val user = ArrayList<TraineeData>()
         user.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
         user.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
@@ -45,6 +52,12 @@ class AdminTraineeActivity : AppCompatActivity() {
         rv.adapter = TraineeAdapter(this, user)
 
     }
+
+    private fun navigateToAddTrainee() {
+        startActivity(Intent(applicationContext, AddTraineeActivity::class.java))
+
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu,menu)
 

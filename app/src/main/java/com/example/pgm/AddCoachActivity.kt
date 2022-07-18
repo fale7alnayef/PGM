@@ -11,19 +11,18 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddTraineeActivity : AppCompatActivity() {
+class AddCoachActivity : AppCompatActivity() {
 
     private lateinit var calendar: Calendar
     private lateinit var tv: TextInputEditText
     private lateinit var pickImage: CircleImageView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_trainee)
+        setContentView(R.layout.activity_add_coach)
 
-        tv = findViewById(R.id.birthDayTraineeEditText)
-        pickImage = findViewById(R.id.pickTraineeImage)
+        tv = findViewById(R.id.birthDayCoachEditText)
+        pickImage = findViewById(R.id.pickCoachImage)
 
 
         pickImage.setOnClickListener {
