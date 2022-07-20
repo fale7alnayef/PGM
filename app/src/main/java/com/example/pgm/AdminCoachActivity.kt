@@ -1,5 +1,6 @@
 package com.example.pgm
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -23,6 +24,14 @@ class AdminCoachActivity : AppCompatActivity() {
         toolBar   =   findViewById(R.id.toolbar)
        toolBar.title = "Coaches"
         setSupportActionBar(toolBar)
+
+        fabAdd.setOnClickListener {
+            navigateToAddCoach()
+        }
+
+
+
+
         val Coach = ArrayList<CoachData>()
 
         Coach.add(CoachData("ghassan","kl", R.drawable.download1,"0992347584","50000"))
@@ -46,15 +55,7 @@ class AdminCoachActivity : AppCompatActivity() {
 
 
 
-        /*rv.addItemDecoration(
-           DividerItemDecoration(
-                rv.context,
-                DividerItemDecoration.VERTICAL
-            )
-        )
-        val fab = findViewById<FloatingActionButton>(R.id.addcoach)
 
-        fab.scaleType = ImageView.ScaleType.FIT_CENTER*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -79,21 +80,9 @@ class AdminCoachActivity : AppCompatActivity() {
 
         return super.onCreateOptionsMenu(menu)
     }
-   /* private fun hideFabWhileScrolling()
-    {
-        rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0 || dy < 0 && fabAdd.isShown) fabAdd.hide()
-            }
 
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) fabAdd.show()
-                super.onScrollStateChanged(recyclerView, newState)
-            }
-        })
+    private fun navigateToAddCoach() {
+        startActivity(Intent(applicationContext, AddCoachActivity::class.java))
 
     }
-
-    */
-
 }

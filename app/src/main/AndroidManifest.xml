@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PGM">
         <activity
+            android:name=".AddCoachActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminLoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddTraineeActivity"
             android:exported="false" />
         <activity

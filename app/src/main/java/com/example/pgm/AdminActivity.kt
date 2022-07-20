@@ -24,7 +24,7 @@ class AdminActivity : AppCompatActivity() {
             navigateToCoaches()
         }
         admin.setOnClickListener {
-            navigateToAdmin()
+            navigateToAdminInfo()
         }
         trainee.setOnClickListener {
             navigateToTrainees()
@@ -40,7 +40,7 @@ class AdminActivity : AppCompatActivity() {
         startActivity(Intent(applicationContext, AdminTraineeActivity::class.java))
 
     }
-    private fun navigateToAdmin() {
+    private fun navigateToAdminInfo() {
         startActivity(Intent(applicationContext, ShowAdminInformation::class.java))
 
     }

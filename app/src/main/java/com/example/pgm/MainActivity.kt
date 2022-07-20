@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
 
 
         admin.setOnClickListener {
-            navigateToAdmin()
+            navigateToAdminLogin()
         }
     }
 
-    private fun navigateToAdmin() {
-        startActivity(Intent(applicationContext, AdminActivity::class.java))
+    private fun navigateToAdminLogin() {
+        startActivity(Intent(applicationContext, AdminLoginActivity::class.java))
 
     }
 }
