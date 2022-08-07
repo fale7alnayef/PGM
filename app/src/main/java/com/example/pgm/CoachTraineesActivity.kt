@@ -17,10 +17,7 @@ class CoachTraineesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coach_trainees)
-        rv   = findViewById(R.id.recyclerView)
-        toolBar   =   findViewById(R.id.toolbar)
-        toolBar.title = "Trainees"
-        setSupportActionBar(toolBar)
+        rv   = findViewById(R.id.ctrecyclerView)
         val user = ArrayList<TraineeData>()
         user.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
         user.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
@@ -34,28 +31,6 @@ class CoachTraineesActivity : AppCompatActivity() {
         rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
         rv.adapter = CoachTraineeAdapter(this,user )
 
-    }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu,menu)
-
-
-
-        val   oAEL = object : MenuItem.OnActionExpandListener{
-            override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
-                return true
-            }
-
-            override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
-                return true
-            }
-
-        }
-        val menuItem = menu.findItem(R.id.search)
-        val searchView  = menuItem?.actionView as SearchView
-
-        searchView.queryHint = "Type"
-
-        return super.onCreateOptionsMenu(menu)
     }
 
 }

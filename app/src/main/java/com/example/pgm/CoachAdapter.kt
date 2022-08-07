@@ -1,8 +1,8 @@
 package com.example.pgm
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CoachAdapter (private val context: Context, private val coaches : ArrayList<CoachData>): RecyclerView.Adapter<CoachAdapter.ViewHolder>() {
+class CoachAdapter (private val context: Context, private var coaches : ArrayList<CoachData>):
+    RecyclerView.Adapter<CoachAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
         var my_type = itemView.findViewById<TextView>(R.id.tx_type) as TextView
@@ -49,4 +50,5 @@ class CoachAdapter (private val context: Context, private val coaches : ArrayLis
     override fun getItemCount(): Int {
         return coaches.size
     }
+
 }

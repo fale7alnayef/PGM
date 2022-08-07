@@ -96,7 +96,7 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
+                    android:id="@+id/traineeCoachImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/ic_baseline_coronavirus_24"
@@ -146,7 +146,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.698"
-                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    app:layout_constraintStart_toEndOf="@+id/traineeCoachImage"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.332">
 
@@ -166,7 +166,7 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/profile_image"
+                    app:layout_constraintEnd_toStartOf="@+id/traineeCoachImage"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

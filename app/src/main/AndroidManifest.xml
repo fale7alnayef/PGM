@@ -11,6 +11,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PGM">
         <activity
+            android:name=".UpdateTraineeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QualificationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateCoachActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateContractActivity"
+            android:exported="false" />
+        <activity
+            android:name=".updateContractActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewContractActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubscriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContractActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddCoachActivity"
             android:exported="false" />
         <activity

@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddCoachActivity">
-
+    tools:context=".UpdateCoachActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/firstNameCoachContainer"
+        android:id="@+id/updateFirstNameCoachContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +24,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/firstNameCoachEditText"
+            android:id="@+id/updateFirstNameCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPersonName"
@@ -34,7 +33,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/lastNameCoachContainer"
+        android:id="@+id/updateLastNameCoachContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +50,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/lastNameCoachEditText"
+            android:id="@+id/updateLastNameCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPersonName"
@@ -60,7 +59,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/birthDayCoachContainer"
+        android:id="@+id/updateBirthdayCoachContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -77,7 +76,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/birthDayCoachEditText"
+            android:id="@+id/updateBirthdayCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="date"
@@ -88,7 +87,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phoneNumberCoachContainer"
+        android:id="@+id/updatePhoneNumberCoachContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -104,7 +103,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phoneNumberCoachEditText"
+            android:id="@+id/updatePhoneNumberCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="phone"
@@ -112,12 +111,8 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailCoachContainer"
+        android:id="@+id/updateEmailCoachContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -133,7 +128,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailCoachEditText"
+            android:id="@+id/updateEmailCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textEmailAddress"
@@ -143,7 +138,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/passwordCoachContainer"
+        android:id="@+id/updatePasswordCoachContainer"
         app:startIconDrawable="@drawable/lock"
         app:endIconMode="password_toggle"
         android:hint="@string/password"
@@ -159,7 +154,7 @@
 
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordCoachEditText"
+            android:id="@+id/updatePasswordCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
@@ -168,25 +163,22 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/confirmPasswordCoachContainer"
+        android:id="@+id/updateConfirmPasswordCoachContainer"
         app:startIconDrawable="@drawable/lock"
         app:endIconMode="password_toggle"
         android:hint="@string/confirm_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="430dp"
         android:layout_marginEnd="20dp"
-
-
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirmPasswordCoachEditText"
+            android:id="@+id/updateConfirmPasswordCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
@@ -195,7 +187,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/pickCoachImage"
+        android:id="@+id/updatePickCoachImage"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_alignParentStart="true"
@@ -211,7 +203,7 @@
         />
 
     <Button
-        android:id="@+id/newCoachButton"
+        android:id="@+id/updateCoachButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

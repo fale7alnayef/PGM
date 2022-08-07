@@ -3,7 +3,6 @@ package com.example.pgm
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import com.balysv.materialripple.MaterialRippleLayout
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToAdminLogin() {
         startActivity(Intent(applicationContext, AdminLoginActivity::class.java))
-
+        finish()
     }
 }

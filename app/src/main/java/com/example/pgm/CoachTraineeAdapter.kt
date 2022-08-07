@@ -32,19 +32,7 @@ class CoachTraineeAdapter (private val context: Context, private val coaches : A
         holder.my_type.text = data.type
         holder.my_image.setImageResource(data.image)
         holder.card_View.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.main_anim))
-        holder.itemView.setOnClickListener {
-            val i = Intent(context,ShowCoachTraineeInformation::class.java)
-            i.putExtra("name",coaches[position].name)
-            i.putExtra("type",coaches[position].type)
-            i.putExtra("image",coaches[position].image)
-            i.putExtra("phone",coaches[position].phone)
-            i.putExtra("age",coaches[position].age)
-            i.putExtra("height",coaches[position].height)
-            i.putExtra("weight",coaches[position].weight)
-            context.startActivity(i)
 
-
-        }
     }
 
     override fun getItemCount(): Int {

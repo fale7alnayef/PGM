@@ -11,9 +11,7 @@ class ShowTraineeCoachInformationActivity : AppCompatActivity() {
  val back = findViewById<MaterialRippleLayout>(R.id.goback)
         back.setOnClickListener {
 
-
             onBackPressed()
-
 
         }
     }

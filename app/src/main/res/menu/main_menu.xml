@@ -13,7 +13,6 @@
         android:icon="@drawable/sort"
         android:id="@+id/sort_by"
         app:showAsAction="ifRoom"
-
         />
 
 </menu>
