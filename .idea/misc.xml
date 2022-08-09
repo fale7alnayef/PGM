@@ -3,6 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/drawable/menu.xml" value="0.241" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/drawable/money.xml" value="0.241" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/drawable/search.xml" value="0.241" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_add_coach.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_add_trainee.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_admin.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_admin_coach.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_admin_login.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_admin_trainee.xml" value="0.3569230769230769" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_coach_trainees.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_new_contract.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_show_coach_information.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_show_data.xml" value="0.23489583333333333" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_show_trainee_coach_information.xml" value="0.23489583333333333" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_show_trainee_information.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_splash_screen.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_subscription.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/activity_update_coach.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/layout/design.xml" value="0.3625" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/menu/main_menu.xml" value="0.23489583333333333" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/menu/smenu.xml" value="0.23489583333333333" />
+        <entry key="..\:/Users/Ghassan/AndroidStudioProjects/PGM/app/src/main/res/xml/network_security_config.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/faleh/AndroidStudioProjects/PGM/app/src/main/res/drawable-v24/add.xml" value="0.2015" />
         <entry key="..\:/Users/faleh/AndroidStudioProjects/PGM/app/src/main/res/drawable-v24/ic_baseline_coronavirus_24.xml" value="0.204" />
         <entry key="..\:/Users/faleh/AndroidStudioProjects/PGM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2075" />
@@ -28,13 +51,13 @@
         <entry key="..\:/Users/faleh/AndroidStudioProjects/PGM/app/src/main/res/layout/fragment_second.xml" value="0.1" />
         <entry key="..\:/Users/faleh/AndroidStudioProjects/PGM/app/src/main/res/layout/fragment_subscription.xml" value="0.1" />
         <entry key="..\:/Users/faleh/AndroidStudioProjects/PGM/app/src/main/res/menu/main_menu.xml" value="0.22" />
-        <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_add_coach.xml" value="0.1" />
+        <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_add_coach.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_add_trainee.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_admin.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_admin_coach.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_admin_login.xml" value="0.1" />
-        <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_admin_trainee.xml" value="0.15670289855072464" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_coach_trainees.xml" value="0.19895833333333332" />
+
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_contract.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_contract2.xml" value="0.1644021739130435" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_installment.xml" value="0.1" />
@@ -44,9 +67,10 @@
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_qualifications.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_show_admin_information.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_show_coach_information.xml" value="0.22" />
+
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_show_coach_trainee_information.xml" value="0.1" />
-        <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_show_data.xml" value="0.15489130434782608" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_show_trainee_coach_information.xml" value="0.1" />
+
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_show_trainee_information.xml" value="0.16" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_subscription.xml" value="0.18" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_subscription2.xml" value="0.16893115942028986" />
@@ -58,10 +82,12 @@
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/activity_view_subscriptions.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/design.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/design2.xml" value="0.25" />
+
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/fragment_contract.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/fragment_i_v_c.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/fragment_i_v_s.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/fragment_subscription.xml" value="0.1" />
+
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/fragment_v_c.xml" value="0.1" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/layout/fragment_v_s.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/faleh/Desktop/lll/PGM/app/src/main/res/menu/main_menu.xml" value="0.203125" />

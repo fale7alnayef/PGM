@@ -2,17 +2,23 @@ package com.example.pgm
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 class AdminTraineeActivity : AppCompatActivity() {
     private lateinit var rv: RecyclerView
@@ -20,15 +26,15 @@ class AdminTraineeActivity : AppCompatActivity() {
     private lateinit var toolBar: Toolbar
     private lateinit var trainee: ArrayList<TraineeData>
     private lateinit var tempTrainee: ArrayList<TraineeData>
-    private var flag:  Boolean = false
+    private var flag: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_trainee)
 
-        rv   = findViewById(R.id.trecyclerView)
-        fabAdd   =   findViewById(R.id.addtrainee)
-        toolBar   =   findViewById(R.id.ttoolbar)
+        rv = findViewById(R.id.trecyclerView)
+        fabAdd = findViewById(R.id.addtrainee)
+        toolBar = findViewById(R.id.ttoolbar)
         toolBar.title = "Trainees"
         setSupportActionBar(toolBar)
 
@@ -36,30 +42,87 @@ class AdminTraineeActivity : AppCompatActivity() {
         fabAdd.setOnClickListener {
             navigateToAddTrainee()
         }
+
+
         trainee = ArrayList()
         tempTrainee = ArrayList()
-        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
+        val Token = "Bearer " + Data.Token
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://${Data.url}:8000/api/admin/all_users"
 
-        rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
+        val jsonObject = @RequiresApi(Build.VERSION_CODES.O)
+        object : JsonObjectRequest(Method.POST, url, null, {
+            try {
+                val traineearray = it.getJSONArray("users")
+
+                for (i in 0 until traineearray.length()) {
+
+                    val firstName = traineearray.getJSONObject(i).getString("first_name")
+                    val lastName = traineearray.getJSONObject(i).getString("last_name")
+
+                    val birthday = traineearray.getJSONObject(i).getString("birthday")
+                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    val date = LocalDate.parse(birthday, formatter)
+                    val age = (LocalDate.now().compareTo(date)).toString()
+
+                    val height = traineearray.getJSONObject(i).getString("height")
+                    val weight = traineearray.getJSONObject(i).getString("weight")
+                    val phone = traineearray.getJSONObject(i).getString("phone_number")
+                    val imgURL = traineearray.getJSONObject(i).getString("img_url")
+
+
+
+
+                    trainee.add(
+                        TraineeData(
+                            "$firstName $lastName",
+                            "",
+                            R.drawable.download1,
+                            age,
+                            height,
+                            weight,
+                            phone
+                        )
+                    )
+
+                    rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+                    rv.adapter = TraineeAdapter(this, trainee)
+                }
+            } catch (e: Exception) {
+                Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+        }, {
+            Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_LONG).show()
+        }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers.put("Authorization", Token)
+                return headers
+            }
+        }
+        queue.add(jsonObject)
+
+//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
+//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
+//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
+//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
+//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
+//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
+//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
+//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
+//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
+//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
+//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
+//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
+//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
+//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
+//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
+//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
 
 
         tempTrainee.addAll(trainee)
-        rv.adapter = TraineeAdapter(this, tempTrainee)
+
 
     }
 
@@ -69,10 +132,10 @@ class AdminTraineeActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu,menu)
+        menuInflater.inflate(R.menu.main_menu, menu)
 
 
-        object : MenuItem.OnActionExpandListener{
+        object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
                 return true
             }
@@ -83,15 +146,15 @@ class AdminTraineeActivity : AppCompatActivity() {
 
         }
         val searchItem = menu.findItem(R.id.search)
-        val searchView  = searchItem?.actionView as SearchView
+        val searchView = searchItem?.actionView as SearchView
         searchView.queryHint = "Type"
 
 
 
 
-        searchView.setOnQueryTextListener (
+        searchView.setOnQueryTextListener(
 
-            object: SearchView.OnQueryTextListener {
+            object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return true
                 }
@@ -102,20 +165,15 @@ class AdminTraineeActivity : AppCompatActivity() {
                     tempTrainee.clear()
                     val searchText = newText!!.lowercase(Locale.getDefault())
 
-                    if(searchText.isNotEmpty())
-                    {
+                    if (searchText.isNotEmpty()) {
                         trainee.forEach {
 
-                            if(it.name.lowercase(Locale.getDefault()).contains(searchText))
-                            {
+                            if (it.name.lowercase(Locale.getDefault()).contains(searchText)) {
                                 tempTrainee.add(it)
                             }
                         }
                         rv.adapter!!.notifyDataSetChanged()
-                    }
-
-                    else
-                    {
+                    } else {
                         tempTrainee.clear()
                         tempTrainee.addAll(trainee)
                         rv.adapter!!.notifyDataSetChanged()
@@ -131,6 +189,7 @@ class AdminTraineeActivity : AppCompatActivity() {
 
         return super.onCreateOptionsMenu(menu)
     }
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -143,8 +202,8 @@ class AdminTraineeActivity : AppCompatActivity() {
 
                     false
 
-                } else{
-                    tempTrainee.sortByDescending{
+                } else {
+                    tempTrainee.sortByDescending {
                         it.name
                     }
                     rv.adapter!!.notifyDataSetChanged()

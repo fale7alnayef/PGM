@@ -1,5 +1,6 @@
 package com.example.pgm
 
+
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -12,6 +13,10 @@ import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
 
 class UpdateTraineeActivity : AppCompatActivity() {
     private lateinit var calendar: Calendar

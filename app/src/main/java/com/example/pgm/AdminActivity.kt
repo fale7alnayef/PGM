@@ -1,9 +1,9 @@
 package com.example.pgm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.balysv.materialripple.MaterialRippleLayout
 
 class AdminActivity : AppCompatActivity() {
@@ -15,10 +15,16 @@ class AdminActivity : AppCompatActivity() {
         val coach = findViewById<MaterialRippleLayout>(R.id.coaches)
         val trainee = findViewById<MaterialRippleLayout>(R.id.trainee)
         val admin = findViewById<MaterialRippleLayout>(R.id.admin)
+
         val subscription = findViewById<MaterialRippleLayout>(R.id.subscription)
         val contract = findViewById<MaterialRippleLayout>(R.id.contract)
 
+        adminName = findViewById(R.id.name)
+        gymName = findViewById(R.id.gymname)
 
+
+        adminName.text = Data.name
+        gymName.text = Data.gymName
 
 
         coach.setOnClickListener {

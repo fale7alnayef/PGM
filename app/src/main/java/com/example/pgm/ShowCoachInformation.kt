@@ -11,11 +11,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.balysv.materialripple.MaterialRippleLayout
 import de.hdodenhof.circleimageview.CircleImageView
 
 
 class ShowCoachInformation : AppCompatActivity() {
+    lateinit var d: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_coach_information)
@@ -31,10 +35,23 @@ class ShowCoachInformation : AppCompatActivity() {
         val phone = findViewById<TextView>(R.id.phone)
         val salary = findViewById<TextView>(R.id.salary)
 
+
         name.text = intent.extras?.get("name").toString()
         phone.text = intent.extras?.get("phone").toString()
         salary.text = intent.extras?.get("salary").toString()
         image.setImageResource(intent.extras?.get("image").toString().toInt())
+        d = intent.extras?.get("id").toString()
+
+        val queue = Volley.newRequestQueue(applicationContext)
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,
+            "http://${Data.url}:8000/api/admin/show_cont/$d",
+            null,
+            {
+
+            },
+            {
+
+            })
 
         back.setOnClickListener {
             onBackPressed()
@@ -53,14 +70,17 @@ class ShowCoachInformation : AppCompatActivity() {
         }
 
 
-
     }
+
     private fun navigateToTrainees() {
         startActivity(Intent(applicationContext, CoachTraineesActivity::class.java))
 
     }
+
     private fun navigateToContract() {
-        startActivity(Intent(applicationContext, NewContractActivity::class.java))
+        val i = Intent(applicationContext, NewContractActivity::class.java)
+        i.putExtra("coach_id", d)
+        startActivity(i)
 
     }
 
@@ -70,23 +90,24 @@ class ShowCoachInformation : AppCompatActivity() {
     }
 
 
-      private  fun popUpMenu(view : View){
-            val popup = PopupMenu(this, view)
-            val inflater: MenuInflater = popup.menuInflater
-            inflater.inflate(R.menu.smenu, popup.menu)
-            popup.setOnMenuItemClickListener { menuItem ->
-                when(menuItem.itemId){
-                    R.id.edit-> {
-                        navigateToUpdateCoach()
-                    }
-                    R.id.remove-> {
-                        showDefaultDialog(this)
-                    }
+    private fun popUpMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        val inflater: MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.smenu, popup.menu)
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.edit -> {
+                    navigateToUpdateCoach()
                 }
-                true
+                R.id.remove -> {
+                    showDefaultDialog(this)
+                }
             }
-            popup.show()
+            true
         }
+        popup.show()
+    }
+
     private fun showDefaultDialog(context: Context) {
         val alertDialog = AlertDialog.Builder(context)
 

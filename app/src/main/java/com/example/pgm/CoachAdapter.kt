@@ -1,6 +1,5 @@
 package com.example.pgm
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -41,6 +40,7 @@ class CoachAdapter (private val context: Context, private var coaches : ArrayLis
             i.putExtra("image",coaches[position].image)
             i.putExtra("phone",coaches[position].phone)
             i.putExtra("salary",coaches[position].salary)
+            i.putExtra("id",coaches[position].id)
 
             context.startActivity(i)
 
