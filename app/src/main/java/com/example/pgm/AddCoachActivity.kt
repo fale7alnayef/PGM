@@ -251,9 +251,6 @@ class AddCoachActivity : AppCompatActivity() {
 
     private fun validnumber(): String? {
         val numberText = number.text.toString()
-        if (numberText.isEmpty()) {
-            return "enter Numbers"
-        } else if (!numberText.matches(".*[1-9].*".toRegex())) {
             return "Only Numbers"
         }
 

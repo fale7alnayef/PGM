@@ -15,8 +15,13 @@ class AdminActivity : AppCompatActivity() {
         val coach = findViewById<MaterialRippleLayout>(R.id.coaches)
         val trainee = findViewById<MaterialRippleLayout>(R.id.trainee)
         val admin = findViewById<MaterialRippleLayout>(R.id.admin)
+
+        val subscription = findViewById<MaterialRippleLayout>(R.id.subscription)
+        val contract = findViewById<MaterialRippleLayout>(R.id.contract)
+
         adminName = findViewById(R.id.name)
         gymName = findViewById(R.id.gymname)
+
 
         adminName.text = Data.name
         gymName.text = Data.gymName
@@ -31,6 +36,12 @@ class AdminActivity : AppCompatActivity() {
         trainee.setOnClickListener {
             navigateToTrainees()
         }
+        subscription.setOnClickListener {
+            navigateToSubscription()
+        }
+        contract.setOnClickListener {
+            navigateToContract()
+        }
 
     }
 
@@ -44,6 +55,15 @@ class AdminActivity : AppCompatActivity() {
     }
     private fun navigateToAdminInfo() {
         startActivity(Intent(applicationContext, ShowAdminInformation::class.java))
+
+    }
+    private fun navigateToSubscription() {
+        startActivity(Intent(applicationContext, ViewSubscriptionsActivity::class.java))
+
+    }
+
+    private fun navigateToContract() {
+        startActivity(Intent(applicationContext, ViewContractsActivity::class.java))
 
     }
 
