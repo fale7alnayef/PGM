@@ -78,13 +78,14 @@ class AddCoachActivity : AppCompatActivity() {
         lastNameContainer = findViewById(R.id.lastNameCoachContainer)
 
         submit.setOnClickListener {
+
             val queue = Volley.newRequestQueue(applicationContext)
             val jsonBody = JSONObject()
             val Token = "Bearer " + Data.Token
             try {
                 jsonBody.put("email", email.text.toString())
                 jsonBody.put("password", password.text.toString())
-                jsonBody.put("number", number.text.toString())
+                jsonBody.put("phone_number", number.text.toString())
                 jsonBody.put("birthday", birthday.text.toString())
                 jsonBody.put("first_name", firstName.text.toString())
                 jsonBody.put("last_name", lastName.text.toString())
@@ -94,7 +95,7 @@ class AddCoachActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
             val JsonObjectRequest = object : JsonObjectRequest(
-                Request.Method.POST, "http://192.168.1.110:8000/api/admin/create_coach", jsonBody,
+                Request.Method.POST, "http://192.168.102.61:8000/api/admin/create_coach", jsonBody,
                 {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
 

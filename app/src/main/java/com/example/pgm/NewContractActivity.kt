@@ -3,9 +3,17 @@ package com.example.pgm
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.constraintlayout.motion.widget.TransitionBuilder.validate
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import org.json.JSONException
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,7 +48,39 @@ class NewContractActivity : AppCompatActivity() {
 
 
         submit.setOnClickListener {
-            submitForm()
+            val queue = Volley.newRequestQueue(applicationContext)
+            val jsonBody = JSONObject()
+            val Token = "Bearer " + Data.Token
+            val coachID: String
+            try {
+
+                jsonBody.put("start_date", startDate.text.toString())
+                jsonBody.put("end_date", endDate.text.toString())
+                jsonBody.put("salary", salary.text.toString())
+
+
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+            val JsonObjectRequest = object : JsonObjectRequest(
+                Request.Method.POST, "http://192.168.1.110:8000/api/admin/create_cont", jsonBody,
+                {
+                    Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
+                    submitForm()
+
+                }, {
+
+
+                }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers.put("Authorization", Token)
+                    return headers
+
+                }
+            }
+
+
         }
 
         initDatePicker()
@@ -61,12 +101,12 @@ class NewContractActivity : AppCompatActivity() {
 
         if (validstartDate && validendDate && validSalary) {
             finish()
-        }    }
+        }
+    }
 
-    private fun startDateFocusListener(){
+    private fun startDateFocusListener() {
         startDate.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 startDateContainer.error = validstartDate()
             }
         }
@@ -74,17 +114,15 @@ class NewContractActivity : AppCompatActivity() {
 
     private fun validstartDate(): String? {
         val startDateText = startDate.text.toString()
-        if(startDateText.isEmpty())
-        {
+        if (startDateText.isEmpty()) {
             return "enter Start Date"
         }
         return null
     }
 
-    private fun endDateFocusListener(){
+    private fun endDateFocusListener() {
         endDate.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 startDateContainer.error = validendDate()
             }
         }
@@ -92,17 +130,15 @@ class NewContractActivity : AppCompatActivity() {
 
     private fun validendDate(): String? {
         val endDateText = endDate.text.toString()
-        if(endDateText.isEmpty())
-        {
+        if (endDateText.isEmpty()) {
             return "enter End Date"
         }
         return null
     }
 
-    private fun salaryFocusListener(){
+    private fun salaryFocusListener() {
         salary.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 salaryContainer.error = validSalary()
             }
         }
@@ -110,24 +146,21 @@ class NewContractActivity : AppCompatActivity() {
 
     private fun validSalary(): String? {
         val salaryText = salary.text.toString()
-        if(salaryText.isEmpty())
-        {
+        if (salaryText.isEmpty()) {
             return "enter Salary"
-        }
-        else if(!salaryText.matches(".*[1-9].*".toRegex()))
-        {
+        } else if (!salaryText.matches(".*[1-9].*".toRegex())) {
             return "Only Numbers"
         }
         return null
     }
 
-    private fun initDatePicker(){
+    private fun initDatePicker() {
         calendar = Calendar.getInstance()
 
-        val datePicker = DatePickerDialog.OnDateSetListener{ _, year, month, dayOfMonth ->
-            calendar.set(Calendar.YEAR,year)
-            calendar.set(Calendar.MONTH,month)
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             updateLapel(calendar)
 
         }
@@ -142,13 +175,14 @@ class NewContractActivity : AppCompatActivity() {
         }
 
     }
-    private fun initDatePicker2(){
+
+    private fun initDatePicker2() {
         calendar = Calendar.getInstance()
 
-        val datePicker = DatePickerDialog.OnDateSetListener{ _, year, month, dayOfMonth ->
-            calendar.set(Calendar.YEAR,year)
-            calendar.set(Calendar.MONTH,month)
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             updateLapel2(calendar)
 
         }
