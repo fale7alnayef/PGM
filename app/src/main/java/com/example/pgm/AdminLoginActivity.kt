@@ -2,11 +2,9 @@ package com.example.pgm
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.motion.widget.TransitionBuilder.validate
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -55,8 +53,20 @@ class AdminLoginActivity : AppCompatActivity() {
             val JsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST, "http://192.168.102.61:8000/api/login/admin", jsonBody,
                 {
-
+                    Data.name = it.getJSONObject("data").getJSONObject("admin").getString("name")
                     Data.Token = it.getJSONObject("data").getString("token")
+                    Data.gymName =
+                        it.getJSONObject("data").getJSONObject("admin").getJSONObject("gym")
+                            .getString("title")
+
+                    try {
+                        Data.img =
+                            it.getJSONObject("data").getJSONObject("admin").getJSONObject("gym")
+                                .getString("logo_url")
+                    } catch (e: Exception) {
+
+                    }
+
                     submitForm()
                 }, {
                     try {
@@ -65,8 +75,12 @@ class AdminLoginActivity : AppCompatActivity() {
                             it.networkResponse.headers?.get("message").toString(),
                             Toast.LENGTH_SHORT
                         ).show()
-                    }catch (e:Exception){
-                        Toast.makeText(applicationContext,"Internet Connection Error",Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception) {
+                        Toast.makeText(
+                            applicationContext,
+                            "Internet Connection Error",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 })

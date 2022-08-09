@@ -1,11 +1,10 @@
 package com.example.pgm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.balysv.materialripple.MaterialRippleLayout
-import de.hdodenhof.circleimageview.CircleImageView
 
 class AdminActivity : AppCompatActivity() {
     lateinit var adminName: TextView
@@ -16,8 +15,11 @@ class AdminActivity : AppCompatActivity() {
         val coach = findViewById<MaterialRippleLayout>(R.id.coaches)
         val trainee = findViewById<MaterialRippleLayout>(R.id.trainee)
         val admin = findViewById<MaterialRippleLayout>(R.id.admin)
+        adminName = findViewById(R.id.name)
+        gymName = findViewById(R.id.gymname)
 
-
+        adminName.text = Data.name
+        gymName.text = Data.gymName
 
 
         coach.setOnClickListener {
