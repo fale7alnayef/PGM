@@ -19,6 +19,25 @@
         <activity
             android:name=".ViewContractsActivity"
             android:exported="false" />
+        <activity
+            android:name=".ViewSubscriptionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Contract2"
+            android:exported="false" />
+        <activity
+            android:name=".Subscription"
+            android:exported="false" />
+
+        <activity
+            android:name=".NewSubscriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubscriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InstallmentActivity"
+            android:exported="false" />
 
         <activity
             android:name=".UpdateTraineeActivity"
