@@ -222,7 +222,7 @@ class AddCoachActivity : AppCompatActivity() {
         val numberText = number.text.toString()
         if(numberText.isEmpty())
         {
-            return "enter Numbers"
+            return "enter Number"
         }
         else if(!numberText.matches(".*[1-9].*".toRegex()))
         {

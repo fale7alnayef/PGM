@@ -22,6 +22,8 @@ class ShowCoachInformation : AppCompatActivity() {
 
         val menu = findViewById<MaterialRippleLayout>(R.id.coachMenu)
         val trainees = findViewById<MaterialRippleLayout>(R.id.trainees)
+        val startDate = findViewById<TextView>(R.id.contractStartDate)
+        val endDate = findViewById<TextView>(R.id.contractEndDate)
         val back = findViewById<MaterialRippleLayout>(R.id.bbbbb)
         val newContract = findViewById<MaterialRippleLayout>(R.id.addContract)
         val image = findViewById<CircleImageView>(R.id.coachImage)

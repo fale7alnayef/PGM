@@ -29,6 +29,8 @@ class AddTraineeActivity : AppCompatActivity() {
     private lateinit var numberContainer: TextInputLayout
     private lateinit var firstNameContainer: TextInputLayout
     private lateinit var lastNameContainer: TextInputLayout
+    private lateinit var weightContainer: TextInputLayout
+    private lateinit var heightContainer: TextInputLayout
 
     private lateinit var email: TextInputEditText
     private lateinit var password: TextInputEditText
@@ -37,6 +39,8 @@ class AddTraineeActivity : AppCompatActivity() {
     private lateinit var number: TextInputEditText
     private lateinit var firstName: TextInputEditText
     private lateinit var lastName: TextInputEditText
+    private lateinit var weight: TextInputEditText
+    private lateinit var height: TextInputEditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +74,12 @@ class AddTraineeActivity : AppCompatActivity() {
 
         lastName = findViewById(R.id.lastNameTraineeEditText)
         lastNameContainer = findViewById(R.id.lastNameTraineeContainer)
+
+        weight = findViewById(R.id.weightTraineeEditText)
+        weightContainer = findViewById(R.id.weightTraineeContainer)
+
+        height = findViewById(R.id.heightTraineeEditText)
+        heightContainer = findViewById(R.id.heightTraineeContainer)
 
         submit.setOnClickListener {
             submitForm()
@@ -227,9 +237,53 @@ class AddTraineeActivity : AppCompatActivity() {
         val numberText = number.text.toString()
         if(numberText.isEmpty())
         {
-            return "enter Numbers"
+            return "enter Number"
         }
         else if(!numberText.matches(".*[1-9].*".toRegex()))
+        {
+            return "Only Numbers"
+        }
+
+        return null
+    }
+    private fun heightFocusListener(){
+        height.setOnFocusChangeListener { _, focused ->
+            if(!focused)
+            {
+                heightContainer.error = validheight()
+            }
+        }
+    }
+
+    private fun validheight(): String? {
+        val heightText = height.text.toString()
+        if(heightText.isEmpty())
+        {
+            return "enter Height"
+        }
+        else if(!heightText.matches(".*[1-9].*".toRegex()))
+        {
+            return "Only Numbers"
+        }
+
+        return null
+    }
+    private fun weightFocusListener(){
+        weight.setOnFocusChangeListener { _, focused ->
+            if(!focused)
+            {
+                weightContainer.error = validweight()
+            }
+        }
+    }
+
+    private fun validweight(): String? {
+        val weightText = weight.text.toString()
+        if(weightText.isEmpty())
+        {
+            return "enter Weight"
+        }
+        else if(!weightText.matches(".*[1-9].*".toRegex()))
         {
             return "Only Numbers"
         }
@@ -288,6 +342,8 @@ class AddTraineeActivity : AppCompatActivity() {
         birthdayContainer.error = validbirthday()
         firstNameContainer.error = validFirstName()
         lastNameContainer.error = validLastName()
+        heightContainer.error = validheight()
+        weightContainer.error = validweight()
 
         val validEmail = emailContainer.error == null
         val validPassword = passwordContainer.error == null
@@ -296,8 +352,10 @@ class AddTraineeActivity : AppCompatActivity() {
         val validbirthday = birthdayContainer.error == null
         val validFirstName = firstNameContainer.error == null
         val validLastName = lastNameContainer.error == null
+        val validweight = weightContainer.error == null
+        val validheight = heightContainer.error == null
 
-        if (validEmail && validPassword && validconfirmPassword && validnumber && validbirthday && validFirstName && validLastName ) {
+        if (validEmail && validPassword && validconfirmPassword && validnumber && validbirthday && validFirstName && validLastName && validweight && validheight ) {
             finish()
         }
 
@@ -313,6 +371,8 @@ class AddTraineeActivity : AppCompatActivity() {
         numberFocusListener()
         firstNameFocusListener()
         lastNameFocusListener()
+        weightFocusListener()
+        heightFocusListener()
 
     }
 

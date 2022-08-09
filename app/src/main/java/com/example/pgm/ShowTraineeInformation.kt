@@ -28,6 +28,7 @@ class ShowTraineeInformation : AppCompatActivity() {
         val phone = findViewById<TextView>(R.id.phone)
         val back = findViewById<MaterialRippleLayout>(R.id.traineeBack)
         val subs = findViewById<MaterialRippleLayout>(R.id.subs)
+        val newSubs = findViewById<MaterialRippleLayout>(R.id.newSubscription)
 
         name.text = intent.extras?.get("name").toString()
         phone.text = intent.extras?.get("phone").toString()
@@ -50,7 +51,24 @@ class ShowTraineeInformation : AppCompatActivity() {
 
 
         }
+        newSubs.setOnClickListener {
+
+
+            navigateToNewSubs()
+
+
+        }
+
+        subs.setOnClickListener {
+
+
+            navigateToSubs()
+
+
+        }
     }
+
+
 
 
     private  fun popUpMenu(view : View){
@@ -89,5 +107,12 @@ class ShowTraineeInformation : AppCompatActivity() {
     private fun navigateToUpdateTrainee() {
         startActivity(Intent(applicationContext, UpdateTraineeActivity::class.java))
 
+    }
+    private fun navigateToNewSubs() {
+        startActivity(Intent(applicationContext, NewSubscriptionActivity::class.java))
+
+    }
+    private fun navigateToSubs() {
+        startActivity(Intent(applicationContext, SubscriptionActivity::class.java))
     }
     }

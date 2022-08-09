@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pgm">
 
     <application
@@ -11,19 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PGM">
         <activity
+            android:name=".ViewContractsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Contract2"
+            android:exported="false" />
+        <activity
+            android:name=".Subscription"
+            android:exported="false" />
+        <activity
+            android:name=".ViewSubscriptionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InstallmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewSubscriptionActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateTraineeActivity"
             android:exported="false" />
-        <activity
-            android:name=".QualificationsActivity"
-            android:exported="false" />
+
         <activity
             android:name=".UpdateCoachActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateContractActivity"
-            android:exported="false" />
-        <activity
-            android:name=".updateContractActivity"
             android:exported="false" />
         <activity
             android:name=".NewContractActivity"
@@ -31,9 +40,7 @@
         <activity
             android:name=".SubscriptionActivity"
             android:exported="false" />
-        <activity
-            android:name=".ContractActivity"
-            android:exported="false" />
+
         <activity
             android:name=".AddCoachActivity"
             android:exported="false" />
@@ -45,9 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".ShowTraineeCoachInformationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ShowCoachTraineeInformation"
             android:exported="false" />
         <activity
             android:name=".CoachTraineesActivity"
