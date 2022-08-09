@@ -2,6 +2,7 @@ package com.example.pgm
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -43,32 +44,31 @@ class NewContractActivity : AppCompatActivity() {
 
         submit = findViewById(R.id.newContractButton)
 
-
+        val queue = Volley.newRequestQueue(applicationContext)
 
         submit.setOnClickListener {
-            val queue = Volley.newRequestQueue(applicationContext)
+
             val jsonBody = JSONObject()
             val Token = "Bearer " + Data.Token
             val coachID: String
+            val d = intent.extras?.get("coach_id").toString()
             try {
 
                 jsonBody.put("start_date", startDate.text.toString())
                 jsonBody.put("end_date", endDate.text.toString())
                 jsonBody.put("salary", salary.text.toString())
-
+                jsonBody.put("coach_id", d)
 
             } catch (e: JSONException) {
-                e.printStackTrace()
+                Log.e("error", e.toString())
             }
             val JsonObjectRequest = object : JsonObjectRequest(
-                Request.Method.POST, "http://192.168.1.110:8000/api/admin/create_cont", jsonBody,
+                Request.Method.POST, "http://${Data.url}:8000/api/admin/create_contract", jsonBody,
                 {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
                     submitForm()
-
                 }, {
-
-
+                    Log.e("error",it.toString())
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String>()
@@ -78,7 +78,7 @@ class NewContractActivity : AppCompatActivity() {
                 }
             }
 
-
+            queue.add(JsonObjectRequest)
         }
 
         initDatePicker()
@@ -197,13 +197,13 @@ class NewContractActivity : AppCompatActivity() {
     }
 
     private fun updateLapel2(calendar: Calendar) {
-        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.UK)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
         endDate.setText(sdf.format(calendar.time))
     }
 
     private fun updateLapel(calendar: Calendar) {
 
-        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.UK)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
         startDate.setText(sdf.format(calendar.time))
     }
 

@@ -39,7 +39,7 @@ class AdminCoachActivity : AppCompatActivity() {
 
         val Token = "Bearer " + Data.Token
         val queue = Volley.newRequestQueue(this)
-        val url = "http://192.168.102.61:8000/api/admin/show_all_coaches"
+        val url = "http://${Data.url}:8000/api/admin/show_all_coaches"
 
         val jsonObject = object : JsonObjectRequest(Method.POST, url, null, {
             try {

@@ -92,7 +92,7 @@ class AddCoachActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
             val JsonObjectRequest = object : JsonObjectRequest(
-                Request.Method.POST, "http://192.168.102.61:8000/api/admin/create_coach", jsonBody,
+                Request.Method.POST, "http://${Data.url}:8000/api/admin/create_coach", jsonBody,
                 {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
 

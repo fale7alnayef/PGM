@@ -51,7 +51,7 @@ class AdminLoginActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
             val JsonObjectRequest = JsonObjectRequest(
-                Request.Method.POST, "http://192.168.102.61:8000/api/login/admin", jsonBody,
+                Request.Method.POST, "http://${Data.url}:8000/api/login/admin", jsonBody,
                 {
                     Data.name = it.getJSONObject("data").getJSONObject("admin").getString("name")
                     Data.Token = it.getJSONObject("data").getString("token")
