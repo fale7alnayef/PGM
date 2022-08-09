@@ -14,8 +14,6 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 
 
 class UpdateTraineeActivity : AppCompatActivity() {

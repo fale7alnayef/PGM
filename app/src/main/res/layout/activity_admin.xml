@@ -88,8 +88,7 @@
         android:layout_marginStart="54dp"
 
         android:layout_marginTop="40dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
+
 
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="10dp"
@@ -134,7 +133,6 @@
         android:layout_marginStart="54dp"
 
         android:layout_marginTop="40dp"
-        app:cardElevation="10dp"
 
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="10dp"
@@ -178,7 +176,6 @@
         android:layout_marginStart="54dp"
 
         android:layout_marginTop="40dp"
-        app:cardElevation="10dp"
 
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="10dp"

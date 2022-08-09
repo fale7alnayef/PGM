@@ -19,9 +19,7 @@
         <activity
             android:name=".ViewContractsActivity"
             android:exported="false" />
-        <activity
 
-            android:exported="false" />
         <activity
             android:name=".UpdateTraineeActivity"
             android:exported="false" />
