@@ -51,9 +51,24 @@
     <string name="delete">Delete</string>
     <string name="_phone">Phone</string>
     <string name="qualifications">Qualifications</string>
-    <string name="specialty">Specialty</string>
     <string name="remove">Remove</string>
     <string name="new_subscription">New Subscription</string>
+    <string name="paid_amount">Paid Amount</string>
+    <string name="paying">Paying</string>
+    <string name="_private">Private</string>
+    <string name="sat">SAT</string>
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="payment">Payment</string>
+    <string name="yes">Yes</string>
+    <string name="fully_paid">Fully Paid</string>
+    <string name="no">No</string>
+    <string name="pay">Pay</string>
+    <string name="viewpager">ViewPager</string>
+    <string name="specialty">Specialty</string>
 
     >
 

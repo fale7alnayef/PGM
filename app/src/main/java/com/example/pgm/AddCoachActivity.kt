@@ -97,7 +97,7 @@ class AddCoachActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
 
                 }, {
-                    Log.e("error",birthday.text.toString())
+                    Log.e("error", birthday.text.toString())
 
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
@@ -252,12 +252,10 @@ class AddCoachActivity : AppCompatActivity() {
     private fun validnumber(): String? {
         val numberText = number.text.toString()
         if (numberText.isEmpty()) {
-            return "enter Numbers"
-        } else if (!numberText.matches(".*[1-9].*".toRegex())) {
-            return "Only Numbers"
+            return "Enter number"
         }
-
         return null
+
     }
 
     private fun firstNameFocusListener() {
