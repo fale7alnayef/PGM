@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
@@ -77,7 +76,8 @@ class AddCoachActivity : AppCompatActivity() {
 
             val queue = Volley.newRequestQueue(applicationContext)
             val jsonBody = JSONObject()
-            val Token = "Bearer " + Data.Token
+            val token = "Bearer " + Data.Token
+
             try {
                 jsonBody.put("email", email.text.toString())
                 jsonBody.put("password", password.text.toString())
@@ -90,7 +90,7 @@ class AddCoachActivity : AppCompatActivity() {
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
-            val JsonObjectRequest = object : JsonObjectRequest(
+            val jsonObjectRequest = object : JsonObjectRequest(
                 Method.POST, "http://${Data.url}:8000/api/admin/create_coach", jsonBody,
                 {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
@@ -104,13 +104,13 @@ class AddCoachActivity : AppCompatActivity() {
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String>()
-                    headers.put("Authorization", Token)
+                    headers["Authorization"] = token
                     return headers
 
                 }
             }
 
-            queue.add(JsonObjectRequest)
+            queue.add(jsonObjectRequest)
 
 
         }
