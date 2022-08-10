@@ -3,11 +3,13 @@ package com.example.pgm
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.pgm.Data.Companion.id
 import com.google.android.material.button.MaterialButton
 
 
@@ -20,6 +22,7 @@ class SubscriptionActivity : AppCompatActivity() {
     private lateinit var fullyPaid: TextView
     private lateinit var coach: TextView
     private lateinit var pay: MaterialButton
+    lateinit var idd:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subscription)
@@ -32,8 +35,8 @@ class SubscriptionActivity : AppCompatActivity() {
         privatec = findViewById(R.id.privateSubs)
         pay = findViewById(R.id.sPay)
 
-        val id = intent.extras?.get("id").toString()
-        val url = "http://${Data.url}:8000/api/admin/show_sub/$id"
+        idd = intent.extras?.get("id").toString()
+        val url = "http://${Data.url}:8000/api/admin/show_sub/$idd"
         val queue = Volley.newRequestQueue(applicationContext)
 
         val subReques = JsonObjectRequest(
@@ -52,10 +55,11 @@ class SubscriptionActivity : AppCompatActivity() {
                     privatec.text = "Yes"
                 }
 
-                if (fulPaid.equals("0")) {
+                if (fulPaid.equals("false")) {
                     fullyPaid.text = "NO"
                 } else {
                     fullyPaid.text = "YES"
+                    pay.visibility= View.INVISIBLE
                 }
 
                 coach.text = it.getString("coach_name")
@@ -74,7 +78,9 @@ class SubscriptionActivity : AppCompatActivity() {
     }
 
     private fun navigateToInstallment() {
-        startActivity(Intent(applicationContext, InstallmentActivity::class.java))
+        val i = Intent(applicationContext, InstallmentActivity::class.java)
+        i.putExtra("idd",idd)
+        startActivity(i)
 
     }
 
