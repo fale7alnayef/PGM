@@ -96,7 +96,9 @@ class ShowCoachInformation : AppCompatActivity() {
     }
 
     private fun navigateToUpdateCoach() {
-        startActivity(Intent(applicationContext, UpdateCoachActivity::class.java))
+        val i=Intent(applicationContext, UpdateCoachActivity::class.java)
+        i.putExtra("idd",d)
+        startActivity(i)
 
     }
 
