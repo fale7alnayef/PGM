@@ -73,18 +73,16 @@ class ShowTraineeInformation : AppCompatActivity() {
     }
 
 
-
-
-    private  fun popUpMenu(view : View){
+    private fun popUpMenu(view: View) {
         val popup = PopupMenu(this, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.smenu, popup.menu)
         popup.setOnMenuItemClickListener { menuItem ->
-            when(menuItem.itemId){
-                R.id.edit-> {
+            when (menuItem.itemId) {
+                R.id.edit -> {
                     navigateToUpdateTrainee()
                 }
-                R.id.remove-> {
+                R.id.remove -> {
                     showDefaultDialog(this)
                 }
             }
@@ -92,6 +90,7 @@ class ShowTraineeInformation : AppCompatActivity() {
         }
         popup.show()
     }
+
     private fun showDefaultDialog(context: Context) {
         val alertDialog = AlertDialog.Builder(context)
 
@@ -112,13 +111,15 @@ class ShowTraineeInformation : AppCompatActivity() {
         startActivity(Intent(applicationContext, UpdateTraineeActivity::class.java))
 
     }
+
     private fun navigateToNewSubs() {
         startActivity(Intent(applicationContext, NewSubscriptionActivity::class.java))
 
     }
+
     private fun navigateToSubs() {
         val i = Intent(applicationContext, SubscriptionActivity::class.java)
         i.putExtra("id",id)
         startActivity(i)
     }
-    }
+}

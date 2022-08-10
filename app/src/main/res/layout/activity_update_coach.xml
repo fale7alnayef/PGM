@@ -7,6 +7,8 @@
     tools:context=".UpdateCoachActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+
+
         android:id="@+id/updatePhoneNumberCoachContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="351dp"
@@ -63,9 +65,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+
         android:layout_marginStart="22dp"
         android:layout_marginTop="248dp"
         android:layout_marginEnd="18dp"
+
         android:hint="@string/password"
         app:endIconMode="password_toggle"
         app:startIconDrawable="@drawable/lock"

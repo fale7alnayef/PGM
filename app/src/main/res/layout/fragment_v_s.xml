@@ -6,9 +6,9 @@
     tools:context=".VSFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activeSubsRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/activeSubsRecycler"
 
         />
 

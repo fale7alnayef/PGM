@@ -1,5 +1,4 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +6,10 @@
 
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ttoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_700"
-        android:id="@+id/ttoolbar"
-        >
+        android:background="@color/purple_700">
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -30,6 +28,5 @@
         android:contentDescription="@string/todo"
         android:src="@drawable/add"
         app:fabSize="normal"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-        />
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

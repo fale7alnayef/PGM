@@ -86,6 +86,7 @@ class UpdateCoachActivity : AppCompatActivity() {
             }
 
 
+
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -96,6 +97,7 @@ class UpdateCoachActivity : AppCompatActivity() {
                 },
                 {
 
+
                 }
             )
             queue.add(jsonObjectRequest)
@@ -104,6 +106,8 @@ class UpdateCoachActivity : AppCompatActivity() {
         pickImage.setOnClickListener {
             pickImageFromGallery()
         }
+
+
 
 
     }

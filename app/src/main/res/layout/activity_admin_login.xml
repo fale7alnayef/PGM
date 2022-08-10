@@ -16,21 +16,20 @@
         android:textSize="38sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailAdminContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginHorizontal="20dp"
-        app:helperTextTextColor="@android:color/holo_red_dark"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="200dp"
+        android:layout_marginEnd="20dp"
         android:hint="@string/email_address"
         app:endIconMode="clear_text"
+        app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/email">
@@ -51,13 +50,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        app:helperTextTextColor="@android:color/holo_red_dark"
-        app:counterMaxLength="16"
         android:layout_marginStart="20dp"
         android:layout_marginTop="280dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/password"
+        app:counterMaxLength="16"
         app:endIconMode="password_toggle"
+        app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/lock">
@@ -68,8 +67,7 @@
             android:layout_height="match_parent"
             android:inputType="textPassword"
             android:lines="1"
-            android:maxLength="16"
-            />
+            android:maxLength="16" />
 
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -1,261 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NewSubscriptionActivity">
 
 
-
-  <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/startDateSubscriptionContainer"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentEnd="true"
-      android:layout_marginStart="20dp"
-      android:layout_marginEnd="20dp"
-      android:layout_marginTop="50dp"
-      android:hint="@string/start_date"
-      android:textIsSelectable="true"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:startIconDrawable="@drawable/date">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/startDateSubscriptionEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/startDateSubscriptionContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="false"
-        android:focusable="false"
-        android:inputType="date"
-        android:lines="1"
-        android:textColorHint="#757575" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/start_date"
+        android:textIsSelectable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/date">
 
-  </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/startDateSubscriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:inputType="date"
+            android:lines="1"
+            android:textColorHint="#757575" />
 
-  <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/endDateSubscriptionContainer"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentEnd="true"
-      android:layout_marginStart="20dp"
-      android:layout_marginEnd="20dp"
-      android:layout_marginTop="130dp"
-      android:hint="@string/end_date"
-      android:textIsSelectable="true"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:startIconDrawable="@drawable/date">
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/endDateSubscriptionEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/endDateSubscriptionContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="false"
-        android:focusable="false"
-        android:inputType="date"
-        android:lines="1"
-        android:textColorHint="#757575" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/end_date"
+        android:textIsSelectable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/date">
 
-  </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/endDateSubscriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:inputType="date"
+            android:lines="1"
+            android:textColorHint="#757575" />
 
-  <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/priceSubscriptionContainer"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentEnd="true"
-      android:layout_marginTop="210dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginEnd="20dp"
-      android:hint="@string/price"
-      android:textIsSelectable="true"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:startIconDrawable="@drawable/money">
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/priceSubscriptionEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/priceSubscriptionContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:inputType="number"
-        android:lines="1" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/price"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/money">
 
-  </com.google.android.material.textfield.TextInputLayout>
-  <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/paidAmountSubscriptionContainer"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentEnd="true"
-      android:layout_marginTop="290dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginEnd="20dp"
-      android:hint="@string/paid_amount"
-      android:textIsSelectable="true"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:startIconDrawable="@drawable/money">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/priceSubscriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:lines="1" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/paidAmountSubscriptionEditText"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/paidAmountSubscriptionContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:inputType="number"
-        android:lines="1" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/paid_amount"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/money">
 
-  </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/paidAmountSubscriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:lines="1" />
 
-  <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/payingSubscriptionContainer"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentEnd="true"
-      android:layout_marginStart="20dp"
-      android:layout_marginTop="370dp"
-      android:layout_marginEnd="20dp"
-      android:hint="@string/paying"
-      android:textIsSelectable="true"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:startIconDrawable="@drawable/money">
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/payingSubscriptionEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/payingSubscriptionContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:inputType="number"
-        android:lines="1" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="370dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/paying"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/money">
 
-  </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/payingSubscriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:lines="1" />
 
-  <Switch
-      android:id="@+id/privateSwitch"
-      android:layout_width="100dp"
-      android:layout_height="50dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginTop="70dp"
-      android:text="@string/_private"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/payingSubscriptionContainer"
-      tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-  <Switch
-      android:id="@+id/fullyPaidSwitch"
-      android:layout_width="100dp"
-      android:layout_height="50dp"
-      android:layout_marginTop="70dp"
-      android:layout_marginEnd="20dp"
-      android:text="@string/fully_paid"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintStart_toEndOf="@+id/privateSwitch"
-      app:layout_constraintTop_toBottomOf="@+id/payingSubscriptionContainer"
-      tools:ignore="UseSwitchCompatOrMaterialXml" />
+    <Switch
+        android:id="@+id/privateSwitch"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/_private"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/payingSubscriptionContainer"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-  <com.google.android.material.chip.Chip
-      android:id="@+id/satChip"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="50dp"
-      android:layout_marginTop="25dp"
-      android:text="@string/sat"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/privateSwitch" />
+    <Switch
+        android:id="@+id/fullyPaidSwitch"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/fully_paid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/privateSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/payingSubscriptionContainer"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-  <com.google.android.material.chip.Chip
-      android:id="@+id/tueChip"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="25dp"
-      android:layout_marginEnd="50dp"
-      android:text="@string/tue"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/fullyPaidSwitch" />
+    <com.google.android.material.chip.Chip
+        android:id="@+id/satChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/sat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/privateSwitch" />
 
-  <com.google.android.material.chip.Chip
-      android:id="@+id/monChip"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="25dp"
-      android:text="@string/mon"
-      app:layout_constraintEnd_toStartOf="@+id/tueChip"
-      app:layout_constraintHorizontal_bias="0.536"
-      app:layout_constraintStart_toEndOf="@+id/sunChip"
-      app:layout_constraintTop_toBottomOf="@+id/fullyPaidSwitch" />
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tueChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/tue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullyPaidSwitch" />
 
-  <com.google.android.material.chip.Chip
-      android:id="@+id/wedChip"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="90dp"
-      android:layout_marginTop="10dp"
-      android:text="@string/wed"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/satChip" />
+    <com.google.android.material.chip.Chip
+        android:id="@+id/monChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/mon"
+        app:layout_constraintEnd_toStartOf="@+id/tueChip"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toEndOf="@+id/sunChip"
+        app:layout_constraintTop_toBottomOf="@+id/fullyPaidSwitch" />
 
-  <com.google.android.material.chip.Chip
-      android:id="@+id/thuChip"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="10dp"
-      android:layout_marginEnd="90dp"
-      android:text="@string/thu"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tueChip" />
+    <com.google.android.material.chip.Chip
+        android:id="@+id/wedChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/wed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/satChip" />
 
-  <com.google.android.material.chip.Chip
-      android:id="@+id/sunChip"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="30dp"
-      android:layout_marginTop="25dp"
-      android:text="@string/sun"
-      app:layout_constraintStart_toEndOf="@+id/satChip"
-      app:layout_constraintTop_toBottomOf="@+id/privateSwitch" />
+    <com.google.android.material.chip.Chip
+        android:id="@+id/thuChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/thu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tueChip" />
 
-  <Spinner
-      android:id="@+id/spinner"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:prompt="@string/coach"
-      android:layout_marginTop="20dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginEnd="20dp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.chip.Chip
+        android:id="@+id/sunChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/sun"
+        app:layout_constraintStart_toEndOf="@+id/satChip"
+        app:layout_constraintTop_toBottomOf="@+id/privateSwitch" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:prompt="@string/coach"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-  <com.google.android.material.button.MaterialButton
-      android:id="@+id/newSubscriptionButton"
-      android:layout_width="wrap_content"
-      android:layout_height="50dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginEnd="20dp"
-      android:layout_marginBottom="20dp"
-      android:text="@string/submit"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      tools:ignore="DuplicateSpeakableTextCheck" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/newSubscriptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

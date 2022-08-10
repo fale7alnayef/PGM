@@ -161,7 +161,9 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun updateLapel(calendar: Calendar) {
 
+
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
+
         birthday.setText(sdf.format(calendar.time))
     }
 

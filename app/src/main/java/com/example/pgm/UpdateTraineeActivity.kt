@@ -4,16 +4,15 @@ package com.example.pgm
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 
 class UpdateTraineeActivity : AppCompatActivity() {
@@ -95,13 +94,14 @@ class UpdateTraineeActivity : AppCompatActivity() {
         initDatePicker()
 
     }
-    private fun initDatePicker(){
+
+    private fun initDatePicker() {
         calendar = Calendar.getInstance()
 
-        val datePicker = DatePickerDialog.OnDateSetListener{ _, year, month, dayOfMonth ->
-            calendar.set(Calendar.YEAR,year)
-            calendar.set(Calendar.MONTH,month)
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             updateLapel(calendar)
 
         }
@@ -118,7 +118,7 @@ class UpdateTraineeActivity : AppCompatActivity() {
 
     private fun updateLapel(calendar: Calendar) {
 
-        val sdf = SimpleDateFormat("dd-MM-yyyy",Locale.UK)
+        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.UK)
         birthday.setText(sdf.format(calendar.time))
     }
 
@@ -128,11 +128,12 @@ class UpdateTraineeActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
     }
 
-    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            pickImage.setImageURI(data?.data)
-        }
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                pickImage.setImageURI(data?.data)
+            }
 
-    }
+        }
 }

@@ -1,4 +1,3 @@
-
 package com.example.pgm
 
 import android.content.Context
@@ -13,7 +12,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class TraineeAdapter (private val context: Context, private val coaches : ArrayList<TraineeData>): RecyclerView.Adapter<TraineeAdapter.ViewHolder>() {
+class TraineeAdapter(private val context: Context, private val coaches: ArrayList<TraineeData>) :
+    RecyclerView.Adapter<TraineeAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
         var my_type = itemView.findViewById<TextView>(R.id.tx_type) as TextView
@@ -23,7 +23,7 @@ class TraineeAdapter (private val context: Context, private val coaches : ArrayL
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.design,parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.design, parent, false)
         return ViewHolder(v)
     }
 
@@ -32,8 +32,14 @@ class TraineeAdapter (private val context: Context, private val coaches : ArrayL
         holder.my_name.text = data.name
         holder.my_type.text = data.type
         holder.my_image.setImageResource(data.image)
-        holder.card_View.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.main_anim))
+        holder.card_View.startAnimation(
+            AnimationUtils.loadAnimation(
+                holder.itemView.context,
+                R.anim.main_anim
+            )
+        )
         holder.itemView.setOnClickListener {
+
             val i = Intent(context,ShowTraineeInformation::class.java)
             i.putExtra("name",coaches[position].name)
             i.putExtra("type",coaches[position].type)
@@ -43,6 +49,7 @@ class TraineeAdapter (private val context: Context, private val coaches : ArrayL
             i.putExtra("height",coaches[position].height)
             i.putExtra("weight",coaches[position].weight)
             i.putExtra("id",coaches[position].id)
+
             context.startActivity(i)
 
         }

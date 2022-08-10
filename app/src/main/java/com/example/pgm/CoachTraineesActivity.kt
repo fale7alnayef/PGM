@@ -20,6 +20,7 @@ class CoachTraineesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_coach_trainees)
         rv = findViewById(R.id.ctrecyclerView)
         val user = ArrayList<TraineeData>()
+
         d = intent.extras?.getString("ii").toString()
         val queue = Volley.newRequestQueue(applicationContext)
         val jsonObjectRequest = JsonObjectRequest(
@@ -61,6 +62,7 @@ class CoachTraineesActivity : AppCompatActivity() {
             }
         )
         queue.add(jsonObjectRequest)
+
 
 
 

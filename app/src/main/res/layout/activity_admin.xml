@@ -216,16 +216,16 @@
         android:layout_height="60dp"
         android:layout_marginStart="54dp"
         android:layout_marginTop="40dp"
-        app:cardElevation="10dp"
         app:cardBackgroundColor="@color/blue"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp">
 
         <com.balysv.materialripple.MaterialRippleLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="@style/RippleStyle"
             android:id="@+id/contract"
-            >
+            style="@style/RippleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

@@ -68,7 +68,7 @@ class NewContractActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
                     submitForm()
                 }, {
-                    Log.e("error",it.toString())
+                    Log.e("error", it.toString())
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String>()
