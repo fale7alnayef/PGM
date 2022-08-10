@@ -23,7 +23,7 @@ class ShowCoachInformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_coach_information)
-
+        val specialty=findViewById<TextView>(R.id.specialty)
         val menu = findViewById<MaterialRippleLayout>(R.id.coachMenu)
         val trainees = findViewById<MaterialRippleLayout>(R.id.trainees)
         val startDate = findViewById<TextView>(R.id.contractStartDate)
@@ -44,14 +44,23 @@ class ShowCoachInformation : AppCompatActivity() {
 
         val queue = Volley.newRequestQueue(applicationContext)
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET,
-            "http://${Data.url}:8000/api/admin/show_cont/$d",
+            "http://${Data.url}:8000/api/admin/show_coach/$d",
             null,
             {
+                try {
+                    salary.text = it.getJSONObject("coach").getString("salary")
+                    startDate.text = it.getJSONObject("coach").getString("starts_at")
+                    endDate.text = it.getJSONObject("coach").getString("ends_at")
+                    specialty.text=it.getJSONObject("coach").getString("speciality")
 
+                } catch (e: Exception) {
+                    Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
+                }
             },
             {
 
             })
+        queue.add(jsonObjectRequest)
 
         back.setOnClickListener {
             onBackPressed()
@@ -73,7 +82,9 @@ class ShowCoachInformation : AppCompatActivity() {
     }
 
     private fun navigateToTrainees() {
-        startActivity(Intent(applicationContext, CoachTraineesActivity::class.java))
+        val i = Intent(applicationContext, CoachTraineesActivity::class.java)
+        i.putExtra("ii", d)
+        startActivity(i)
 
     }
 
