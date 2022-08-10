@@ -65,7 +65,7 @@ class UpdateCoachActivity : AppCompatActivity() {
         submit.setOnClickListener {
             val url = "http://${Data.url}:8000/api/admin/edit_coach/$d"
 
-            val jsonBody = JSONObject();
+            val jsonBody = JSONObject()
 
             try {
                 jsonBody.put("email", email.text)
