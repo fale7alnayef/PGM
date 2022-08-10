@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InactiveSubscriptionActivity">
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:text="@string/trainee"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/inactiveSubscriber"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/white_border"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="AbsAksdlKAREEM"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:text="@string/payment"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/inactiveSubsValue"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/white_border"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/Nine_million"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="350dp"
+        android:gravity="center"
+        android:text="@string/start_date"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:text="@string/end_date"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/inactiveEndDateSubscriber"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/white_border"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/_1_1_2022"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/inactiveStartDateSubscriber"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/white_border"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/_1_9_2022"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:ignore="RtlSymmetry" />
+
+
+    <Button
+        android:id="@+id/inactiveSubscriptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="100dp"
+        android:maxLines="1"
+        android:text="@string/renew"
+        android:textSize="28sp"
+        android:textStyle="bold"
+
+        />
+</RelativeLayout>
