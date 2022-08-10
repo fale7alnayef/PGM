@@ -33,6 +33,8 @@ class CoachTraineesActivity : AppCompatActivity() {
                     val first_name = userarray.getJSONObject(i).getString("first_name")
                     val last_name = userarray.getJSONObject(i).getString("last_name")
                     val private = userarray.getJSONObject(i).getString("private")
+                    val id = userarray.getJSONObject(i).getString("id")
+
                     if (private.equals("0")) {
                         priv = "Not Private"
                     } else {
@@ -46,7 +48,8 @@ class CoachTraineesActivity : AppCompatActivity() {
                             "22",
                             "height",
                             "weight",
-                            "0935"
+                            "0935",
+                            id
                         )
                     )
                 }
@@ -59,14 +62,6 @@ class CoachTraineesActivity : AppCompatActivity() {
         )
         queue.add(jsonObjectRequest)
 
-//        user.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-//        user.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-//        user.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-//        user.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-//        user.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-//        user.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-//        user.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-//        user.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
 
 
     }

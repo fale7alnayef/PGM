@@ -42,6 +42,7 @@ class TraineeAdapter (private val context: Context, private val coaches : ArrayL
             i.putExtra("age",coaches[position].age)
             i.putExtra("height",coaches[position].height)
             i.putExtra("weight",coaches[position].weight)
+            i.putExtra("id",coaches[position].id)
             context.startActivity(i)
 
         }

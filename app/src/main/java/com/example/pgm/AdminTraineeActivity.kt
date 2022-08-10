@@ -69,9 +69,7 @@ class AdminTraineeActivity : AppCompatActivity() {
                     val weight = traineearray.getJSONObject(i).getString("weight")
                     val phone = traineearray.getJSONObject(i).getString("phone_number")
                     val imgURL = traineearray.getJSONObject(i).getString("img_url")
-
-
-
+                    val id = traineearray.getJSONObject(i).getString("id")
 
                     trainee.add(
                         TraineeData(
@@ -81,7 +79,8 @@ class AdminTraineeActivity : AppCompatActivity() {
                             age,
                             height,
                             weight,
-                            phone
+                            phone,
+                            id
                         )
                     )
 
