@@ -195,19 +195,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/specialtyCoachContainer"
-        app:startIconDrawable="@drawable/star"
-        android:hint="@string/specialty"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="510dp"
         android:layout_marginEnd="20dp"
+        android:hint="@string/specialty"
+        app:startIconDrawable="@drawable/star"
 
         >
 

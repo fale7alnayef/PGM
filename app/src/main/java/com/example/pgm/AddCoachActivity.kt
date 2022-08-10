@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
@@ -25,9 +24,8 @@ class AddCoachActivity : AppCompatActivity() {
 
     private lateinit var calendar: Calendar
     private lateinit var pickImage: CircleImageView
-
+    private lateinit var specialtyCoachEditText: TextInputEditText
     private lateinit var submit: Button
-
     private lateinit var emailContainer: TextInputLayout
     private lateinit var passwordContainer: TextInputLayout
     private lateinit var confirmPasswordContainer: TextInputLayout
@@ -52,6 +50,7 @@ class AddCoachActivity : AppCompatActivity() {
 
         submit = findViewById(R.id.newCoachButton)
 
+        specialtyCoachEditText = findViewById(R.id.specialtyCoachEditText)
 
         email = findViewById(R.id.emailCoachEditText)
         emailContainer = findViewById(R.id.emailCoachContainer)
@@ -86,18 +85,21 @@ class AddCoachActivity : AppCompatActivity() {
                 jsonBody.put("birthday", birthday.text.toString())
                 jsonBody.put("first_name", firstName.text.toString())
                 jsonBody.put("last_name", lastName.text.toString())
-                jsonBody.put("speciality", "hooker")
+                jsonBody.put("speciality", specialtyCoachEditText.text.toString())
 
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
             val JsonObjectRequest = object : JsonObjectRequest(
-                Request.Method.POST, "http://${Data.url}:8000/api/admin/create_coach", jsonBody,
+                Method.POST, "http://${Data.url}:8000/api/admin/create_coach", jsonBody,
                 {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
-
+                    submitForm()
                 }, {
-                    Log.e("error", birthday.text.toString())
+                    if (it.networkResponse.statusCode == 401) {
+                        Toast.makeText(applicationContext, "validation error", Toast.LENGTH_SHORT)
+                            .show()
+                    }
 
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
@@ -107,11 +109,10 @@ class AddCoachActivity : AppCompatActivity() {
 
                 }
             }
-            val requestQueue = Volley.newRequestQueue(applicationContext);
 
             queue.add(JsonObjectRequest)
 
-            submitForm()
+
         }
 
         pickImage.setOnClickListener {

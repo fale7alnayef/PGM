@@ -52,22 +52,17 @@ class UpdateCoachActivity : AppCompatActivity() {
         confirmPassword = findViewById(R.id.updateConfirmPasswordCoachEditText)
         confirmPasswordContainer = findViewById(R.id.updateConfirmPasswordCoachContainer)
 
-        birthday = findViewById(R.id.updateBirthdayCoachEditText)
-        birthdayContainer = findViewById(R.id.updateBirthdayCoachContainer)
 
         number = findViewById(R.id.updatePhoneNumberCoachEditText)
         numberContainer = findViewById(R.id.updatePhoneNumberCoachContainer)
 
-        firstName = findViewById(R.id.updateFirstNameCoachEditText)
-        firstNameContainer = findViewById(R.id.updateFirstNameCoachContainer)
-
-        lastName = findViewById(R.id.updateLastNameCoachEditText)
-        lastNameContainer = findViewById(R.id.updateLastNameCoachContainer)
 
 
         pickImage.setOnClickListener {
             pickImageFromGallery()
         }
+
+
 
         initDatePicker()
 
