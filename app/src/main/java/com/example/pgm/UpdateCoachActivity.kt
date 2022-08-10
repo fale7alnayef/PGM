@@ -73,13 +73,13 @@ class UpdateCoachActivity : AppCompatActivity() {
 
     }
 
-    private fun initDatePicker(){
+    private fun initDatePicker() {
         calendar = Calendar.getInstance()
 
-        val datePicker = DatePickerDialog.OnDateSetListener{ _, year, month, dayOfMonth ->
-            calendar.set(Calendar.YEAR,year)
-            calendar.set(Calendar.MONTH,month)
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             updateLapel(calendar)
 
         }
@@ -96,7 +96,7 @@ class UpdateCoachActivity : AppCompatActivity() {
 
     private fun updateLapel(calendar: Calendar) {
 
-        val sdf = SimpleDateFormat("dd-MM-yyyy",Locale.UK)
+        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.UK)
         birthday.setText(sdf.format(calendar.time))
     }
 
@@ -106,12 +106,13 @@ class UpdateCoachActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
     }
 
-    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            pickImage.setImageURI(data?.data)
-        }
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                pickImage.setImageURI(data?.data)
+            }
 
-    }
+        }
 
 }

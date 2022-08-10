@@ -107,7 +107,7 @@ class AddCoachActivity : AppCompatActivity() {
 
                 }
             }
-            val requestQueue = Volley.newRequestQueue(applicationContext);
+            val requestQueue = Volley.newRequestQueue(applicationContext)
 
             queue.add(JsonObjectRequest)
 

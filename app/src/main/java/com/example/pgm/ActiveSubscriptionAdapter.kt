@@ -10,8 +10,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class ContractAdapter (private val context: Context, private val contracts : List<SCData>):
-    RecyclerView.Adapter<ContractAdapter.ViewHolder>() {
+
+class ActiveSubscriptionAdapter(
+    private val context: Context,
+    private val subscriptions: List<SCData>
+) :
+    RecyclerView.Adapter<ActiveSubscriptionAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
         var my_value = itemView.findViewById<TextView>(R.id.tx_value) as TextView
@@ -19,29 +23,34 @@ class ContractAdapter (private val context: Context, private val contracts : Lis
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.design2,parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.design2, parent, false)
         return ViewHolder(v)
     }
 
 
-
     override fun getItemCount(): Int {
-        return contracts.size
+        return subscriptions.size
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = contracts[position]
+        val data = subscriptions[position]
         holder.my_name.text = data.name
         holder.my_value.text = data.value
-        holder.card_View.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.main_anim))
+        holder.card_View.startAnimation(
+            AnimationUtils.loadAnimation(
+                holder.itemView.context,
+                R.anim.main_anim
+            )
+        )
         holder.itemView.setOnClickListener {
-            val i = Intent(context,Contract2::class.java)
-            i.putExtra("name",contracts[position].name)
-            i.putExtra("value",contracts[position].value)
-            i.putExtra("startDate",contracts[position].startDate)
-            i.putExtra("endDate",contracts[position].endDate)
+            val i = Intent(context, ActiveSubscription::class.java)
+            i.putExtra("name", subscriptions[position].name)
+            i.putExtra("value", subscriptions[position].value)
+            i.putExtra("startDate", subscriptions[position].startDate)
+            i.putExtra("endDate", subscriptions[position].endDate)
             context.startActivity(i)
 
-        }    }
+        }
+    }
 }

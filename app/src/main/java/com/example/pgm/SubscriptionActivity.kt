@@ -1,11 +1,10 @@
 package com.example.pgm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
-
 
 
 class SubscriptionActivity : AppCompatActivity() {
@@ -34,6 +33,7 @@ class SubscriptionActivity : AppCompatActivity() {
         }
 
     }
+
     private fun navigateToInstallment() {
         startActivity(Intent(applicationContext, InstallmentActivity::class.java))
 

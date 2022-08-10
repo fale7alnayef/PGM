@@ -12,7 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CoachAdapter (private val context: Context, private var coaches : ArrayList<CoachData>):
+class CoachAdapter(private val context: Context, private var coaches: ArrayList<CoachData>) :
     RecyclerView.Adapter<CoachAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
@@ -23,24 +23,28 @@ class CoachAdapter (private val context: Context, private var coaches : ArrayLis
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.design,parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.design, parent, false)
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = coaches[position]
         holder.my_name.text = data.name
-        holder.my_type.text = data.type
         holder.my_image.setImageResource(data.image.toInt())
-        holder.card_View.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.main_anim))
+        holder.card_View.startAnimation(
+            AnimationUtils.loadAnimation(
+                holder.itemView.context,
+                R.anim.main_anim
+            )
+        )
         holder.itemView.setOnClickListener {
-            val i = Intent(context,ShowCoachInformation::class.java)
-            i.putExtra("name",coaches[position].name)
-            i.putExtra("type",coaches[position].type)
-            i.putExtra("image",coaches[position].image)
-            i.putExtra("phone",coaches[position].phone)
-            i.putExtra("salary",coaches[position].salary)
-            i.putExtra("id",coaches[position].id)
+            val i = Intent(context, ShowCoachInformation::class.java)
+            i.putExtra("name", coaches[position].name)
+            i.putExtra("image", coaches[position].image)
+            i.putExtra("phone", coaches[position].phone)
+            i.putExtra("salary", coaches[position].salary)
+            i.putExtra("speciality", coaches[position].speciality)
+            i.putExtra("id", coaches[position].id)
 
             context.startActivity(i)
 

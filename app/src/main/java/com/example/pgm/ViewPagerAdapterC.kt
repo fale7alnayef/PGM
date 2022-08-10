@@ -15,10 +15,13 @@ class ViewPagerAdapterC(fragmentManager: FragmentManager, lifecycle: Lifecycle) 
 
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
-        when(position)
-        {
-            0 -> {fragment = VCFragment()}
-            1 -> {fragment = IVCFragment()}
+        when (position) {
+            0 -> {
+                fragment = VCFragment()
+            }
+            1 -> {
+                fragment = IVCFragment()
+            }
 
         }
 

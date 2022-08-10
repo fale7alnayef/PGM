@@ -1,10 +1,10 @@
 package com.example.pgm
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -39,25 +39,24 @@ class VCFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_v_c, container, false)
 
         val contract = listOf(
-            SCData("ghassan","1000","2002/1/1","2002/1/3"),
-            SCData("ameer","2000","2002/1/1","2002/1/3"),
-            SCData("ahmad","9893", "2002/1/1","2002/1/3"),
-            SCData("saif","42452", "2002/1/1","2002/1/3"),
-            SCData("ghassan","453", "2002/1/1","2002/1/3"),
-            SCData("ameer","3354", "2002/1/1","2002/1/3"),
-            SCData("ghassan","1000","2002/1/1","2002/1/3"),
-            SCData("ameer","2000","2002/1/1","2002/1/3"),
-            SCData("ahmad","9893", "2002/1/1","2002/1/3"),
-            SCData("saif","42452", "2002/1/1","2002/1/3"),
-            SCData("ghassan","453", "2002/1/1","2002/1/3"),
-            SCData("ameer","3354", "2002/1/1","2002/1/3")
+            SCData("ghassan", "1000", "2002/1/1", "2002/1/3"),
+            SCData("ameer", "2000", "2002/1/1", "2002/1/3"),
+            SCData("ahmad", "9893", "2002/1/1", "2002/1/3"),
+            SCData("saif", "42452", "2002/1/1", "2002/1/3"),
+            SCData("ghassan", "453", "2002/1/1", "2002/1/3"),
+            SCData("ameer", "3354", "2002/1/1", "2002/1/3"),
+            SCData("ghassan", "1000", "2002/1/1", "2002/1/3"),
+            SCData("ameer", "2000", "2002/1/1", "2002/1/3"),
+            SCData("ahmad", "9893", "2002/1/1", "2002/1/3"),
+            SCData("saif", "42452", "2002/1/1", "2002/1/3"),
+            SCData("ghassan", "453", "2002/1/1", "2002/1/3"),
+            SCData("ameer", "3354", "2002/1/1", "2002/1/3")
         )
 
 
-
-        val rv   = view.findViewById<RecyclerView>(R.id.activeContsRecycler)?.let { rv ->
+        val rv = view.findViewById<RecyclerView>(R.id.activeContsRecycler)?.let { rv ->
             rv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            rv.adapter = ContractAdapter(requireContext(),contract)
+            rv.adapter = ActiveContractAdapter(requireContext(), contract)
         }
 
 

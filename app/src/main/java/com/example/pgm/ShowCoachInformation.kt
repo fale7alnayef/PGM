@@ -34,11 +34,13 @@ class ShowCoachInformation : AppCompatActivity() {
         val name = findViewById<TextView>(R.id.name)
         val phone = findViewById<TextView>(R.id.phone)
         val salary = findViewById<TextView>(R.id.salary)
+        val specialty = findViewById<TextView>(R.id.specialty)
 
 
         name.text = intent.extras?.get("name").toString()
         phone.text = intent.extras?.get("phone").toString()
         salary.text = intent.extras?.get("salary").toString()
+        specialty.text = intent.extras?.get("specialty").toString()
         image.setImageResource(intent.extras?.get("image").toString().toInt())
         d = intent.extras?.get("id").toString()
 

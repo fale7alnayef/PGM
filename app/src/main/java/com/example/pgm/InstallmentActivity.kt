@@ -1,7 +1,7 @@
 package com.example.pgm
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -38,12 +38,12 @@ class InstallmentActivity : AppCompatActivity() {
 
         if (validPaying) {
             finish()
-        }    }
+        }
+    }
 
-    private fun payingFocusListener(){
+    private fun payingFocusListener() {
         paying.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 payingContainer.error = validPaying()
             }
         }
@@ -51,12 +51,9 @@ class InstallmentActivity : AppCompatActivity() {
 
     private fun validPaying(): String? {
         val payingText = paying.text.toString()
-        if(payingText.isEmpty())
-        {
+        if (payingText.isEmpty()) {
             return "enter Paying"
-        }
-        else if(!payingText.matches(".*[1-9].*".toRegex()))
-        {
+        } else if (!payingText.matches(".*[1-9].*".toRegex())) {
             return "Only Numbers"
         }
         return null
