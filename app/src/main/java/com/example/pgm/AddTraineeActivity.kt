@@ -4,13 +4,19 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
+import org.json.JSONException
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -81,8 +87,45 @@ class AddTraineeActivity : AppCompatActivity() {
         height = findViewById(R.id.heightTraineeEditText)
         heightContainer = findViewById(R.id.heightTraineeContainer)
 
+        val queue = Volley.newRequestQueue(applicationContext)
+        val url = "http://${Data.url}:8000/api/admin/create_user"
+        val Token = "Bearer " + Data.Token
+
         submit.setOnClickListener {
-            submitForm()
+            val jsonBody = JSONObject()
+            try {
+                jsonBody.put("email", email.text.toString())
+                jsonBody.put("password", password.text.toString())
+                jsonBody.put("phone_number", number.text.toString())
+                jsonBody.put("birthday", birthday.text.toString())
+                jsonBody.put("height", height.text.toString())
+                jsonBody.put("weight", weight.text.toString())
+                jsonBody.put("first_name", firstName.text.toString())
+                jsonBody.put("last_name", lastName.text.toString())
+
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val jsonObjectRequest = object : JsonObjectRequest(
+                Method.POST,
+                url,
+                jsonBody,
+                {
+                    Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
+                    submitForm()
+                },
+                {
+                    Log.e("error", Token)
+                }
+            ) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers.put("Authorization", Token)
+                    return headers
+                }
+            }
+            queue.add(jsonObjectRequest)
         }
 
 
@@ -118,7 +161,9 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun updateLapel(calendar: Calendar) {
 
-        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.UK)
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
+
         birthday.setText(sdf.format(calendar.time))
     }
 

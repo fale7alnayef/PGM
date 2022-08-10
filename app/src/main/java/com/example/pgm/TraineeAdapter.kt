@@ -39,14 +39,17 @@ class TraineeAdapter(private val context: Context, private val coaches: ArrayLis
             )
         )
         holder.itemView.setOnClickListener {
-            val i = Intent(context, ShowTraineeInformation::class.java)
-            i.putExtra("name", coaches[position].name)
-            i.putExtra("type", coaches[position].type)
-            i.putExtra("image", coaches[position].image)
-            i.putExtra("phone", coaches[position].phone)
-            i.putExtra("age", coaches[position].age)
-            i.putExtra("height", coaches[position].height)
-            i.putExtra("weight", coaches[position].weight)
+
+            val i = Intent(context,ShowTraineeInformation::class.java)
+            i.putExtra("name",coaches[position].name)
+            i.putExtra("type",coaches[position].type)
+            i.putExtra("image",coaches[position].image)
+            i.putExtra("phone",coaches[position].phone)
+            i.putExtra("age",coaches[position].age)
+            i.putExtra("height",coaches[position].height)
+            i.putExtra("weight",coaches[position].weight)
+            i.putExtra("id",coaches[position].id)
+
             context.startActivity(i)
 
         }

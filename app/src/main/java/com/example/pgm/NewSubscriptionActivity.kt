@@ -99,6 +99,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
         val tue = findViewById<Chip>(R.id.tueChip)
         val wed = findViewById<Chip>(R.id.wedChip)
         val thu = findViewById<Chip>(R.id.thuChip)
+
         var satFlag = false
         var sunFlag = false
         var monFlag = false
