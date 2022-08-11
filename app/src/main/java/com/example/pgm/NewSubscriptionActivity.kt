@@ -2,8 +2,8 @@ package com.example.pgm
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
@@ -17,6 +17,7 @@ import java.util.*
 class NewSubscriptionActivity : AppCompatActivity() {
 
     private lateinit var submit: MaterialButton
+    private lateinit var coach: MaterialButton
 
     private lateinit var calendar: Calendar
 
@@ -60,10 +61,15 @@ class NewSubscriptionActivity : AppCompatActivity() {
 
 
         submit = findViewById(R.id.newSubscriptionButton)
+        coach = findViewById(R.id.chooseCoachButton)
 
 
         submit.setOnClickListener {
             submitForm()
+        }
+
+        coach.setOnClickListener {
+            navigateToChooseCoach()
         }
 
         initDatePicker()
@@ -71,7 +77,6 @@ class NewSubscriptionActivity : AppCompatActivity() {
         validate()
 
 
-        val spinner = findViewById<Spinner>(R.id.spinner)
         privateSwitch = findViewById(R.id.privateSwitch)
         fullyPaidSwitch = findViewById(R.id.fullyPaidSwitch)
         privateSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -219,44 +224,15 @@ class NewSubscriptionActivity : AppCompatActivity() {
             }
         }
 
-        val coach: MutableList<String> = ArrayList()
-        coach.add("Ahmad")
-        coach.add("Ghassan")
-        coach.add("Ameer")
-        coach.add("saif")
-        coach.add("ali")
-
-        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_spinner_item, coach
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                adapterView: AdapterView<*>, view: View?,
-                position: Int, id: Long
-            ) {
-                val item = adapterView.getItemAtPosition(position)
-                if (item != null) {
-                    Toast.makeText(
-                        this@NewSubscriptionActivity, item.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                Toast.makeText(
-                    this@NewSubscriptionActivity, "Selected",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            override fun onNothingSelected(adapterView: AdapterView<*>?) {
-                // TODO Auto-generated method stub
-            }
-        }
 
 
+
+
+
+    }
+
+    private fun navigateToChooseCoach() {
+startActivity(Intent(this,ChooseCoachActivity::class.java))
     }
 
 

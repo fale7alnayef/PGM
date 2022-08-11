@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.balysv.materialripple.MaterialRippleLayout
 
 class CoachActivity : AppCompatActivity() {
-    lateinit var coachName: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

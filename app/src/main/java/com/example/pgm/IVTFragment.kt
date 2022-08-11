@@ -47,7 +47,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.90",
                 "70",
-                "0992347584"
+                "0992347584","1"
             )
         )
         trainee.add(
@@ -58,7 +58,7 @@ class IVTFragment : Fragment() {
                 "24",
                 "1.30",
                 "120",
-                "0992334548"
+                "0992334548","1"
             )
         )
         trainee.add(
@@ -69,7 +69,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "2.10",
                 "78",
-                "09965467584"
+                "09965467584","1"
             )
         )
         trainee.add(
@@ -80,7 +80,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.50",
                 "60",
-                "0997543904"
+                "0997543904","1"
             )
         )
         trainee.add(
@@ -91,7 +91,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.90",
                 "70",
-                "0992347584"
+                "0992347584","1"
             )
         )
         trainee.add(
@@ -102,7 +102,7 @@ class IVTFragment : Fragment() {
                 "24",
                 "1.30",
                 "120",
-                "0992334548"
+                "0992334548","1"
             )
         )
         trainee.add(
@@ -113,7 +113,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "2.10",
                 "78",
-                "09965467584"
+                "09965467584","1"
             )
         )
         trainee.add(
@@ -124,7 +124,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.50",
                 "60",
-                "0997543904"
+                "0997543904","5"
             )
         )
         trainee.add(
@@ -135,7 +135,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.90",
                 "70",
-                "0992347584"
+                "0992347584","6"
             )
         )
         trainee.add(
@@ -146,7 +146,7 @@ class IVTFragment : Fragment() {
                 "24",
                 "1.30",
                 "120",
-                "0992334548"
+                "0992334548","6"
             )
         )
         trainee.add(
@@ -157,7 +157,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "2.10",
                 "78",
-                "09965467584"
+                "09965467584","1"
             )
         )
         trainee.add(
@@ -168,7 +168,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.50",
                 "60",
-                "0997543904"
+                "0997543904","1"
             )
         )
         trainee.add(
@@ -179,7 +179,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.90",
                 "70",
-                "0992347584"
+                "0992347584","1"
             )
         )
         trainee.add(
@@ -190,7 +190,7 @@ class IVTFragment : Fragment() {
                 "24",
                 "1.30",
                 "120",
-                "0992334548"
+                "0992334548","1"
             )
         )
         trainee.add(
@@ -201,7 +201,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "2.10",
                 "78",
-                "09965467584"
+                "09965467584","1"
             )
         )
         trainee.add(
@@ -212,7 +212,7 @@ class IVTFragment : Fragment() {
                 "22",
                 "1.50",
                 "60",
-                "0997543904"
+                "0997543904","1"
             )
         )
 

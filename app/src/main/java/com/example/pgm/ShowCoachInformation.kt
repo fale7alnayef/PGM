@@ -34,7 +34,6 @@ class ShowCoachInformation : AppCompatActivity() {
         val name = findViewById<TextView>(R.id.name)
         val phone = findViewById<TextView>(R.id.phone)
         val salary = findViewById<TextView>(R.id.salary)
-        val specialty = findViewById<TextView>(R.id.specialty)
 
 
         name.text = intent.extras?.get("name").toString()

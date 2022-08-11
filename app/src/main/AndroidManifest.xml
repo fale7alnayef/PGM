@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pgm">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +14,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PGM"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="n">
+        <activity
+            android:name=".TraineeSubscriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TraineeExercisesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowTraineeTraineeInformation"
+            android:exported="false" />
+        <activity
+            android:name=".TraineeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TraineeLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChooseCoachActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentsActivity"
+            android:exported="false" />
         <activity
             android:name=".AddExerciseActivity"
             android:exported="false" />
@@ -83,7 +106,6 @@
         <activity
             android:name=".AddTraineeActivity"
             android:exported="false" />
-
         <activity
             android:name=".CoachTraineesActivity"
             android:exported="false" />
@@ -95,7 +117,6 @@
             android:exported="false"
             android:label="@string/title_activity_admin_trainee"
             android:theme="@style/Theme.PGM.NoActionBar" />
-
         <activity
             android:name=".ShowCoachInformation"
             android:exported="false" />
