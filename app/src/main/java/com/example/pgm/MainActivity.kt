@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val admin = findViewById<MaterialRippleLayout>(R.id.adminRipple)
         val coach = findViewById<MaterialRippleLayout>(R.id.coachRipple)
+        val trainee = findViewById<MaterialRippleLayout>(R.id.traineeRipple)
 
 
 
@@ -21,6 +22,14 @@ class MainActivity : AppCompatActivity() {
         coach.setOnClickListener {
             navigateToCoachLogin()
         }
+        trainee.setOnClickListener {
+            navigateToTraineeLogin()
+        }
+    }
+
+    private fun navigateToTraineeLogin() {
+        startActivity(Intent(applicationContext, TraineeLoginActivity::class.java))
+        finish()
     }
 
     private fun navigateToAdminLogin() {

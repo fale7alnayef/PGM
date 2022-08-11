@@ -24,6 +24,7 @@ class SubscriptionActivity : AppCompatActivity() {
     private lateinit var fullyPaid: TextView
     private lateinit var coach: TextView
     private lateinit var pay: MaterialButton
+    private lateinit var payments: MaterialButton
     lateinit var idd:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class SubscriptionActivity : AppCompatActivity() {
         fullyPaid = findViewById(R.id.fullyPaidSubs)
         privatec = findViewById(R.id.privateSubs)
         pay = findViewById(R.id.sPay)
+        payments = findViewById(R.id.sPayments)
 
         idd = intent.extras?.get("id").toString()
         val url = "http://${Data.url}:8000/api/admin/show_sub/$idd"
@@ -76,6 +78,9 @@ class SubscriptionActivity : AppCompatActivity() {
         pay.setOnClickListener {
             navigateToInstallment()
         }
+        payments.setOnClickListener {
+            navigateToPayment()
+        }
 
     }
 
@@ -83,6 +88,10 @@ class SubscriptionActivity : AppCompatActivity() {
         val i = Intent(applicationContext, InstallmentActivity::class.java)
         i.putExtra("idd",idd)
         startActivity(i)
+
+    }
+    private fun navigateToPayment() {
+        startActivity(Intent(applicationContext, PaymentsActivity::class.java))
 
     }
 
