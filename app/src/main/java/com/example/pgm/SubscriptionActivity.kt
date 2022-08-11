@@ -26,6 +26,7 @@ class SubscriptionActivity : AppCompatActivity() {
     private lateinit var pay: MaterialButton
     private lateinit var payments: MaterialButton
     lateinit var idd:String
+    lateinit var subID:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subscription)
@@ -52,6 +53,7 @@ class SubscriptionActivity : AppCompatActivity() {
                 endDate.text = it.getString("ends_at")
                 val private = it.getString("private")
                 val fulPaid = it.getString("fully_paid")
+                subID=it.getString("id")
 
                 if (private.equals("0")) {
                     privatec.text = "NO"
@@ -86,12 +88,14 @@ class SubscriptionActivity : AppCompatActivity() {
 
     private fun navigateToInstallment() {
         val i = Intent(applicationContext, InstallmentActivity::class.java)
-        i.putExtra("idd",idd)
+        i.putExtra("idd",subID)
         startActivity(i)
 
     }
     private fun navigateToPayment() {
-        startActivity(Intent(applicationContext, PaymentsActivity::class.java))
+        val i =Intent(applicationContext, PaymentsActivity::class.java)
+        i.putExtra("sub_id",subID)
+        startActivity(i)
 
     }
 
