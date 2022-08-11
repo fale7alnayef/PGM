@@ -12,8 +12,10 @@ class InactiveSubscriptionActivity : AppCompatActivity() {
     private lateinit var value: TextView
     private lateinit var name: TextView
     private lateinit var renew: Button
+    lateinit var userID: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_inactive_subscription)
         startDate = findViewById(R.id.inactiveStartDateSubscriber)
         endDate = findViewById(R.id.inactiveEndDateSubscriber)
@@ -26,6 +28,7 @@ class InactiveSubscriptionActivity : AppCompatActivity() {
         startDate.text = intent.extras?.get("startDate").toString()
         endDate.text = intent.extras?.get("endDate").toString()
 
+        userID = intent.extras?.get("userID").toString()
 
         renew.setOnClickListener {
             navigateToNewSubscription()
@@ -33,6 +36,8 @@ class InactiveSubscriptionActivity : AppCompatActivity() {
     }
 
     private fun navigateToNewSubscription() {
-        startActivity(Intent(this, NewSubscriptionActivity::class.java))
+        val i = Intent(this, NewSubscriptionActivity::class.java)
+        i.putExtra("userID",userID)
+        startActivity(i)
     }
 }
