@@ -31,8 +31,8 @@ class CoachTraineesActivity : AppCompatActivity() {
                 val userarray = it.getJSONArray("users")
                 for (i in 0 until userarray.length()) {
                     val priv: String
-                    val first_name = userarray.getJSONObject(i).getString("first_name")
-                    val last_name = userarray.getJSONObject(i).getString("last_name")
+                    val firstName = userarray.getJSONObject(i).getString("first_name")
+                    val lastName = userarray.getJSONObject(i).getString("last_name")
                     val private = userarray.getJSONObject(i).getString("private")
                     val id = userarray.getJSONObject(i).getString("id")
 
@@ -43,7 +43,7 @@ class CoachTraineesActivity : AppCompatActivity() {
                     }
                     user.add(
                         TraineeData(
-                            "$first_name $last_name",
+                            "$firstName $lastName",
                             priv,
                             R.drawable.download1,
                             "22",

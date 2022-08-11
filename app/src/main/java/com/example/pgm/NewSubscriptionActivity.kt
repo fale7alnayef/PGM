@@ -4,12 +4,18 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.util.Log
+import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,6 +40,9 @@ class NewSubscriptionActivity : AppCompatActivity() {
     private lateinit var paidAmount: TextInputEditText
     private lateinit var paying: TextInputEditText
 
+    lateinit var coachID: String
+    lateinit var userID: String
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private lateinit var privateSwitch: Switch
 
@@ -43,6 +52,8 @@ class NewSubscriptionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_subscription)
 
+        coachID = intent.extras?.get("coachID").toString()
+        userID = intent.extras?.get("userID").toString()
 
         startDate = findViewById(R.id.startDateSubscriptionEditText)
         startDateContainer = findViewById(R.id.startDateSubscriptionContainer)
@@ -64,9 +75,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
         coach = findViewById(R.id.chooseCoachButton)
 
 
-        submit.setOnClickListener {
-            submitForm()
-        }
+
 
         coach.setOnClickListener {
             navigateToChooseCoach()
@@ -116,7 +125,6 @@ class NewSubscriptionActivity : AppCompatActivity() {
 
         sat.setOnClickListener {
             if (satFlag) {
-
                 sat.setChipBackgroundColorResource(R.color.gray)
                 satFlag = false
                 Toast.makeText(
@@ -132,6 +140,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
         sun.setOnClickListener {
             if (sunFlag) {
 
@@ -150,6 +159,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
         mon.setOnClickListener {
             if (monFlag) {
 
@@ -168,6 +178,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
         tue.setOnClickListener {
             if (tueFlag) {
 
@@ -186,6 +197,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
         wed.setOnClickListener {
             if (wedFlag) {
 
@@ -205,6 +217,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
         thu.setOnClickListener {
             if (thuFlag) {
 
@@ -224,15 +237,94 @@ class NewSubscriptionActivity : AppCompatActivity() {
             }
         }
 
+        submit.setOnClickListener {
+            val queue = Volley.newRequestQueue(applicationContext)
+            val url = "http://${Data.url}:8000/api/admin/create_sub"
+            val jsonBody = JSONObject()
+            try {
+
+                jsonBody.put("user_id", userID)
+                jsonBody.put("coach_id", coachID)
+                jsonBody.put("starts_at", startDate.text.toString())
+                jsonBody.put("ends_at", endDate.text.toString())
+
+                if (privateSwitch.isChecked) {
+                    jsonBody.put("private", "1")
+                } else {
+                    jsonBody.put("private", "0")
+
+                }
+                jsonBody.put("paid_amount", paidAmount.text.toString())
+                jsonBody.put("price", price.text.toString())
+
+                if (!satFlag) {
+                    jsonBody.put("sat", "0")
+                } else {
+                    jsonBody.put("sat", "1")
+                }
+
+                if (!sunFlag) {
+                    jsonBody.put("sun", "0")
+                } else {
+                    jsonBody.put("sun", "1")
+                }
+
+                if (!monFlag) {
+                    jsonBody.put("mon", "0")
+                } else {
+                    jsonBody.put("mon", "1")
+                }
+
+                if (!tueFlag) {
+                    jsonBody.put("tue", "0")
+                } else {
+                    jsonBody.put("tue", "1")
+                }
+
+                if (!thuFlag) {
+                    jsonBody.put("thu", "0")
+                } else {
+                    jsonBody.put("thu", "1")
+                }
+
+                if (!wedFlag) {
+                    jsonBody.put("wed", "0")
+                } else {
+                    jsonBody.put("wed", "1")
+                }
+                jsonBody.put("fri", "0")
 
 
+            } catch (e: Exception) {
+                Log.e("jsonerror", e.toString())
+            }
 
+            val addSub = JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonBody,
+                {
+                    Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
+                    submitForm()
+
+                },
+                {
+                    Log.e("networkerror", it.networkResponse.headers?.get("message").toString())
+                }
+            )
+            Log.e("user_id", userID)
+            Log.e("coach_id", coachID)
+
+            queue.add(addSub)
+        }
 
 
     }
 
     private fun navigateToChooseCoach() {
-startActivity(Intent(this,ChooseCoachActivity::class.java))
+        val i = Intent(this, ChooseCoachActivity::class.java)
+        i.putExtra("userID", userID)
+        startActivity(i)
     }
 
 
@@ -386,13 +478,13 @@ startActivity(Intent(this,ChooseCoachActivity::class.java))
     }
 
     private fun updateLapel2(calendar: Calendar) {
-        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.UK)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
         endDate.setText(sdf.format(calendar.time))
     }
 
     private fun updateLapel(calendar: Calendar) {
 
-        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.UK)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
         startDate.setText(sdf.format(calendar.time))
     }
 

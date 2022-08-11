@@ -113,7 +113,9 @@ class ShowTraineeInformation : AppCompatActivity() {
     }
 
     private fun navigateToNewSubs() {
-        startActivity(Intent(applicationContext, NewSubscriptionActivity::class.java))
+        val i = Intent(applicationContext, NewSubscriptionActivity::class.java)
+        i.putExtra("userID",id)
+        startActivity(i)
 
     }
 

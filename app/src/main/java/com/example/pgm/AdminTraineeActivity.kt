@@ -46,7 +46,7 @@ class AdminTraineeActivity : AppCompatActivity() {
 
         trainee = ArrayList()
         tempTrainee = ArrayList()
-        val Token = "Bearer " + Data.Token
+        val token = "Bearer " + Data.Token
         val queue = Volley.newRequestQueue(this)
         val url = "http://${Data.url}:8000/api/admin/all_users"
 
@@ -96,7 +96,7 @@ class AdminTraineeActivity : AppCompatActivity() {
         }) {
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
-                headers.put("Authorization", Token)
+                headers.put("Authorization", token)
                 return headers
             }
         }

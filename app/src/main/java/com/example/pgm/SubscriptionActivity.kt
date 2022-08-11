@@ -70,7 +70,7 @@ class SubscriptionActivity : AppCompatActivity() {
                 payment.text = it.getString("price")
             },
             {
-                Log.e("error", it.toString())
+                Log.e("error", url)
             }
         )
         queue.add(subReques)

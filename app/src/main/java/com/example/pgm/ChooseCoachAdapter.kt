@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ChooseCoachAdapter(private val context: Context, private var coaches: ArrayList<CoachData>) :
     RecyclerView.Adapter<ChooseCoachAdapter.ViewHolder>() {
+    lateinit var userID:String
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
         var my_type = itemView.findViewById<TextView>(R.id.tx_type) as TextView
@@ -32,6 +33,7 @@ class ChooseCoachAdapter(private val context: Context, private var coaches: Arra
         val data = coaches[position]
         holder.my_name.text = data.name
         holder.my_image.setImageResource(data.image.toInt())
+        holder.my_type.text = data.id
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(
                 holder.itemView.context,
@@ -40,10 +42,11 @@ class ChooseCoachAdapter(private val context: Context, private var coaches: Arra
         )
         holder.itemView.setOnClickListener {
             val i = Intent(context, NewSubscriptionActivity::class.java)
-
-            i.putExtra("id", coaches[position].id)
-Toast.makeText(context,coaches[position].id,Toast.LENGTH_SHORT).show()
+            i.putExtra("userID",coaches[position].userID)
+            i.putExtra("coachID", coaches[position].id)
+            Toast.makeText(context, coaches[position].userID, Toast.LENGTH_SHORT).show()
             context.startActivity(i)
+
 
         }
     }
