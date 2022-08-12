@@ -16,6 +16,7 @@ class CoachActivity : AppCompatActivity() {
         val trainees = findViewById<MaterialRippleLayout>(R.id.traineesC)
         val coachName = findViewById<TextView>(R.id.nameC)
 
+        coachName.text=Data.name + Data.last_name
 
         coach.setOnClickListener {
             navigateToCoachInformation()

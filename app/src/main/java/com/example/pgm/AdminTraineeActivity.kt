@@ -46,7 +46,7 @@ class AdminTraineeActivity : AppCompatActivity() {
 
         trainee = ArrayList()
         tempTrainee = ArrayList()
-        val Token = "Bearer " + Data.Token
+        val token = "Bearer " + Data.Token
         val queue = Volley.newRequestQueue(this)
         val url = "http://${Data.url}:8000/api/admin/all_users"
 
@@ -62,8 +62,10 @@ class AdminTraineeActivity : AppCompatActivity() {
 
                     val birthday = traineearray.getJSONObject(i).getString("birthday")
                     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
                     val date = LocalDate.parse(birthday, formatter)
                     val age = (LocalDate.now().compareTo(date)).toString()
+
 
                     val height = traineearray.getJSONObject(i).getString("height")
                     val weight = traineearray.getJSONObject(i).getString("weight")
@@ -96,7 +98,7 @@ class AdminTraineeActivity : AppCompatActivity() {
         }) {
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
-                headers.put("Authorization", Token)
+                headers.put("Authorization", token)
                 return headers
             }
         }

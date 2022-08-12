@@ -12,11 +12,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import com.balysv.materialripple.MaterialRippleLayout
-import com.example.pgm.Data.Companion.id
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ShowTraineeInformation : AppCompatActivity() {
-    lateinit var id:String
+    lateinit var id: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_trainee_information)
@@ -108,18 +107,22 @@ class ShowTraineeInformation : AppCompatActivity() {
     }
 
     private fun navigateToUpdateTrainee() {
-        startActivity(Intent(applicationContext, UpdateTraineeActivity::class.java))
+        val i = Intent(applicationContext, UpdateTraineeActivity::class.java)
+        i.putExtra("id",id)
+        startActivity(i)
 
     }
 
     private fun navigateToNewSubs() {
-        startActivity(Intent(applicationContext, NewSubscriptionActivity::class.java))
+        val i = Intent(applicationContext, NewSubscriptionActivity::class.java)
+        i.putExtra("userID", id)
+        startActivity(i)
 
     }
 
     private fun navigateToSubs() {
         val i = Intent(applicationContext, SubscriptionActivity::class.java)
-        i.putExtra("id",id)
+        i.putExtra("id", id)
         startActivity(i)
     }
 }

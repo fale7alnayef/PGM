@@ -48,6 +48,7 @@ class InactiveSubscriptionAdapter(
             i.putExtra("value", subscriptions[position].value)
             i.putExtra("startDate", subscriptions[position].startDate)
             i.putExtra("endDate", subscriptions[position].endDate)
+            i.putExtra("userID",subscriptions[position].userID)
             context.startActivity(i)
 
         }
