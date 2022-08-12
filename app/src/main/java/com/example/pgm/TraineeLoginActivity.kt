@@ -4,10 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import org.json.JSONException
 import org.json.JSONObject
 
 class TraineeLoginActivity : AppCompatActivity() {
@@ -33,7 +37,48 @@ class TraineeLoginActivity : AppCompatActivity() {
 
 
         submit.setOnClickListener {
-            submitForm()
+            val queue = Volley.newRequestQueue(applicationContext)
+            val jsonBody = JSONObject()
+
+            try {
+                jsonBody.put("email", email.text.toString())
+                jsonBody.put("password", password.text.toString())
+
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+            val JsonObjectRequest = JsonObjectRequest(
+                Request.Method.POST, "http://${Data.url}:8000/api/login/user", jsonBody,
+                {
+                    Data.name = it.getJSONObject("data").getJSONObject("user").getString("first_name")
+                    Data.last_name = it.getJSONObject("data").getJSONObject("user").getString("last_name")
+                    Data.Token = it.getJSONObject("data").getString("token")
+                    Data.gymName =
+                        it.getJSONObject("data").getJSONObject("user").getJSONObject("gym")
+                            .getString("title")
+
+
+                    submitForm()
+
+                }, {
+                    try {
+                        Toast.makeText(
+                            applicationContext,
+                            it.networkResponse.headers?.get("message").toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } catch (e: Exception) {
+                        Toast.makeText(
+                            applicationContext,
+                            "Internet Connection Error",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                })
+            val requestQueue = Volley.newRequestQueue(applicationContext)
+
+            queue.add(JsonObjectRequest)
         }
 
         validate()

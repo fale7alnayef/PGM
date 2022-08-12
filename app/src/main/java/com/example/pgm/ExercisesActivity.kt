@@ -87,6 +87,24 @@ class ExercisesActivity : AppCompatActivity() {
                 // below line is to remove item from our array list.
                 exercise.removeAt(viewHolder.adapterPosition)
 
+                val exeid = deletedExercise.id
+                val queue = Volley.newRequestQueue(applicationContext)
+                val url = "http://${Data.url}:8000/api/coach/deleteexe/$exeid"
+                val deleteRequest = JsonObjectRequest(
+                    Request.Method.POST,
+                    url,
+                    null,
+                    {
+                        Toast.makeText(applicationContext, "deleted", Toast.LENGTH_SHORT).show()
+                    },
+                    {
+                        Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_SHORT).show()
+
+                    }
+                )
+
+                queue.add(deleteRequest)
+
                 // below line is to notify our item is removed from adapter.
                 rv.adapter!!.notifyItemRemoved(viewHolder.adapterPosition)
 
@@ -112,7 +130,7 @@ class ExercisesActivity : AppCompatActivity() {
 
     private fun navigateToAddExercises() {
         val i = Intent(this, AddExerciseActivity::class.java)
-        i.putExtra("userID",userID)
+        i.putExtra("userID", userID)
         startActivity(i)
 
     }

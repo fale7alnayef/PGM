@@ -1,9 +1,9 @@
 package com.example.pgm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.balysv.materialripple.MaterialRippleLayout
 
 class TraineeActivity : AppCompatActivity() {
@@ -14,6 +14,7 @@ class TraineeActivity : AppCompatActivity() {
         val exercises = findViewById<MaterialRippleLayout>(R.id.ExercisesT)
         val traineeName = findViewById<TextView>(R.id.nameT)
 
+        traineeName.text = Data.name + " " + Data.last_name
 
         trainee.setOnClickListener {
             navigateToTraineeInformation()
