@@ -1,12 +1,19 @@
 package com.example.pgm
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,187 +46,60 @@ class VTFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_v_t, container, false)
 
         val trainee = ArrayList<TraineeData>()
-        trainee.add(
-            TraineeData(
-                "ghassan",
-                "kl",
-                R.drawable.download1,
-                "22",
-                "1.90",
-                "70",
-                "0992347584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ameer",
-                "kjhkhjl",
-                R.drawable.download2,
-                "24",
-                "1.30",
-                "120",
-                "0992334548","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ahmad",
-                "ds",
-                R.drawable.download3,
-                "22",
-                "2.10",
-                "78",
-                "09965467584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "saif",
-                "fssfaf",
-                R.drawable.download4,
-                "22",
-                "1.50",
-                "60",
-                "0997543904","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ghassan",
-                "kl",
-                R.drawable.download1,
-                "22",
-                "1.90",
-                "70",
-                "0992347584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ameer",
-                "kjhkhjl",
-                R.drawable.download2,
-                "24",
-                "1.30",
-                "120",
-                "0992334548","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ahmad",
-                "ds",
-                R.drawable.download3,
-                "22",
-                "2.10",
-                "78",
-                "09965467584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "saif",
-                "fssfaf",
-                R.drawable.download4,
-                "22",
-                "1.50",
-                "60",
-                "0997543904","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ghassan",
-                "kl",
-                R.drawable.download1,
-                "22",
-                "1.90",
-                "70",
-                "0992347584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ameer",
-                "kjhkhjl",
-                R.drawable.download2,
-                "24",
-                "1.30",
-                "120",
-                "0992334548","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ahmad",
-                "ds",
-                R.drawable.download3,
-                "22",
-                "2.10",
-                "78",
-                "09965467584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "saif",
-                "fssfaf",
-                R.drawable.download4,
-                "22",
-                "1.50",
-                "60",
-                "0997543904","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ghassan",
-                "kl",
-                R.drawable.download1,
-                "22",
-                "1.90",
-                "70",
-                "0992347584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ameer",
-                "kjhkhjl",
-                R.drawable.download2,
-                "24",
-                "1.30",
-                "120",
-                "0992334548","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "ahmad",
-                "ds",
-                R.drawable.download3,
-                "22",
-                "2.10",
-                "78",
-                "09965467584","1"
-            )
-        )
-        trainee.add(
-            TraineeData(
-                "saif",
-                "fssfaf",
-                R.drawable.download4,
-                "22",
-                "1.50",
-                "60",
-                "0997543904","1"
-            )
-        )
 
-        val rv = view.findViewById<RecyclerView>(R.id.normalRecycler)?.let { rv ->
-            rv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            rv.adapter = NormalPrivateTraineeAdapter(requireContext(), trainee)
+        val queue = Volley.newRequestQueue(activity?.applicationContext)
+        val token = "Bearer " + Data.Token
+        val url = "http://${Data.url}:8000/api/coach/show_all_users"
+        val jsonObject = @RequiresApi(Build.VERSION_CODES.O)
+        object : JsonObjectRequest(Method.POST, url, null, {
+            try {
+                val usersarray = it.getJSONArray("users")
+                for (i in 0 until usersarray.length()) {
+                    val firstName = usersarray.getJSONObject(i).getString("first_name")
+                    val lastName = usersarray.getJSONObject(i).getString("last_name")
+                    val birthday = usersarray.getJSONObject(i).getString("birthday")
+                    val height = usersarray.getJSONObject(i).getString("height")
+                    val weight = usersarray.getJSONObject(i).getString("weight")
+                    val id = usersarray.getJSONObject(i).getString("id")
+                    val phoneNumber = usersarray.getJSONObject(i).getString("phone_number")
+                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    val date = LocalDate.parse(birthday, formatter)
+                    val age = (LocalDate.now().compareTo(date)).toString()
+
+                    trainee.add(
+                        TraineeData(
+                            "$firstName $lastName",
+                            "blah",
+                            R.drawable.download1,
+                            age,
+                            height,
+                            weight,
+                            phoneNumber,
+                            id
+                        )
+                    )
+
+                    val rv = view.findViewById<RecyclerView>(R.id.normalRecycler)?.let { rv ->
+                        rv.layoutManager =
+                            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                        rv.adapter = NormalPrivateTraineeAdapter(requireContext(), trainee)
+                    }
+                }
+            } catch (e: Exception) {
+                Toast.makeText(activity?.applicationContext, e.toString(), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }, {
+            Toast.makeText(activity?.applicationContext, it.toString(), Toast.LENGTH_LONG).show()
+        }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Authorization"] = token
+                return headers
+            }
         }
+
+        queue.add(jsonObject)
 
 
 

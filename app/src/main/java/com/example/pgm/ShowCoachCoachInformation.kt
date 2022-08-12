@@ -33,7 +33,7 @@ class ShowCoachCoachInformation : AppCompatActivity() {
         val queue = Volley.newRequestQueue(applicationContext)
         val jsonObjectRequest = @RequiresApi(Build.VERSION_CODES.O)
         object : JsonObjectRequest(
-            Request.Method.GET,
+            Request.Method.POST,
             "http://${Data.url}:8000/api/coach/show_coach",
             null,
             {
