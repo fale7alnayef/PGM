@@ -62,8 +62,10 @@ class AdminTraineeActivity : AppCompatActivity() {
 
                     val birthday = traineearray.getJSONObject(i).getString("birthday")
                     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
                     val date = LocalDate.parse(birthday, formatter)
                     val age = (LocalDate.now().compareTo(date)).toString()
+
 
                     val height = traineearray.getJSONObject(i).getString("height")
                     val weight = traineearray.getJSONObject(i).getString("weight")

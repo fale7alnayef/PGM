@@ -49,7 +49,7 @@ class NewContractActivity : AppCompatActivity() {
         submit.setOnClickListener {
 
             val jsonBody = JSONObject()
-            val Token = "Bearer " + Data.Token
+            val token = "Bearer " + Data.Token
             val coachID: String
             val d = intent.extras?.get("coach_id").toString()
             try {
@@ -62,7 +62,7 @@ class NewContractActivity : AppCompatActivity() {
             } catch (e: JSONException) {
                 Log.e("error", e.toString())
             }
-            val JsonObjectRequest = object : JsonObjectRequest(
+            val jsonObjectRequest = object : JsonObjectRequest(
                 Request.Method.POST, "http://${Data.url}:8000/api/admin/create_contract", jsonBody,
                 {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
@@ -72,13 +72,13 @@ class NewContractActivity : AppCompatActivity() {
                 }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String>()
-                    headers.put("Authorization", Token)
+                    headers.put("Authorization", token)
                     return headers
 
                 }
             }
 
-            queue.add(JsonObjectRequest)
+            queue.add(jsonObjectRequest)
         }
 
         initDatePicker()

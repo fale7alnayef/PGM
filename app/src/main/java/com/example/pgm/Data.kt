@@ -7,8 +7,9 @@ class Data {
         lateinit var name: String
         lateinit var img: String
         lateinit var gymName: String
+        lateinit var last_name:String
 
-        val url = "192.168.137.1"
+        val url = "192.168.1.110"
 
 
     }
