@@ -30,6 +30,7 @@ class CoachAdapter(private val context: Context, private var coaches: ArrayList<
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = coaches[position]
         holder.my_name.text = data.name
+        holder.my_type.text = data.speciality
         holder.my_image.setImageResource(data.image.toInt())
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(

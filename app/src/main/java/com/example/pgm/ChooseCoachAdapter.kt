@@ -33,7 +33,7 @@ class ChooseCoachAdapter(private val context: Context, private var coaches: Arra
         val data = coaches[position]
         holder.my_name.text = data.name
         holder.my_image.setImageResource(data.image.toInt())
-        holder.my_type.text = data.id
+        holder.my_type.text = data.speciality
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(
                 holder.itemView.context,
