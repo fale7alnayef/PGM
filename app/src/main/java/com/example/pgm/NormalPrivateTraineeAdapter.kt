@@ -48,6 +48,7 @@ class NormalPrivateTraineeAdapter(
             i.putExtra("age", coaches[position].age)
             i.putExtra("height", coaches[position].height)
             i.putExtra("weight", coaches[position].weight)
+            i.putExtra("id",coaches[position].id)
             context.startActivity(i)
 
         }

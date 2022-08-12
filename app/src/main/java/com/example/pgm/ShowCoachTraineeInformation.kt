@@ -8,6 +8,7 @@ import com.balysv.materialripple.MaterialRippleLayout
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ShowCoachTraineeInformation : AppCompatActivity() {
+    lateinit var userID: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_coach_trainee_information)
@@ -26,9 +27,9 @@ class ShowCoachTraineeInformation : AppCompatActivity() {
         age.text = intent.extras?.get("age").toString()
         height.text = intent.extras?.get("height").toString()
         weight.text = intent.extras?.get("weight").toString()
+        userID = intent.extras?.get("id").toString()
+
         image.setImageResource(intent.extras?.get("image").toString().toInt())
-
-
         back.setOnClickListener {
 
 
@@ -46,7 +47,9 @@ class ShowCoachTraineeInformation : AppCompatActivity() {
     }
 
     private fun navigateToExercises() {
-        startActivity(Intent(applicationContext, ExercisesActivity::class.java))
+        val i = Intent(applicationContext, ExercisesActivity::class.java)
+        i.putExtra("userID",userID)
+        startActivity(i)
 
     }
 }

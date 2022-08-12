@@ -2,11 +2,14 @@ package com.example.pgm
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -14,32 +17,51 @@ import com.google.android.material.snackbar.Snackbar
 class ExercisesActivity : AppCompatActivity() {
     private lateinit var rv: RecyclerView
     private lateinit var fab: FloatingActionButton
-
+    lateinit var userID: String
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercises)
 
         rv = findViewById(R.id.exercisesRecycler)
         fab = findViewById(R.id.addexercise)
 
+        userID = intent.extras?.get("userID").toString()
+
         val exercise = ArrayList<ExerciseData>()
-        exercise.add(ExerciseData("ghassan", "kl"))
-        exercise.add(
-            ExerciseData(
-                "ameer",
-                "kjhekfjoewihfweio;jfiefjeklfjkelcmdksfmckdjfekfefmeldedefgfffkhjl/neferfghmkgjrijirjeijfeifje"
-            )
-        )
-        exercise.add(ExerciseData("ahmad", "ds"))
-        exercise.add(ExerciseData("saif", "fssfaf"))
-        exercise.add(ExerciseData("ghassan", "kl"))
-        exercise.add(ExerciseData("ameer", "kjhkhjl"))
-        exercise.add(ExerciseData("ahmad", "ds"))
-        exercise.add(ExerciseData("saif", "fssfaf"))
 
-        rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        val queue = Volley.newRequestQueue(applicationContext)
+        val url = "http://${Data.url}:8000/api/coach/showexes/$userID"
 
-        rv.adapter = ExerciseAdapter(this, exercise)
+        val exeRequest = JsonObjectRequest(Request.Method.GET, url, null, {
+            try {
+                val exeArray = it.getJSONArray("exes")
+                for (i in 0 until exeArray.length()) {
+                    val title = exeArray.getJSONObject(i).getString("title")
+                    val desc = exeArray.getJSONObject(i).getString("desc")
+                    val id = exeArray.getJSONObject(i).getString("id")
+                    exercise.add(ExerciseData(title, desc, id))
+
+                    rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+
+                    rv.adapter = ExerciseAdapter(this, exercise)
+
+                }
+            } catch (e: Exception) {
+                Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }, {
+            Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_LONG).show()
+        })
+
+        queue.add(exeRequest)
+
+
+
+
+
+
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -66,7 +88,7 @@ class ExercisesActivity : AppCompatActivity() {
                 exercise.removeAt(viewHolder.adapterPosition)
 
                 // below line is to notify our item is removed from adapter.
-                  rv.adapter!!.notifyItemRemoved(viewHolder.adapterPosition)
+                rv.adapter!!.notifyItemRemoved(viewHolder.adapterPosition)
 
                 // below line is to display our snackbar with action.
                 Snackbar.make(rv, deletedExercise.title, Snackbar.LENGTH_LONG)
@@ -76,7 +98,7 @@ class ExercisesActivity : AppCompatActivity() {
 
                         // below line is to notify item is
                         // added to our adapter class.
-                           rv.adapter!!.notifyItemInserted(position)
+                        rv.adapter!!.notifyItemInserted(position)
                     }.show()
             } // at last we are adding this
             // to our recycler view.
@@ -89,7 +111,9 @@ class ExercisesActivity : AppCompatActivity() {
     }
 
     private fun navigateToAddExercises() {
-        startActivity(Intent(this, AddExerciseActivity::class.java))
+        val i = Intent(this, AddExerciseActivity::class.java)
+        i.putExtra("userID",userID)
+        startActivity(i)
 
     }
 }
