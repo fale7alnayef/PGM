@@ -25,7 +25,6 @@ class ShowTraineeTraineeInformation : AppCompatActivity() {
         age.text = intent.extras?.get("age").toString()
         height.text = intent.extras?.get("height").toString()
         weight.text = intent.extras?.get("weight").toString()
-       // image.setImageResource(intent.extras?.get("image").toString().toInt())
 
         back.setOnClickListener {
 

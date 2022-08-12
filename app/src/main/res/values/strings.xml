@@ -74,6 +74,7 @@
     <string name="_email">Email</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="amount_required">Amount Required</string>
 
     >
 

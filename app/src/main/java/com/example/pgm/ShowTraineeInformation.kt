@@ -3,7 +3,10 @@ package com.example.pgm
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.MenuInflater
 import android.view.View
 import android.widget.TextView
@@ -13,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import com.balysv.materialripple.MaterialRippleLayout
 import de.hdodenhof.circleimageview.CircleImageView
+
 
 class ShowTraineeInformation : AppCompatActivity() {
     lateinit var id: String
@@ -76,6 +80,7 @@ class ShowTraineeInformation : AppCompatActivity() {
         val popup = PopupMenu(this, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.smenu, popup.menu)
+
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit -> {

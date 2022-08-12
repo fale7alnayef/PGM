@@ -31,7 +31,6 @@ class NewSubscriptionActivity : AppCompatActivity() {
     private lateinit var startDateContainer: TextInputLayout
     private lateinit var endDateContainer: TextInputLayout
     private lateinit var priceContainer: TextInputLayout
-    private lateinit var paidAmountContainer: TextInputLayout
     private lateinit var payingContainer: TextInputLayout
 
     private lateinit var startDate: TextInputEditText
@@ -46,8 +45,6 @@ class NewSubscriptionActivity : AppCompatActivity() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private lateinit var privateSwitch: Switch
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var fullyPaidSwitch: Switch
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_subscription)
@@ -64,8 +61,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
         price = findViewById(R.id.priceSubscriptionEditText)
         priceContainer = findViewById(R.id.priceSubscriptionContainer)
 
-        paidAmount = findViewById(R.id.paidAmountSubscriptionEditText)
-        paidAmountContainer = findViewById(R.id.paidAmountSubscriptionContainer)
+
 
         paying = findViewById(R.id.payingSubscriptionEditText)
         payingContainer = findViewById(R.id.payingSubscriptionContainer)
@@ -87,25 +83,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
 
 
         privateSwitch = findViewById(R.id.privateSwitch)
-        fullyPaidSwitch = findViewById(R.id.fullyPaidSwitch)
-        privateSwitch.setOnCheckedChangeListener { _, isChecked ->
 
-            if (isChecked) {
-
-                Toast.makeText(this, isChecked.toString(), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, isChecked.toString(), Toast.LENGTH_SHORT).show()
-            }
-        }
-        fullyPaidSwitch.setOnCheckedChangeListener { _, isChecked ->
-
-            if (isChecked) {
-
-                Toast.makeText(this, isChecked.toString(), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, isChecked.toString(), Toast.LENGTH_SHORT).show()
-            }
-        }
 
         val sat = findViewById<Chip>(R.id.satChip)
         val sun = findViewById<Chip>(R.id.sunChip)
@@ -124,21 +102,16 @@ class NewSubscriptionActivity : AppCompatActivity() {
 
 
         sat.setOnClickListener {
-            if (satFlag) {
+             if (satFlag) {
                 sat.setChipBackgroundColorResource(R.color.gray)
-                satFlag = false
-                Toast.makeText(
-                    this, satFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                 satFlag = false
+
             } else {
-                sat.setChipBackgroundColorResource(R.color.teal_200)
-                satFlag = true
-                Toast.makeText(
-                    this, satFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+                sat.setChipBackgroundColorResource(R.color.gold)
+                 satFlag = true
+
+
+             }
         }
 
         sun.setOnClickListener {
@@ -146,55 +119,37 @@ class NewSubscriptionActivity : AppCompatActivity() {
 
                 sun.setChipBackgroundColorResource(R.color.gray)
                 sunFlag = false
-                Toast.makeText(
-                    this, sunFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+
             } else {
-                sun.setChipBackgroundColorResource(R.color.teal_200)
-                sunFlag = true
-                Toast.makeText(
-                    this, sunFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                sun.setChipBackgroundColorResource(R.color.gold)
+                sunFlag =  true
+
             }
         }
 
         mon.setOnClickListener {
-            if (monFlag) {
+             if (monFlag) {
 
                 mon.setChipBackgroundColorResource(R.color.gray)
-                monFlag = false
-                Toast.makeText(
-                    this, monFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                 monFlag = false
+
             } else {
-                mon.setChipBackgroundColorResource(R.color.teal_200)
-                monFlag = true
-                Toast.makeText(
-                    this, monFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                mon.setChipBackgroundColorResource(R.color.gold)
+                 monFlag =   true
+
             }
         }
 
         tue.setOnClickListener {
-            if (tueFlag) {
+             if (tueFlag) {
 
                 tue.setChipBackgroundColorResource(R.color.gray)
-                tueFlag = false
-                Toast.makeText(
-                    this, tueFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                 tueFlag =  false
+
             } else {
-                tue.setChipBackgroundColorResource(R.color.teal_200)
-                tueFlag = true
-                Toast.makeText(
-                    this, tueFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                tue.setChipBackgroundColorResource(R.color.gold)
+                 tueFlag = true
+
             }
         }
 
@@ -204,36 +159,23 @@ class NewSubscriptionActivity : AppCompatActivity() {
                 wed.setChipBackgroundColorResource(R.color.gray)
 
                 wedFlag = false
-                Toast.makeText(
-                    this, wedFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+
             } else {
-                wed.setChipBackgroundColorResource(R.color.teal_200)
-                wedFlag = true
-                Toast.makeText(
-                    this, wedFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                wed.setChipBackgroundColorResource(R.color.gold)
+
             }
         }
 
         thu.setOnClickListener {
-            if (thuFlag) {
+             if (thuFlag) {
 
                 thu.setChipBackgroundColorResource(R.color.gray)
-                thuFlag = false
-                Toast.makeText(
-                    this, thuFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                 thuFlag =  false
+
             } else {
-                thu.setChipBackgroundColorResource(R.color.teal_200)
-                thuFlag = true
-                Toast.makeText(
-                    this, thuFlag.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+                thu.setChipBackgroundColorResource(R.color.gold)
+                 thuFlag = true
+
             }
         }
 
@@ -333,16 +275,14 @@ class NewSubscriptionActivity : AppCompatActivity() {
         startDateContainer.error = validstartDate()
         endDateContainer.error = validendDate()
         priceContainer.error = validPrice()
-        paidAmountContainer.error = validPaidAmount()
         payingContainer.error = validPaying()
 
         val validstartDate = startDateContainer.error == null
         val validendDate = endDateContainer.error == null
         val validPrice = priceContainer.error == null
-        val validPaidAMount = paidAmountContainer.error == null
         val validPaying = payingContainer.error == null
 
-        if (validstartDate && validendDate && validPrice && validPaidAMount && validPaying) {
+        if (validstartDate && validendDate && validPrice && validPaying) {
             finish()
         }
     }
@@ -397,23 +337,9 @@ class NewSubscriptionActivity : AppCompatActivity() {
         return null
     }
 
-    private fun paidAmountFocusListener() {
-        paidAmount.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                paidAmountContainer.error = validPaidAmount()
-            }
-        }
-    }
 
-    private fun validPaidAmount(): String? {
-        val paidAmountText = paidAmount.text.toString()
-        if (paidAmountText.isEmpty()) {
-            return "enter Paid Amount"
-        } else if (!paidAmountText.matches(".*[1-9].*".toRegex())) {
-            return "Only Numbers"
-        }
-        return null
-    }
+
+
 
     private fun payingFocusListener() {
         paying.setOnFocusChangeListener { _, focused ->
@@ -492,12 +418,14 @@ class NewSubscriptionActivity : AppCompatActivity() {
     private fun validate() {
 
         priceFocusListener()
-        paidAmountFocusListener()
         payingFocusListener()
         startDateFocusListener()
         endDateFocusListener()
     }
 }
+
+
+
 
 
 

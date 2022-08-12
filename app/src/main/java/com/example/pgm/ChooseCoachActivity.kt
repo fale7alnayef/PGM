@@ -30,13 +30,13 @@ class ChooseCoachActivity : AppCompatActivity() {
                 val coachArr = it.getJSONArray("Available_coaches")
 
                 for (i in 0 until coachArr.length()) {
-                    val firstName = coachArr.getJSONObject(i).getString("first_name")
-                    val lastName = coachArr.getJSONObject(i).getString("last_name")
-                    val phoneNumber = coachArr.getJSONObject(i).getString("phone_number")
-                    val speciality = coachArr.getJSONObject(i).getString("speciality")
-                    val id = coachArr.getJSONObject(i).getString("id")
-                    val email = coachArr.getJSONObject(i).getString("email")
-                    val birthday = coachArr.getJSONObject(i).getString("birthday")
+                    val firstName = coachArr.getJSONObject(i).getJSONObject("info").getString("first_name")
+                    val lastName = coachArr.getJSONObject(i).getJSONObject("info").getString("last_name")
+                    val phoneNumber = coachArr.getJSONObject(i).getJSONObject("info").getString("phone_number")
+                    val speciality = coachArr.getJSONObject(i).getJSONObject("info").getString("speciality")
+                    val id = coachArr.getJSONObject(i).getJSONObject("info").getString("id")
+                    val email = coachArr.getJSONObject(i).getJSONObject("info").getString("email")
+                    val birthday = coachArr.getJSONObject(i).getJSONObject("info").getString("birthday")
 
                     coach.add(
                         CoachData(

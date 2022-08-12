@@ -14,6 +14,7 @@ class TraineeSubscriptionActivity : AppCompatActivity() {
     private lateinit var fullyPaid: TextView
     private lateinit var coach: TextView
     private lateinit var payments: MaterialButton
+    private lateinit var amount: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trainee_subscription)
@@ -25,6 +26,7 @@ class TraineeSubscriptionActivity : AppCompatActivity() {
         fullyPaid = findViewById(R.id.traineeFullyPaidSubs)
         privatec = findViewById(R.id.traineePrivateSubs)
         payments = findViewById(R.id.traineePayments)
+        amount = findViewById(R.id.amountRequiredT)
 
         payments.setOnClickListener {
             navigateToPayment()

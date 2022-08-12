@@ -45,7 +45,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textEmailAddress"
-            android:lines="1" />
+            android:lines="1"
+            android:textColor="@color/white"
+
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -75,6 +78,7 @@
             android:layout_height="match_parent"
             android:inputType="textPassword"
             android:lines="1"
+            android:textColor="@color/white"
             android:maxLength="16" />
 
 

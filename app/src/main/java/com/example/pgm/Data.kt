@@ -9,7 +9,7 @@ class Data {
         lateinit var gymName: String
         lateinit var last_name:String
 
-        val url = "192.168.137.1"
+        val url = "192.168.10.61"
 
 
     }
