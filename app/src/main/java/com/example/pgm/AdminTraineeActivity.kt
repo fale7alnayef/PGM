@@ -76,7 +76,7 @@ class AdminTraineeActivity : AppCompatActivity() {
                     trainee.add(
                         TraineeData(
                             "$firstName $lastName",
-                            "",
+                            age,
                             R.drawable.download1,
                             age,
                             height,
