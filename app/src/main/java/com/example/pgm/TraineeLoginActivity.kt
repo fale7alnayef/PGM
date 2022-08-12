@@ -1,10 +1,10 @@
 package com.example.pgm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -50,13 +50,15 @@ class TraineeLoginActivity : AppCompatActivity() {
             val JsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST, "http://${Data.url}:8000/api/login/user", jsonBody,
                 {
-                    Data.name = it.getJSONObject("data").getJSONObject("user").getString("first_name")
-                    Data.last_name = it.getJSONObject("data").getJSONObject("user").getString("last_name")
+                    Data.name =
+                        it.getJSONObject("data").getJSONObject("user").getString("first_name")
+                    Data.last_name =
+                        it.getJSONObject("data").getJSONObject("user").getString("last_name")
                     Data.Token = it.getJSONObject("data").getString("token")
                     Data.gymName =
                         it.getJSONObject("data").getJSONObject("user").getJSONObject("gym")
                             .getString("title")
-
+                    Data.id = it.getJSONObject("data").getJSONObject("user").getString("id")
 
                     submitForm()
 
