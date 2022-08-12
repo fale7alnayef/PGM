@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".UpdateCoachActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -119,7 +120,7 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="439dp"
         android:layout_marginEnd="101dp"
-        android:src="@drawable/ic_baseline_coronavirus_24"
+        android:src="@drawable/camera"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
 
@@ -135,6 +136,7 @@
         android:layout_marginStart="101dp"
         android:layout_marginTop="612dp"
         android:layout_marginEnd="99dp"
+        android:backgroundTint="@color/black"
         android:maxLines="1"
         android:text="@string/submit"
         android:textSize="28sp"

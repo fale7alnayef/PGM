@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".ShowCoachContract">
 
 
@@ -31,8 +32,7 @@
         android:background="@drawable/white_border"
         android:gravity="center"
         android:maxLines="1"
-        android:text="@string/Nine_million"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="italic"
         tools:ignore="RtlSymmetry" />
@@ -79,8 +79,7 @@
         android:background="@drawable/white_border"
         android:gravity="center"
         android:maxLines="1"
-        android:text="@string/_1_1_2022"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="italic"
         tools:ignore="RtlSymmetry" />
@@ -96,8 +95,7 @@
         android:background="@drawable/white_border"
         android:gravity="center"
         android:maxLines="1"
-        android:text="@string/_1_9_2022"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="italic"
         tools:ignore="RtlSymmetry" />

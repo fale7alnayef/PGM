@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
+
     tools:context="ViewContractsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -15,6 +17,9 @@
             android:id="@+id/tabsc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/black"
+            app:tabTextColor="@color/gray"
+            app:tabSelectedTextColor="@color/gold"
             android:contentDescription="@string/viewpager" />
     </com.google.android.material.appbar.AppBarLayout>
 

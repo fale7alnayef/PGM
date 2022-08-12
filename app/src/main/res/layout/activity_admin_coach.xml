@@ -9,7 +9,11 @@
         android:id="@+id/ctoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_700">
+        android:background="@color/black"
+        app:titleTextColor="@color/gold"
+        app:subtitleTextColor="@color/gold"
+
+        >
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -26,6 +30,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:contentDescription="@string/todo"
+        app:backgroundTint="@color/gold"
         android:src="@drawable/add"
         app:fabSize="normal"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />

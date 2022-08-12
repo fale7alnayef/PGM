@@ -9,7 +9,10 @@
         android:id="@+id/ttoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_700">
+        android:background="@color/black"
+        app:titleTextColor="@color/gold"
+        app:subtitleTextColor="@color/gold"
+        >
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -28,5 +31,6 @@
         android:contentDescription="@string/todo"
         android:src="@drawable/add"
         app:fabSize="normal"
+        app:backgroundTint="@color/gold"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

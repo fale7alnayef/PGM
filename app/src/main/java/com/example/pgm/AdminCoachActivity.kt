@@ -24,6 +24,7 @@ class AdminCoachActivity : AppCompatActivity() {
     private lateinit var coach: ArrayList<CoachData>
     private lateinit var tempCoach: ArrayList<CoachData>
     private var flag: Boolean = false
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_coach)

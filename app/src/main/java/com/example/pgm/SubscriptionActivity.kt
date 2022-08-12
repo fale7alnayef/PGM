@@ -23,6 +23,7 @@ class SubscriptionActivity : AppCompatActivity() {
     private lateinit var privatec: TextView
     private lateinit var fullyPaid: TextView
     private lateinit var coach: TextView
+    private lateinit var amountRequired: TextView
     private lateinit var pay: MaterialButton
     private lateinit var payments: MaterialButton
     lateinit var idd:String
@@ -39,6 +40,7 @@ class SubscriptionActivity : AppCompatActivity() {
         privatec = findViewById(R.id.privateSubs)
         pay = findViewById(R.id.sPay)
         payments = findViewById(R.id.sPayments)
+        amountRequired = findViewById(R.id.amountRequired)
 
         idd = intent.extras?.get("id").toString()
         val url = "http://${Data.url}:8000/api/admin/show_sub/$idd"

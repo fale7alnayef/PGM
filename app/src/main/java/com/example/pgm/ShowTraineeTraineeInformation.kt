@@ -26,6 +26,7 @@ class ShowTraineeTraineeInformation : AppCompatActivity() {
         val back = findViewById<MaterialRippleLayout>(R.id.traineeBackT)
         val subs = findViewById<MaterialRippleLayout>(R.id.treaineeSubsT)
 
+
         val queue = Volley.newRequestQueue(applicationContext)
         val url = "http://${Data.url}:8000/api/user/show_data"
         val token = "Bearer " + Data.Token
@@ -65,6 +66,7 @@ class ShowTraineeTraineeInformation : AppCompatActivity() {
             }
         }
         queue.add(dataRequest)
+
 
         back.setOnClickListener {
 
