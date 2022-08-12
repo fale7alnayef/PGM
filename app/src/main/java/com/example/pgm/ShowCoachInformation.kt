@@ -113,9 +113,7 @@ class ShowCoachInformation : AppCompatActivity() {
                 R.id.edit -> {
                     navigateToUpdateCoach()
                 }
-                R.id.remove -> {
-                    showDefaultDialog(this)
-                }
+
             }
             true
         }

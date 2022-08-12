@@ -6,9 +6,4 @@
 
     />
 
-    <item
-    android:title="@string/remove"
-        android:id="@+id/remove"
-
-        />
 </menu>

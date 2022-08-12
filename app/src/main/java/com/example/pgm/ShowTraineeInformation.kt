@@ -86,9 +86,7 @@ class ShowTraineeInformation : AppCompatActivity() {
                 R.id.edit -> {
                     navigateToUpdateTrainee()
                 }
-                R.id.remove -> {
-                    showDefaultDialog(this)
-                }
+
             }
             true
         }
