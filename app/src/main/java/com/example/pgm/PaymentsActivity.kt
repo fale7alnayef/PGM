@@ -37,7 +37,7 @@ class PaymentsActivity : AppCompatActivity() {
                     val date = paymentsaa.getJSONObject(i).getString("created_at")
                     payment.add(
                         PaymentData(
-                            amount,
+                            amount + " SYP",
                             date.toString().substring(0,10)
                         )
                     )
