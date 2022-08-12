@@ -1,12 +1,16 @@
 package com.example.pgm
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.example.pgm.Data.Companion.url
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,10 +23,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class VSFragment : Fragment() {
-
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,30 +40,59 @@ class VSFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val subscription = ArrayList<SCData>()
         // Inflate the layout for this fragment
-      val view = inflater.inflate(R.layout.fragment_v_s, container, false)
+        val view = inflater.inflate(R.layout.fragment_v_s, container, false)
 
-        val subscription = listOf(
-            SCData("ghassan","1000","2002/1/1","2002/1/3"),
-            SCData("ameer","2000","2002/1/1","2002/1/3"),
-            SCData("ahmad","9893", "2002/1/1","2002/1/3"),
-            SCData("saif","42452", "2002/1/1","2002/1/3"),
-            SCData("ghassan","453", "2002/1/1","2002/1/3"),
-            SCData("ameer","3354", "2002/1/1","2002/1/3"),
-            SCData("ghassan","1000","2002/1/1","2002/1/3"),
-            SCData("ameer","2000","2002/1/1","2002/1/3"),
-            SCData("ahmad","9893", "2002/1/1","2002/1/3"),
-            SCData("saif","42452", "2002/1/1","2002/1/3"),
-            SCData("ghassan","453", "2002/1/1","2002/1/3"),
-            SCData("ameer","3354", "2002/1/1","2002/1/3")
-        )
+        val queue = Volley.newRequestQueue(activity?.applicationContext)
+        val token = "Bearer " + Data.Token
+        val url = "http://${Data.url}:8000/api/admin/active_sub"
+        val jsonObject = object : JsonObjectRequest(Method.POST, url, null, {
+            try {
+                val usersarray = it.getJSONArray("Active_users")
+                for (i in 0 until usersarray.length()) {
+                    val contract =
+                        usersarray.getJSONObject(i).getJSONObject("info").getJSONObject("contract")
+                    val firstName =
+                        usersarray.getJSONObject(i).getJSONObject("info").getString("first_name")
+                    val lastName =
+                        usersarray.getJSONObject(i).getJSONObject("info").getString("last_name")
+
+                    subscription.add(
+                        SCData(
+                            "$firstName $lastName",
+                            contract.getString("price"),
+                            contract.getString("starts_at").substring(0, 10),
+                            contract.getString("ends_at").substring(0, 10),
+
+                            )
+                    )
 
 
+                    val rv = view.findViewById<RecyclerView>(R.id.activeSubsRecycler)?.let { rv ->
+                        rv.layoutManager =
+                            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                        rv.adapter = ActiveSubscriptionAdapter(requireContext(), subscription)
+                    }
 
-        val rv   = view.findViewById<RecyclerView>(R.id.activeSubsRecycler)?.let { rv ->
-            rv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            rv.adapter = SubscriptionAdapter(requireContext(),subscription)
+                }
+            } catch (e: Exception) {
+                Toast.makeText(activity?.applicationContext, e.toString(), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }, {
+            Toast.makeText(activity?.applicationContext, it.toString(), Toast.LENGTH_LONG).show()
+        }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Authorization"] = token
+                return headers
+            }
         }
+
+        queue.add(jsonObject)
+
 
 
 

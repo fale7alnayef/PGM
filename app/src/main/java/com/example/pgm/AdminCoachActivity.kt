@@ -37,7 +37,7 @@ class AdminCoachActivity : AppCompatActivity() {
 
         coach = ArrayList()
 
-        val Token = "Bearer " + Data.Token
+        val token = "Bearer " + Data.Token
         val queue = Volley.newRequestQueue(this)
         val url = "http://${Data.url}:8000/api/admin/show_all_coaches"
 
@@ -58,13 +58,13 @@ class AdminCoachActivity : AppCompatActivity() {
                         coach.add(
                             CoachData(
                                 "$firstName $lastName",
-                                speciality,
                                 R.drawable.download1,
                                 phoneNum,
                                 salary,
                                 id,
                                 email,
-                                birthday
+                                birthday,
+                                speciality
                             )
                         )
 
@@ -72,13 +72,13 @@ class AdminCoachActivity : AppCompatActivity() {
                         coach.add(
                             CoachData(
                                 "$firstName $lastName",
-                                speciality,
                                 R.drawable.download1,
                                 phoneNum,
                                 "There is no contract Yet",
                                 id,
                                 email,
-                                birthday
+                                birthday,
+                                speciality
                             )
                         )
 
@@ -96,7 +96,7 @@ class AdminCoachActivity : AppCompatActivity() {
         }) {
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
-                headers.put("Authorization", Token)
+                headers["Authorization"] = token
                 return headers
             }
         }

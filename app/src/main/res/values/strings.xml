@@ -69,6 +69,11 @@
     <string name="pay">Pay</string>
     <string name="viewpager">ViewPager</string>
     <string name="specialty">Specialty</string>
+    <string name="renew">Renew</string>
+    <string name="exercises">Exercises</string>
+    <string name="_email">Email</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 
     >
 

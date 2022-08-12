@@ -1,16 +1,20 @@
 package com.example.pgm
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
-import java.text.SimpleDateFormat
+import org.json.JSONObject
 import java.util.*
 
 class UpdateCoachActivity : AppCompatActivity() {
@@ -22,18 +26,16 @@ class UpdateCoachActivity : AppCompatActivity() {
     private lateinit var emailContainer: TextInputLayout
     private lateinit var passwordContainer: TextInputLayout
     private lateinit var confirmPasswordContainer: TextInputLayout
-    private lateinit var birthdayContainer: TextInputLayout
+
     private lateinit var numberContainer: TextInputLayout
-    private lateinit var firstNameContainer: TextInputLayout
-    private lateinit var lastNameContainer: TextInputLayout
+
 
     private lateinit var email: TextInputEditText
     private lateinit var password: TextInputEditText
     private lateinit var confirmPassword: TextInputEditText
     private lateinit var birthday: TextInputEditText
     private lateinit var number: TextInputEditText
-    private lateinit var firstName: TextInputEditText
-    private lateinit var lastName: TextInputEditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_coach)
@@ -52,53 +54,64 @@ class UpdateCoachActivity : AppCompatActivity() {
         confirmPassword = findViewById(R.id.updateConfirmPasswordCoachEditText)
         confirmPasswordContainer = findViewById(R.id.updateConfirmPasswordCoachContainer)
 
-        birthday = findViewById(R.id.updateBirthdayCoachEditText)
-        birthdayContainer = findViewById(R.id.updateBirthdayCoachContainer)
 
         number = findViewById(R.id.updatePhoneNumberCoachEditText)
         numberContainer = findViewById(R.id.updatePhoneNumberCoachContainer)
 
-        firstName = findViewById(R.id.updateFirstNameCoachEditText)
-        firstNameContainer = findViewById(R.id.updateFirstNameCoachContainer)
+        val queue = Volley.newRequestQueue(applicationContext)
+        val d = intent.extras?.get("idd").toString()
 
-        lastName = findViewById(R.id.updateLastNameCoachEditText)
-        lastNameContainer = findViewById(R.id.updateLastNameCoachContainer)
 
+        submit.setOnClickListener {
+            val url = "http://${Data.url}:8000/api/admin/edit_coach/$d"
+
+            val jsonBody = JSONObject()
+
+            try {
+                jsonBody.put("email", email.text)
+            } catch (e: Exception) {
+                Log.e("email", e.toString())
+            }
+
+            try {
+                jsonBody.put("phone_number", number.text)
+            } catch (e: Exception) {
+                Log.e("phone_number", e.toString())
+            }
+
+            try {
+                jsonBody.put("password", password.text)
+            } catch (e: Exception) {
+                Log.e("password", e.toString())
+            }
+
+
+
+            val jsonObjectRequest = JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonBody,
+                {
+                    Toast.makeText(applicationContext, "edited", Toast.LENGTH_SHORT).show()
+                    finish()
+                },
+                {
+
+
+                }
+            )
+            queue.add(jsonObjectRequest)
+        }
 
         pickImage.setOnClickListener {
             pickImageFromGallery()
         }
 
-        initDatePicker()
+
+
 
     }
 
-    private fun initDatePicker(){
-        calendar = Calendar.getInstance()
-
-        val datePicker = DatePickerDialog.OnDateSetListener{ _, year, month, dayOfMonth ->
-            calendar.set(Calendar.YEAR,year)
-            calendar.set(Calendar.MONTH,month)
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-            updateLapel(calendar)
-
-        }
-        birthday.setOnClickListener {
-            DatePickerDialog(
-                this,
-                datePicker,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            ).show()
-        }
-    }
-
-    private fun updateLapel(calendar: Calendar) {
-
-        val sdf = SimpleDateFormat("dd-MM-yyyy",Locale.UK)
-        birthday.setText(sdf.format(calendar.time))
-    }
 
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
@@ -106,12 +119,13 @@ class UpdateCoachActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
     }
 
-    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            pickImage.setImageURI(data?.data)
-        }
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                pickImage.setImageURI(data?.data)
+            }
 
-    }
+        }
 
 }

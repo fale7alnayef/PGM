@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_700"
-    tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp"
     tools:context=".ShowCoachInformation"
-    >
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
     <TextView
         android:id="@+id/textView990"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="420dp"
         android:layout_marginStart="60dp"
+        android:layout_marginBottom="420dp"
         android:text="@string/specialty"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -28,12 +28,11 @@
         android:id="@+id/specialty"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="370dp"
         android:layout_marginStart="10dp"
+        android:layout_marginBottom="370dp"
         android:background="@drawable/white_border"
         android:maxLines="1"
         android:paddingTop="10dp"
-        android:text="coach"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -88,8 +87,8 @@
         android:id="@+id/card0"
         android:layout_width="170dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="150dp"
         android:layout_marginStart="200dp"
+        android:layout_marginBottom="150dp"
         android:stateListAnimator="@null"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="10dp"
@@ -126,17 +125,15 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <TextView
         android:id="@+id/salary"
         android:layout_width="170dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="370dp"
         android:background="@drawable/white_border"
-        android:layout_marginEnd="10dp"
         android:maxLines="1"
         android:paddingTop="10dp"
-        android:text="@string/Nine_million"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -150,8 +147,8 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="420dp"
         android:layout_marginEnd="60dp"
+        android:layout_marginBottom="420dp"
         android:text="@string/salary"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -185,7 +182,6 @@
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
-        android:text="22/22/2022"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -220,7 +216,6 @@
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
-        android:text="22/22/2022"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -268,7 +263,6 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/faleh"
                 android:textColor="#689F38"
                 android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -284,7 +278,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="28dp"
-                android:text="@string/phone"
                 android:textColor="#2196F3"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -340,7 +333,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

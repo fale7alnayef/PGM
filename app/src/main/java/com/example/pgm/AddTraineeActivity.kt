@@ -4,13 +4,19 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
+import org.json.JSONException
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -81,8 +87,45 @@ class AddTraineeActivity : AppCompatActivity() {
         height = findViewById(R.id.heightTraineeEditText)
         heightContainer = findViewById(R.id.heightTraineeContainer)
 
+        val queue = Volley.newRequestQueue(applicationContext)
+        val url = "http://${Data.url}:8000/api/admin/create_user"
+        val Token = "Bearer " + Data.Token
+
         submit.setOnClickListener {
-            submitForm()
+            val jsonBody = JSONObject()
+            try {
+                jsonBody.put("email", email.text.toString())
+                jsonBody.put("password", password.text.toString())
+                jsonBody.put("phone_number", number.text.toString())
+                jsonBody.put("birthday", birthday.text.toString())
+                jsonBody.put("height", height.text.toString())
+                jsonBody.put("weight", weight.text.toString())
+                jsonBody.put("first_name", firstName.text.toString())
+                jsonBody.put("last_name", lastName.text.toString())
+
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val jsonObjectRequest = object : JsonObjectRequest(
+                Method.POST,
+                url,
+                jsonBody,
+                {
+                    Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
+                    submitForm()
+                },
+                {
+                    Log.e("error", Token)
+                }
+            ) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers.put("Authorization", Token)
+                    return headers
+                }
+            }
+            queue.add(jsonObjectRequest)
         }
 
 
@@ -95,13 +138,13 @@ class AddTraineeActivity : AppCompatActivity() {
 
     }
 
-    private fun initDatePicker(){
+    private fun initDatePicker() {
         calendar = Calendar.getInstance()
 
-        val datePicker = DatePickerDialog.OnDateSetListener{ _, year, month, dayOfMonth ->
-            calendar.set(Calendar.YEAR,year)
-            calendar.set(Calendar.MONTH,month)
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             updateLapel(calendar)
 
         }
@@ -118,7 +161,9 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun updateLapel(calendar: Calendar) {
 
-        val sdf = SimpleDateFormat("dd-MM-yyyy",Locale.UK)
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.UK)
+
         birthday.setText(sdf.format(calendar.time))
     }
 
@@ -128,29 +173,27 @@ class AddTraineeActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
     }
 
-    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            pickImage.setImageURI(data?.data)
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                pickImage.setImageURI(data?.data)
+            }
+
         }
 
-    }
-
-    private fun emailFocusListener(){
+    private fun emailFocusListener() {
         email.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 emailContainer.error = validEmail()
             }
         }
     }
 
 
-
     private fun validEmail(): String? {
         val emailText = email.text.toString()
-        if(!Patterns.EMAIL_ADDRESS.matcher(emailText).matches())
-        {
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
             return "Invalid Email Address"
         }
         return null
@@ -158,8 +201,7 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun passwordFocusListener() {
         password.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 passwordContainer.error = validPassword()
             }
         }
@@ -167,16 +209,13 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun validPassword(): String? {
         val passwordText = password.text.toString()
-        if(passwordText.length < 8)
-        {
+        if (passwordText.length < 8) {
             return "Minimum 8 Character Password"
         }
-        if(!passwordText.matches(".*[A-Z].*".toRegex()))
-        {
+        if (!passwordText.matches(".*[A-Z].*".toRegex())) {
             return "Must Contain 1 Upper-case Character"
         }
-        if(!passwordText.matches(".*[a-z].*".toRegex()))
-        {
+        if (!passwordText.matches(".*[a-z].*".toRegex())) {
             return "Must Contain 1 Lower-case Character"
         }
         return null
@@ -184,8 +223,7 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun confirmPasswordFocusListener() {
         confirmPassword.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 confirmPasswordContainer.error = validconfirmPassword()
             }
         }
@@ -194,22 +232,19 @@ class AddTraineeActivity : AppCompatActivity() {
     private fun validconfirmPassword(): String? {
         val confirmPasswordText = password.text.toString()
 
-        if(confirmPasswordText.isEmpty())
-        {
+        if (confirmPasswordText.isEmpty()) {
 
             return "password is not matching"
-        }
-        else if(confirmPasswordText != password.text.toString())
-        {
+        } else if (confirmPasswordText != password.text.toString()) {
             return "password is not matching"
 
         }
         return null
     }
-    private fun birthdayFocusListener(){
+
+    private fun birthdayFocusListener() {
         birthday.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 birthdayContainer.error = validbirthday()
             }
         }
@@ -217,17 +252,15 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun validbirthday(): String? {
         val birthdayText = birthday.text.toString()
-        if(birthdayText.isEmpty())
-        {
+        if (birthdayText.isEmpty()) {
             return "enter End Birthday"
         }
         return null
     }
 
-    private fun numberFocusListener(){
+    private fun numberFocusListener() {
         number.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 numberContainer.error = validnumber()
             }
         }
@@ -235,21 +268,18 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun validnumber(): String? {
         val numberText = number.text.toString()
-        if(numberText.isEmpty())
-        {
+        if (numberText.isEmpty()) {
             return "enter Number"
-        }
-        else if(!numberText.matches(".*[1-9].*".toRegex()))
-        {
+        } else if (!numberText.matches(".*[1-9].*".toRegex())) {
             return "Only Numbers"
         }
 
         return null
     }
-    private fun heightFocusListener(){
+
+    private fun heightFocusListener() {
         height.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 heightContainer.error = validheight()
             }
         }
@@ -257,21 +287,18 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun validheight(): String? {
         val heightText = height.text.toString()
-        if(heightText.isEmpty())
-        {
+        if (heightText.isEmpty()) {
             return "enter Height"
-        }
-        else if(!heightText.matches(".*[1-9].*".toRegex()))
-        {
+        } else if (!heightText.matches(".*[1-9].*".toRegex())) {
             return "Only Numbers"
         }
 
         return null
     }
-    private fun weightFocusListener(){
+
+    private fun weightFocusListener() {
         weight.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 weightContainer.error = validweight()
             }
         }
@@ -279,30 +306,26 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun validweight(): String? {
         val weightText = weight.text.toString()
-        if(weightText.isEmpty())
-        {
+        if (weightText.isEmpty()) {
             return "enter Weight"
-        }
-        else if(!weightText.matches(".*[1-9].*".toRegex()))
-        {
+        } else if (!weightText.matches(".*[1-9].*".toRegex())) {
             return "Only Numbers"
         }
 
         return null
     }
 
-    private fun firstNameFocusListener(){
+    private fun firstNameFocusListener() {
         firstName.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 firstNameContainer.error = validFirstName()
             }
         }
     }
-    private fun lastNameFocusListener(){
+
+    private fun lastNameFocusListener() {
         lastName.setOnFocusChangeListener { _, focused ->
-            if(!focused)
-            {
+            if (!focused) {
                 lastNameContainer.error = validLastName()
             }
         }
@@ -310,31 +333,25 @@ class AddTraineeActivity : AppCompatActivity() {
 
     private fun validFirstName(): String? {
         val firstNameText = firstName.text.toString()
-        if(firstNameText.isEmpty())
-        {
+        if (firstNameText.isEmpty()) {
             return "enter First Name"
-        }
-        else if((!firstNameText.matches(".*[A-Z].*".toRegex())) && (!firstNameText.matches(".*[a-z].*".toRegex())))
-        {
-            return "Only chars"
-        }
-        return null
-    }
-    private fun validLastName(): String? {
-        val lastNameText = lastName.text.toString()
-        if(lastNameText.isEmpty())
-        {
-            return "enter Last Name"
-        }
-        else if((!lastNameText.matches(".*[A-Z].*".toRegex())) && (!lastNameText.matches(".*[a-z].*".toRegex())))
-        {
+        } else if ((!firstNameText.matches(".*[A-Z].*".toRegex())) && (!firstNameText.matches(".*[a-z].*".toRegex()))) {
             return "Only chars"
         }
         return null
     }
 
-    private fun submitForm()
-    {
+    private fun validLastName(): String? {
+        val lastNameText = lastName.text.toString()
+        if (lastNameText.isEmpty()) {
+            return "enter Last Name"
+        } else if ((!lastNameText.matches(".*[A-Z].*".toRegex())) && (!lastNameText.matches(".*[a-z].*".toRegex()))) {
+            return "Only chars"
+        }
+        return null
+    }
+
+    private fun submitForm() {
         emailContainer.error = validEmail()
         passwordContainer.error = validPassword()
         confirmPasswordContainer.error = validconfirmPassword()
@@ -355,14 +372,13 @@ class AddTraineeActivity : AppCompatActivity() {
         val validweight = weightContainer.error == null
         val validheight = heightContainer.error == null
 
-        if (validEmail && validPassword && validconfirmPassword && validnumber && validbirthday && validFirstName && validLastName && validweight && validheight ) {
+        if (validEmail && validPassword && validconfirmPassword && validnumber && validbirthday && validFirstName && validLastName && validweight && validheight) {
             finish()
         }
 
     }
 
-    private fun validate()
-    {
+    private fun validate() {
 
         emailFocusListener()
         passwordFocusListener()

@@ -15,6 +15,7 @@ import com.balysv.materialripple.MaterialRippleLayout
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ShowTraineeInformation : AppCompatActivity() {
+    lateinit var id: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_trainee_information)
@@ -30,6 +31,8 @@ class ShowTraineeInformation : AppCompatActivity() {
         val subs = findViewById<MaterialRippleLayout>(R.id.subs)
         val newSubs = findViewById<MaterialRippleLayout>(R.id.newSubscription)
 
+
+        id = intent.extras?.get("id").toString()
         name.text = intent.extras?.get("name").toString()
         phone.text = intent.extras?.get("phone").toString()
         age.text = intent.extras?.get("age").toString()
@@ -69,18 +72,16 @@ class ShowTraineeInformation : AppCompatActivity() {
     }
 
 
-
-
-    private  fun popUpMenu(view : View){
+    private fun popUpMenu(view: View) {
         val popup = PopupMenu(this, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.smenu, popup.menu)
         popup.setOnMenuItemClickListener { menuItem ->
-            when(menuItem.itemId){
-                R.id.edit-> {
+            when (menuItem.itemId) {
+                R.id.edit -> {
                     navigateToUpdateTrainee()
                 }
-                R.id.remove-> {
+                R.id.remove -> {
                     showDefaultDialog(this)
                 }
             }
@@ -88,6 +89,7 @@ class ShowTraineeInformation : AppCompatActivity() {
         }
         popup.show()
     }
+
     private fun showDefaultDialog(context: Context) {
         val alertDialog = AlertDialog.Builder(context)
 
@@ -105,14 +107,22 @@ class ShowTraineeInformation : AppCompatActivity() {
     }
 
     private fun navigateToUpdateTrainee() {
-        startActivity(Intent(applicationContext, UpdateTraineeActivity::class.java))
+        val i = Intent(applicationContext, UpdateTraineeActivity::class.java)
+        i.putExtra("id",id)
+        startActivity(i)
 
     }
+
     private fun navigateToNewSubs() {
-        startActivity(Intent(applicationContext, NewSubscriptionActivity::class.java))
+        val i = Intent(applicationContext, NewSubscriptionActivity::class.java)
+        i.putExtra("userID", id)
+        startActivity(i)
 
     }
+
     private fun navigateToSubs() {
-        startActivity(Intent(applicationContext, SubscriptionActivity::class.java))
+        val i = Intent(applicationContext, SubscriptionActivity::class.java)
+        i.putExtra("id", id)
+        startActivity(i)
     }
-    }
+}

@@ -50,7 +50,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="200dp"
         android:gravity="center"
-        android:text="@string/payment"
+        android:text="@string/price"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="italic" />
@@ -210,12 +210,29 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="253dp"
+        android:layout_marginBottom="60dp"
         android:text="@string/pay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sPayments"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="245dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="60dp"
+        android:text="@string/payment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
 </RelativeLayout>

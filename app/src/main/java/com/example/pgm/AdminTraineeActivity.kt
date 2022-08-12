@@ -46,7 +46,7 @@ class AdminTraineeActivity : AppCompatActivity() {
 
         trainee = ArrayList()
         tempTrainee = ArrayList()
-        val Token = "Bearer " + Data.Token
+        val token = "Bearer " + Data.Token
         val queue = Volley.newRequestQueue(this)
         val url = "http://${Data.url}:8000/api/admin/all_users"
 
@@ -62,16 +62,16 @@ class AdminTraineeActivity : AppCompatActivity() {
 
                     val birthday = traineearray.getJSONObject(i).getString("birthday")
                     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
                     val date = LocalDate.parse(birthday, formatter)
                     val age = (LocalDate.now().compareTo(date)).toString()
+
 
                     val height = traineearray.getJSONObject(i).getString("height")
                     val weight = traineearray.getJSONObject(i).getString("weight")
                     val phone = traineearray.getJSONObject(i).getString("phone_number")
                     val imgURL = traineearray.getJSONObject(i).getString("img_url")
-
-
-
+                    val id = traineearray.getJSONObject(i).getString("id")
 
                     trainee.add(
                         TraineeData(
@@ -81,7 +81,8 @@ class AdminTraineeActivity : AppCompatActivity() {
                             age,
                             height,
                             weight,
-                            phone
+                            phone,
+                            id
                         )
                     )
 
@@ -97,29 +98,11 @@ class AdminTraineeActivity : AppCompatActivity() {
         }) {
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()
-                headers.put("Authorization", Token)
+                headers.put("Authorization", token)
                 return headers
             }
         }
         queue.add(jsonObject)
-
-//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-//        trainee.add(TraineeData("ghassan","kl", R.drawable.download1,"22","1.90","70","0992347584"))
-//        trainee.add(TraineeData("ameer","kjhkhjl", R.drawable.download2,"24","1.30","120","0992334548"))
-//        trainee.add(TraineeData("ahmad","ds", R.drawable.download3,"22","2.10","78","09965467584"))
-//        trainee.add(TraineeData("saif","fssfaf", R.drawable.download4,"22","1.50","60","0997543904"))
-
 
         tempTrainee.addAll(trainee)
 
