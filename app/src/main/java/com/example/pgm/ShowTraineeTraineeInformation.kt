@@ -1,11 +1,17 @@
 package com.example.pgm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.balysv.materialripple.MaterialRippleLayout
 import de.hdodenhof.circleimageview.CircleImageView
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class ShowTraineeTraineeInformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,11 +26,47 @@ class ShowTraineeTraineeInformation : AppCompatActivity() {
         val back = findViewById<MaterialRippleLayout>(R.id.traineeBackT)
         val subs = findViewById<MaterialRippleLayout>(R.id.treaineeSubsT)
 
-        name.text = intent.extras?.get("name").toString()
-        phone.text = intent.extras?.get("phone").toString()
-        age.text = intent.extras?.get("age").toString()
-        height.text = intent.extras?.get("height").toString()
-        weight.text = intent.extras?.get("weight").toString()
+
+        val queue = Volley.newRequestQueue(applicationContext)
+        val url = "http://${Data.url}:8000/api/user/show_data"
+        val token = "Bearer " + Data.Token
+        val dataRequest = @RequiresApi(Build.VERSION_CODES.O)
+        object : JsonObjectRequest(
+            Method.POST,
+            url,
+            null,
+            {
+                val user = it.getJSONObject("user")
+                val firstName = user.getString("first_name")
+                val lastName = user.getString("last_name")
+                val heightt = user.getString("height")
+                val weightt = user.getString("weight")
+                val phoneNumber = user.getString("phone_number")
+                val birthday = user.getString("birthday")
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+                val date = LocalDate.parse(birthday, formatter)
+                val agee = (LocalDate.now().compareTo(date)).toString()
+
+                name.text = "$firstName $lastName"
+                height.text = heightt
+                weight.text = weightt
+                phone.text = phoneNumber
+                age.text = agee
+
+            },
+            {
+
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Authorization"] = token
+                return headers
+            }
+        }
+        queue.add(dataRequest)
+
 
         back.setOnClickListener {
 
