@@ -24,6 +24,7 @@ class SubscriptionActivity : AppCompatActivity() {
     private lateinit var fullyPaid: TextView
     private lateinit var coach: TextView
     private lateinit var amountRequired: TextView
+
     private lateinit var pay: MaterialButton
     private lateinit var payments: MaterialButton
     lateinit var idd:String
@@ -55,6 +56,7 @@ class SubscriptionActivity : AppCompatActivity() {
                 endDate.text = it.getString("ends_at")
                 val private = it.getString("private")
                 val fulPaid = it.getString("fully_paid")
+                amountRequired.text = it.getString("required_payment") + " SYP"
                 subID=it.getString("id")
 
                 if (private.equals("0")) {

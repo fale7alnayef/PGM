@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 
 class TraineeAdapter(private val context: Context, private val coaches: ArrayList<TraineeData>) :
@@ -31,7 +32,14 @@ class TraineeAdapter(private val context: Context, private val coaches: ArrayLis
         val data = coaches[position]
         holder.my_name.text = data.name
         holder.my_type.text = data.type
-        holder.my_image.setImageResource(data.image)
+        holder.my_image.setImageResource(R.drawable.logo)
+
+        if (data.image != "null") {
+            val imgurll = data.image.substringAfter("images")
+            Glide.with(context).load("http://${Data.url}:8000/images${imgurll}")
+                .into(holder.my_image)
+        }
+
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(
                 holder.itemView.context,
@@ -40,15 +48,15 @@ class TraineeAdapter(private val context: Context, private val coaches: ArrayLis
         )
         holder.itemView.setOnClickListener {
 
-            val i = Intent(context,ShowTraineeInformation::class.java)
-            i.putExtra("name",coaches[position].name)
-            i.putExtra("type",coaches[position].type)
-            i.putExtra("image",coaches[position].image)
-            i.putExtra("phone",coaches[position].phone)
-            i.putExtra("age",coaches[position].age)
-            i.putExtra("height",coaches[position].height)
-            i.putExtra("weight",coaches[position].weight)
-            i.putExtra("id",coaches[position].id)
+            val i = Intent(context, ShowTraineeInformation::class.java)
+            i.putExtra("name", coaches[position].name)
+            i.putExtra("type", coaches[position].type)
+            i.putExtra("image", coaches[position].image)
+            i.putExtra("phone", coaches[position].phone)
+            i.putExtra("age", coaches[position].age)
+            i.putExtra("height", coaches[position].height)
+            i.putExtra("weight", coaches[position].weight)
+            i.putExtra("id", coaches[position].id)
 
             context.startActivity(i)
 

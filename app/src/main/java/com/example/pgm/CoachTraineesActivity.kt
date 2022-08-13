@@ -35,6 +35,7 @@ class CoachTraineesActivity : AppCompatActivity() {
                     val lastName = userarray.getJSONObject(i).getString("last_name")
                     val private = userarray.getJSONObject(i).getString("private")
                     val id = userarray.getJSONObject(i).getString("id")
+                    val imageURL = userarray.getJSONObject(i).getString("img_url")
 
                     if (private.equals("0")) {
                         priv = "Not Private"
@@ -45,7 +46,7 @@ class CoachTraineesActivity : AppCompatActivity() {
                         TraineeData(
                             "$firstName $lastName",
                             priv,
-                            R.drawable.download1,
+                            imageURL,
                             "22",
                             "height",
                             "weight",
