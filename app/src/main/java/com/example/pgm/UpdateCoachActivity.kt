@@ -2,6 +2,8 @@ package com.example.pgm
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -15,10 +17,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONObject
-import java.util.*
+import java.io.ByteArrayOutputStream
 
 class UpdateCoachActivity : AppCompatActivity() {
-    private lateinit var calendar: Calendar
     private lateinit var pickImage: CircleImageView
 
     private lateinit var submit: Button
@@ -33,7 +34,6 @@ class UpdateCoachActivity : AppCompatActivity() {
     private lateinit var email: TextInputEditText
     private lateinit var password: TextInputEditText
     private lateinit var confirmPassword: TextInputEditText
-    private lateinit var birthday: TextInputEditText
     private lateinit var number: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +63,50 @@ class UpdateCoachActivity : AppCompatActivity() {
 
 
         submit.setOnClickListener {
+
+            val bitmap = (pickImage.drawable as BitmapDrawable).bitmap
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream)
+            val image = stream.toByteArray()
+
             val url = "http://${Data.url}:8000/api/admin/edit_coach/$d"
+
+            val addNewCoachRequest = object : VolleyMultipartRequest(Method.POST, url, {
+                Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
+
+            }, {
+                if (it.networkResponse.statusCode == 401) {
+                    Toast.makeText(applicationContext, "validation error", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }) {
+
+                override fun getByteData(): Map<String, DataPart>? {
+                    val photo = HashMap<String, DataPart>()
+                    photo["img_url"] = DataPart("coach", image)
+                    return photo
+                }
+
+                override fun getParams(): MutableMap<String, String>? {
+                    val jsonBody = HashMap<String, String>()
+                    if (email.text?.isNotEmpty() == true) {
+                        jsonBody.put("email", email.text.toString())
+                    }
+
+                    if (password.text?.isNotEmpty() == true) {
+                        jsonBody.put("password", password.text.toString())
+                    }
+
+                    if (password.text?.isNotEmpty() == true) {
+                        jsonBody.put("phone_number", number.text.toString())
+                    }
+
+                    return jsonBody
+                }
+
+            }
+
+            queue.add(addNewCoachRequest)
 
             val jsonBody = JSONObject()
 
@@ -86,7 +129,6 @@ class UpdateCoachActivity : AppCompatActivity() {
             }
 
 
-
             val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -106,8 +148,6 @@ class UpdateCoachActivity : AppCompatActivity() {
         pickImage.setOnClickListener {
             pickImageFromGallery()
         }
-
-
 
 
     }

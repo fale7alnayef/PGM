@@ -89,25 +89,7 @@ class AddCoachActivity : AppCompatActivity() {
 
 
 
-            val jsonObjectRequest = object : JsonObjectRequest(
-                Method.POST, "http://${Data.url}:8000/api/admin/create_coach", null,
-                {
-                    Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
-                    submitForm()
-                }, {
-                    if (it.networkResponse.statusCode == 401) {
-                        Toast.makeText(applicationContext, "validation error", Toast.LENGTH_SHORT)
-                            .show()
-                    }
 
-                }) {
-                override fun getHeaders(): MutableMap<String, String> {
-                    val headers = HashMap<String, String>()
-                    headers["Authorization"] = token
-                    return headers
-
-                }
-            }
 
             val addNewCoachRequest = object : VolleyMultipartRequest(Method.POST,"http://${Data.url}:8000/api/admin/create_coach",{
                 Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
