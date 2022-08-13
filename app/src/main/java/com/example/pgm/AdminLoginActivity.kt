@@ -1,5 +1,6 @@
 package com.example.pgm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -27,7 +28,10 @@ class AdminLoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_login)
 
-
+        if(checkData())
+        {
+            navigateToAdmin()
+        }
         submit = findViewById(R.id.adminLoginButton)
 
 
@@ -58,7 +62,6 @@ class AdminLoginActivity : AppCompatActivity() {
                     Data.gymName =
                         it.getJSONObject("data").getJSONObject("admin").getJSONObject("gym")
                             .getString("title")
-
                     try {
                         Data.img =
                             it.getJSONObject("data").getJSONObject("admin").getJSONObject("gym")
@@ -66,6 +69,7 @@ class AdminLoginActivity : AppCompatActivity() {
                     } catch (e: Exception) {
 
                     }
+
 
                     submitForm()
                 }, {
@@ -96,10 +100,7 @@ class AdminLoginActivity : AppCompatActivity() {
     }
 
 
-    private fun navigateToAdmin() {
-        startActivity(Intent(applicationContext, AdminActivity::class.java))
 
-    }
 
     private fun emailFocusListener() {
         email.setOnFocusChangeListener { _, focused ->
@@ -143,6 +144,7 @@ class AdminLoginActivity : AppCompatActivity() {
         val validPassword = passwordContainer.error == null
 
         if (validEmail && validPassword) {
+
             navigateToAdmin()
             finish()
         }
@@ -151,11 +153,41 @@ class AdminLoginActivity : AppCompatActivity() {
 
 
     private fun validate() {
+        saveData(Data.Token, true)
 
         emailFocusListener()
         passwordFocusListener()
 
     }
+
+    private fun navigateToAdmin() {
+
+        startActivity(Intent(applicationContext, AdminActivity::class.java))
+
+    }
+    private fun saveData(token: String, isAdmin: Boolean) {
+
+       val sP = getSharedPreferences("data", Context.MODE_PRIVATE)
+        val editor = sP.edit()
+        editor.putString("adminToken",token)
+        editor.putBoolean("isAdmin",isAdmin)
+        editor.apply()
+
+
+    }
+
+    private fun checkData(): Boolean {
+
+        val sP = getSharedPreferences("data", Context.MODE_PRIVATE)
+
+        if((sP.getBoolean("isAdmin",false)) && (sP.getString("adminToken", null)!=null) )
+        {
+            return true
+        }
+
+        return false
+    }
+
 
 
 }

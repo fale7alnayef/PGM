@@ -1,5 +1,6 @@
 package com.example.pgm
 
+import android.content.Context
 import android.content.Intent
 import android.icu.number.NumberFormatter.with
 import android.icu.number.NumberRangeFormatter.with
@@ -74,6 +75,15 @@ class AdminActivity : AppCompatActivity() {
 
     private fun navigateToContract() {
         startActivity(Intent(applicationContext, ViewContractsActivity::class.java))
+
+    }
+    private fun deleteData() {
+
+        getSharedPreferences("data", Context.MODE_PRIVATE).edit().apply {
+            remove("adminToken")
+            remove("isAdmin")
+            apply()
+        }
 
     }
 
