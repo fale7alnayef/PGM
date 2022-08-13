@@ -15,6 +15,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.balysv.materialripple.MaterialRippleLayout
+import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
 
@@ -23,7 +24,7 @@ class ShowCoachInformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_coach_information)
-        val specialty=findViewById<TextView>(R.id.specialty)
+        val specialty = findViewById<TextView>(R.id.specialty)
         val menu = findViewById<MaterialRippleLayout>(R.id.coachMenu)
         val trainees = findViewById<MaterialRippleLayout>(R.id.trainees)
         val startDate = findViewById<TextView>(R.id.contractStartDate)
@@ -35,12 +36,20 @@ class ShowCoachInformation : AppCompatActivity() {
         val phone = findViewById<TextView>(R.id.phone)
         val salary = findViewById<TextView>(R.id.salary)
 
+        var img = intent.extras?.get("image").toString()
+
+        if (img != "null") {
+            val imgurll = img.substringAfter("images")
+            Glide.with(applicationContext).load("http://${Data.url}:8000/images${imgurll}")
+                .into(image)
+        } else {
+            image.setImageResource(R.drawable.logo)
+        }
 
         name.text = intent.extras?.get("name").toString()
         phone.text = intent.extras?.get("phone").toString()
         salary.text = intent.extras?.get("salary").toString()
         specialty.text = intent.extras?.get("specialty").toString()
-        image.setImageResource(intent.extras?.get("image").toString().toInt())
         d = intent.extras?.get("id").toString()
 
         val queue = Volley.newRequestQueue(applicationContext)
@@ -52,7 +61,7 @@ class ShowCoachInformation : AppCompatActivity() {
                     salary.text = it.getJSONObject("coach").getString("salary")
                     startDate.text = it.getJSONObject("coach").getString("starts_at")
                     endDate.text = it.getJSONObject("coach").getString("ends_at")
-                    specialty.text=it.getJSONObject("coach").getString("speciality")
+                    specialty.text = it.getJSONObject("coach").getString("speciality")
 
                 } catch (e: Exception) {
                     Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
@@ -97,8 +106,8 @@ class ShowCoachInformation : AppCompatActivity() {
     }
 
     private fun navigateToUpdateCoach() {
-        val i=Intent(applicationContext, UpdateCoachActivity::class.java)
-        i.putExtra("idd",d)
+        val i = Intent(applicationContext, UpdateCoachActivity::class.java)
+        i.putExtra("idd", d)
         startActivity(i)
 
     }

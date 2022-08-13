@@ -24,6 +24,7 @@ class AdminCoachActivity : AppCompatActivity() {
     private lateinit var coach: ArrayList<CoachData>
     private lateinit var tempCoach: ArrayList<CoachData>
     private var flag: Boolean = false
+
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +38,11 @@ class AdminCoachActivity : AppCompatActivity() {
         setSupportActionBar(toolBar)
 
         coach = ArrayList()
-
+        var salary : String
         val token = "Bearer " + Data.Token
         val queue = Volley.newRequestQueue(this)
         val url = "http://${Data.url}:8000/api/admin/show_all_coaches"
-
+        var image: String
         val jsonObject = object : JsonObjectRequest(Method.POST, url, null, {
             try {
                 val coacharray = it.getJSONArray("coaches")
@@ -53,37 +54,30 @@ class AdminCoachActivity : AppCompatActivity() {
                     val birthday = coacharray.getJSONObject(i).getString("birthday")
                     val id = coacharray.getJSONObject(i).getString("id")
                     val speciality = coacharray.getJSONObject(i).getString("speciality")
-
                     try {
-                        val salary = coacharray.getJSONObject(i).getString("salary")
-                        coach.add(
-                            CoachData(
-                                "$firstName $lastName",
-                                R.drawable.download1,
-                                phoneNum,
-                                salary,
-                                id,
-                                email,
-                                birthday,
-                                speciality
-                            )
-                        )
+                        image = coacharray.getJSONObject(i).getString("img_url")
 
                     } catch (e: Exception) {
-                        coach.add(
-                            CoachData(
-                                "$firstName $lastName",
-                                R.drawable.download1,
-                                phoneNum,
-                                "There is no contract Yet",
-                                id,
-                                email,
-                                birthday,
-                                speciality
-                            )
-                        )
-
+                        image = "null"
                     }
+                    salary = try{
+                        coacharray.getJSONObject(i).getString("salary")
+                    }catch (e:Exception){
+                        "There is no contract yet"
+                    }
+
+                    coach.add(
+                        CoachData(
+                            "$firstName $lastName",
+                            image,
+                            phoneNum,
+                            salary,
+                            id,
+                            email,
+                            birthday,
+                            speciality
+                        )
+                    )
 
                     rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 

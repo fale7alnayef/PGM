@@ -41,7 +41,7 @@ class ChooseCoachActivity : AppCompatActivity() {
                     coach.add(
                         CoachData(
                             "$firstName $lastName,",
-                            R.drawable.download1,
+                            "null",
                             phoneNumber,
                             "",
                             id,
