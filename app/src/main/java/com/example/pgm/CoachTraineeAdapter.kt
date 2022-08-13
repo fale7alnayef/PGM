@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 
 class CoachTraineeAdapter(
@@ -34,6 +35,11 @@ class CoachTraineeAdapter(
         holder.my_type.text = data.type
         holder.my_image.setImageResource(R.drawable.logo)
 
+        if (data.image != "null") {
+            val imgurll = data.image.substringAfter("images")
+            Glide.with(context).load("http://${Data.url}:8000/images${imgurll}")
+                .into(holder.my_image)
+        }
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(
                 holder.itemView.context,
