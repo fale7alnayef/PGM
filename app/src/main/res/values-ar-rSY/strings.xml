@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">برو جيم منجر</string>
+    <string name="todo">تودو</string>
+    <string name="faleh">فالح</string>
+    <string name="progym">برو جيم</string>
+    <string name="coaches">االمدربين</string>
+    <string name="trainees">المتدربين</string>
+    <string name="subscription">الإشتراك</string>
+    <string name="admin">أدمن</string>
+    <string name="coach">مدرب</string>
+    <string name="trainee">متدرب</string>
+    <string name="name">اسم</string>
+    <string name="type">نوع</string>
+    <string name="number">الرقم</string>
+    <string name="gym_name">اسم النادي</string>
+    <string name="salary">الراتب</string>
+    <string name="contract">العقد</string>
+    <string name="start_date">تاريخ البدء</string>
+    <string name="end_date">تاريخ الإنتهاء</string>
+    <string name="age">العمر</string>
+    <string name="weight">الوزن</string>
+    <string name="height">الطول</string>
+    <string name="required">مطلوب</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="price">السعر</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="password">كلمة السر</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="submit">إرسال</string>
+    <string name="email_address">البريد الإلكتروني</string>
+    <string name="last_name">الإسم الأخير</string>
+    <string name="birth_day">تارسخ الميلاد</string>
+    <string name="confirm_password"> تأكيد كلمة السر  </string>
+    <string name="first_name">اللإسم الأول</string>
+    <string name="sign_in_as">  تسجيل دخول بإسم  </string>
+    <string name="new_contract">عقد جديد</string>
+    <string name="edit">تعديل</string>
+    <string name="delete">حذف</string>
+    <string name="_phone">هاتف</string>
+    <string name="qualifications">المؤهلات</string>
+    <string name="remove">إزالة</string>
+    <string name="new_subscription">إشتراك جديد</string>
+    <string name="paid_amount">المبلغ المدفوع</string>
+    <string name="paying">الدفع</string>
+    <string name="_private">خاص</string>
+    <string name="sat">السبت</string>
+    <string name="sun">الأحد</string>
+    <string name="mon">الإثنين</string>
+    <string name="tue">الثلاثاء</string>
+    <string name="wed">الإربعاء</string>
+    <string name="thu">الخميس</string>
+    <string name="payment">المدفوعات</string>
+    <string name="yes">نعم</string>
+    <string name="fully_paid">مدفوع بالكامل</string>
+    <string name="no">لا</string>
+    <string name="pay">دفع</string>
+    <string name="viewpager">صفحة العرض</string>
+    <string name="specialty">الإختصاص</string>
+    <string name="renew">تجديد</string>
+    <string name="exercises">تمارين</string>
+    <string name="_email">البريد الإلكتروني</string>
+    <string name="title">العنوان</string>
+    <string name="description">الوصف</string>
+    <string name="amount_required">المبلغ المطلوب</string>
+    <string name="date">تاريخ</string>
+    <string name="saturday">السبت</string>
+    <string name="sunday">الآحد</string>
+    <string name="monday">الإثنين</string>
+    <string name="tuesday">الثلاثاء</string>
+    <string name="wednesday">الإربعاء</string>
+    <string name="thursday">الخميس</string>
+
+    >
+
+</resources>

@@ -1,5 +1,6 @@
 package com.example.pgm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -148,5 +149,36 @@ class CoachLoginActivity : AppCompatActivity() {
 
     }
 
+    private fun saveData(token: String, isCoach: Boolean) {
 
+        val sP = getSharedPreferences("data", Context.MODE_PRIVATE)
+        val editor = sP.edit()
+        editor.putString("coachToken",token)
+        editor.putBoolean("isCoach",isCoach)
+        editor.apply()
+
+
+    }
+
+    private fun checkData(): Boolean {
+
+        val sP = getSharedPreferences("data", Context.MODE_PRIVATE)
+
+        if((sP.getBoolean("isCoach",false)) && (sP.getString("coachToken", null)!=null) )
+        {
+            return true
+        }
+
+        return false
+    }
+
+    private fun deleteData() {
+
+        getSharedPreferences("data", Context.MODE_PRIVATE).edit().apply {
+            remove("coachToken")
+            remove("isCoach")
+            apply()
+        }
+
+    }
 }

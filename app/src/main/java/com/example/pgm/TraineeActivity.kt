@@ -13,8 +13,9 @@ class TraineeActivity : AppCompatActivity() {
         val trainee = findViewById<MaterialRippleLayout>(R.id.traineeT)
         val exercises = findViewById<MaterialRippleLayout>(R.id.ExercisesT)
         val traineeName = findViewById<TextView>(R.id.nameT)
+        val s = findViewById<TextView>(R.id.situation)
 
-        traineeName.text = Data.name + " " + Data.last_name
+        traineeName.text = Data.name
 
         trainee.setOnClickListener {
             navigateToTraineeInformation()
@@ -22,6 +23,9 @@ class TraineeActivity : AppCompatActivity() {
 
         exercises.setOnClickListener {
             navigateToExercises()
+        }
+        s.setOnClickListener {
+            navigateToDays()
         }
     }
 
@@ -31,6 +35,10 @@ class TraineeActivity : AppCompatActivity() {
 
     private fun navigateToExercises() {
         startActivity(Intent(applicationContext, TraineeExercisesActivity::class.java))
+
+    }
+    private fun navigateToDays() {
+        startActivity(Intent(applicationContext, DaysActivity::class.java))
 
     }
 
