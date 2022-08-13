@@ -61,14 +61,16 @@ class ShowCoachInformation : AppCompatActivity() {
                     salary.text = it.getJSONObject("coach").getString("salary")
                     startDate.text = it.getJSONObject("coach").getString("starts_at")
                     endDate.text = it.getJSONObject("coach").getString("ends_at")
-                    specialty.text = it.getJSONObject("coach").getString("speciality")
 
                 } catch (e: Exception) {
                     Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
                 }
             },
             {
-
+                if (it.networkResponse.statusCode == 500) {
+                    endDate.text = "no contract yet"
+                    startDate.text = "no contract yet"
+                }
             })
         queue.add(jsonObjectRequest)
 

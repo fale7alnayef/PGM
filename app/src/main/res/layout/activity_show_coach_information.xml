@@ -182,6 +182,7 @@
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -302,9 +303,9 @@
                     android:id="@+id/menu"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    app:iconTint="@color/gold"
                     android:layout_marginBottom="180dp"
                     android:contentDescription="@string/todo"
+                    app:iconTint="@color/gold"
                     app:srcCompat="@drawable/menu" />
             </com.balysv.materialripple.MaterialRippleLayout>
 
@@ -326,9 +327,9 @@
                     android:id="@+id/arrow_back"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    app:iconTint="@color/gold"
                     android:layout_marginBottom="172dp"
                     android:contentDescription="@string/todo"
+                    app:iconTint="@color/gold"
                     app:srcCompat="@drawable/arrow_back" />
 
             </com.balysv.materialripple.MaterialRippleLayout>

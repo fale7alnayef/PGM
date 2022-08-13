@@ -54,7 +54,7 @@ class CoachAdapter(private val context: Context, private var coaches: ArrayList<
             i.putExtra("image", coaches[position].image)
             i.putExtra("phone", coaches[position].phone)
             i.putExtra("salary", coaches[position].salary)
-            i.putExtra("speciality", coaches[position].speciality)
+            i.putExtra("specialty", coaches[position].speciality)
             i.putExtra("id", coaches[position].id)
 
             context.startActivity(i)
