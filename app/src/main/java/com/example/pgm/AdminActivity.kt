@@ -1,5 +1,6 @@
 package com.example.pgm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
@@ -58,6 +59,15 @@ class AdminActivity : AppCompatActivity() {
 
     private fun navigateToContract() {
         startActivity(Intent(applicationContext, ViewContractsActivity::class.java))
+
+    }
+    private fun deleteData() {
+
+        getSharedPreferences("data", Context.MODE_PRIVATE).edit().apply {
+            remove("adminToken")
+            remove("isAdmin")
+            apply()
+        }
 
     }
 

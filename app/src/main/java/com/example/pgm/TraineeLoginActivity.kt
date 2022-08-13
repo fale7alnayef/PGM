@@ -1,5 +1,6 @@
 package com.example.pgm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -146,6 +147,39 @@ class TraineeLoginActivity : AppCompatActivity() {
 
         emailFocusListener()
         passwordFocusListener()
+
+    }
+
+    private fun saveData(token: String, isTrainee: Boolean) {
+
+        val sP = getSharedPreferences("data", Context.MODE_PRIVATE)
+        val editor = sP.edit()
+        editor.putString("traineeToken",token)
+        editor.putBoolean("isTrainee",isTrainee)
+        editor.apply()
+
+
+    }
+
+    private fun checkData(): Boolean {
+
+        val sP = getSharedPreferences("data", Context.MODE_PRIVATE)
+
+        if((sP.getBoolean("isTrainee",false)) && (sP.getString("traineeToken", null)!=null) )
+        {
+            return true
+        }
+
+        return false
+    }
+
+    private fun deleteData() {
+
+        getSharedPreferences("data", Context.MODE_PRIVATE).edit().apply {
+            remove("traineeToken")
+            remove("isTrainee")
+            apply()
+        }
 
     }
 }

@@ -15,6 +15,7 @@ class InactiveContractAdapter(private val context: Context, private val contract
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
         var my_value = itemView.findViewById<TextView>(R.id.tx_value) as TextView
+        var my_date = itemView.findViewById<TextView>(R.id.tx_date) as TextView
         var card_View = itemView.findViewById<CardView>(R.id.cardViewooo) as CardView
     }
 
@@ -33,6 +34,7 @@ class InactiveContractAdapter(private val context: Context, private val contract
         val data = contracts[position]
         holder.my_name.text = data.name
         holder.my_value.text = data.value
+        holder.my_date.text = data.endDate
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(
                 holder.itemView.context,

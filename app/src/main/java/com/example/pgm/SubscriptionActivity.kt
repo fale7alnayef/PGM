@@ -63,11 +63,12 @@ class SubscriptionActivity : AppCompatActivity() {
                     privatec.text = "Yes"
                 }
 
-                if (fulPaid.equals("false")) {
-                    fullyPaid.text = "NO"
-                } else {
+                if (!fulPaid.equals("false")) {
                     fullyPaid.text = "YES"
-                    pay.visibility= View.INVISIBLE
+                } else {
+                    fullyPaid.text = "NO"
+                    pay.visibility= View.VISIBLE
+
                 }
 
                 coach.text = it.getString("coach_name")

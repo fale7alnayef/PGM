@@ -93,21 +93,7 @@ class ShowTraineeInformation : AppCompatActivity() {
         popup.show()
     }
 
-    private fun showDefaultDialog(context: Context) {
-        val alertDialog = AlertDialog.Builder(context)
 
-        alertDialog.apply {
-            setTitle("ALERT")
-            setMessage(" DO YOU WANT TO REMOVE THIS COACH")
-            setPositiveButton("CANCEL") { _: DialogInterface?, _: Int ->
-                Toast.makeText(context, "CANCELED", Toast.LENGTH_SHORT).show()
-            }
-            setNegativeButton("REMOVE") { _, _ ->
-                Toast.makeText(context, "REMOVED", Toast.LENGTH_SHORT).show()
-            }
-
-        }.create().show()
-    }
 
     private fun navigateToUpdateTrainee() {
         val i = Intent(applicationContext, UpdateTraineeActivity::class.java)
