@@ -102,16 +102,16 @@ class NewSubscriptionActivity : AppCompatActivity() {
 
 
         sat.setOnClickListener {
-             if (satFlag) {
+            if (satFlag) {
                 sat.setChipBackgroundColorResource(R.color.gray)
-                 satFlag = false
+                satFlag = false
 
             } else {
                 sat.setChipBackgroundColorResource(R.color.gold)
-                 satFlag = true
+                satFlag = true
 
 
-             }
+            }
         }
 
         sun.setOnClickListener {
@@ -122,33 +122,33 @@ class NewSubscriptionActivity : AppCompatActivity() {
 
             } else {
                 sun.setChipBackgroundColorResource(R.color.gold)
-                sunFlag =  true
+                sunFlag = true
 
             }
         }
 
         mon.setOnClickListener {
-             if (monFlag) {
+            if (monFlag) {
 
                 mon.setChipBackgroundColorResource(R.color.gray)
-                 monFlag = false
+                monFlag = false
 
             } else {
                 mon.setChipBackgroundColorResource(R.color.gold)
-                 monFlag =   true
+                monFlag = true
 
             }
         }
 
         tue.setOnClickListener {
-             if (tueFlag) {
+            if (tueFlag) {
 
                 tue.setChipBackgroundColorResource(R.color.gray)
-                 tueFlag =  false
+                tueFlag = false
 
             } else {
                 tue.setChipBackgroundColorResource(R.color.gold)
-                 tueFlag = true
+                tueFlag = true
 
             }
         }
@@ -167,14 +167,14 @@ class NewSubscriptionActivity : AppCompatActivity() {
         }
 
         thu.setOnClickListener {
-             if (thuFlag) {
+            if (thuFlag) {
 
                 thu.setChipBackgroundColorResource(R.color.gray)
-                 thuFlag =  false
+                thuFlag = false
 
             } else {
                 thu.setChipBackgroundColorResource(R.color.gold)
-                 thuFlag = true
+                thuFlag = true
 
             }
         }
@@ -196,7 +196,7 @@ class NewSubscriptionActivity : AppCompatActivity() {
                     jsonBody.put("private", "0")
 
                 }
-                jsonBody.put("paid_amount", paidAmount.text.toString())
+                jsonBody.put("paid_amount", paying.text.toString())
                 jsonBody.put("price", price.text.toString())
 
                 if (!satFlag) {
@@ -336,9 +336,6 @@ class NewSubscriptionActivity : AppCompatActivity() {
         }
         return null
     }
-
-
-
 
 
     private fun payingFocusListener() {

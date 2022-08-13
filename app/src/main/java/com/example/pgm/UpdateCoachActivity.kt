@@ -72,7 +72,7 @@ class UpdateCoachActivity : AppCompatActivity() {
             val url = "http://${Data.url}:8000/api/admin/edit_coach/$d"
 
             val addNewCoachRequest = object : VolleyMultipartRequest(Method.POST, url, {
-                Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "edited", Toast.LENGTH_SHORT).show()
 
             }, {
                 if (it.networkResponse.statusCode == 401) {

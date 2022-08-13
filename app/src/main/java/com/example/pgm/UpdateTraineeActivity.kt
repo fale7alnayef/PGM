@@ -3,6 +3,8 @@ package com.example.pgm
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -16,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 
@@ -82,6 +85,10 @@ class UpdateTraineeActivity : AppCompatActivity() {
 
             val queue = Volley.newRequestQueue(applicationContext)
             val url = "http://${Data.url}:8000/api/admin/edit_user/$id"
+            val bitmap = (pickImage.drawable as BitmapDrawable).bitmap
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream)
+            val image = stream.toByteArray()
 
             val jsonBody = JSONObject()
 
@@ -116,20 +123,53 @@ class UpdateTraineeActivity : AppCompatActivity() {
             }
 
 
-            val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.POST,
+            val editTraineeRequest = object : VolleyMultipartRequest(
+                Method.POST,
                 url,
-                jsonBody,
                 {
                     Toast.makeText(applicationContext, "edited", Toast.LENGTH_SHORT).show()
                     finish()
                 },
                 {
-                    Toast.makeText(applicationContext, it.networkResponse.headers?.get("message").toString(), Toast.LENGTH_SHORT).show()
-
+                    if (it.networkResponse.statusCode == 401) {
+                        Toast.makeText(applicationContext, "validation error", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
-            )
-            queue.add(jsonObjectRequest)
+            ) {
+
+                override fun getByteData(): Map<String, DataPart>? {
+                    val photo = HashMap<String, DataPart>()
+                    photo["img_url"] = DataPart("coach", image)
+                    return photo
+                }
+
+                override fun getParams(): MutableMap<String, String>? {
+                    val jsonBody = HashMap<String, String>()
+                    if (email.text?.isNotEmpty() == true) {
+                        jsonBody.put("email", email.text.toString())
+                    }
+
+                    if (password.text?.isNotEmpty() == true) {
+                        jsonBody.put("password", password.text.toString())
+                    }
+
+                    if (password.text?.isNotEmpty() == true) {
+                        jsonBody.put("phone_number", password.text.toString())
+                    }
+
+                    if (weight.text?.isNotEmpty() == true) {
+                        jsonBody.put("weight", weight.text.toString())
+                    }
+                    if (height.text?.isNotEmpty() == true) {
+                        jsonBody.put("height", height.text.toString())
+                    }
+
+                    return jsonBody
+                }
+
+            }
+            queue.add(editTraineeRequest)
 
         }
 

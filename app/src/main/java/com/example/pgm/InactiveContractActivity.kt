@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pgm.Data.Companion.id
 
 class InactiveContractActivity : AppCompatActivity() {
     private lateinit var startDate: TextView
@@ -12,6 +13,7 @@ class InactiveContractActivity : AppCompatActivity() {
     private lateinit var value: TextView
     private lateinit var name: TextView
     private lateinit var renew: Button
+    private lateinit var id:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +29,15 @@ class InactiveContractActivity : AppCompatActivity() {
         value.text = intent.extras?.get("value").toString()
         startDate.text = intent.extras?.get("startDate").toString()
         endDate.text = intent.extras?.get("endDate").toString()
+        id = intent.extras?.get("id").toString()
         renew.setOnClickListener {
             navigateToNewSubscription()
         }
     }
 
     private fun navigateToNewSubscription() {
-        startActivity(Intent(this, NewContractActivity::class.java))
+        val i = Intent(this, NewContractActivity::class.java)
+        i.putExtra("coach_id",id)
+        startActivity(i)
     }
 }

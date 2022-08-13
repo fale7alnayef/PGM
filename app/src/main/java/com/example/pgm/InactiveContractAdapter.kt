@@ -42,6 +42,7 @@ class InactiveContractAdapter(private val context: Context, private val contract
         holder.itemView.setOnClickListener {
             val i = Intent(context, InactiveContractActivity::class.java)
             i.putExtra("name", contracts[position].name)
+            i.putExtra("id",contracts[position].userID)
             i.putExtra("value", contracts[position].value)
             i.putExtra("startDate", contracts[position].startDate)
             i.putExtra("endDate", contracts[position].endDate)

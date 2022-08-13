@@ -11,11 +11,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 
 class ChooseCoachAdapter(private val context: Context, private var coaches: ArrayList<CoachData>) :
     RecyclerView.Adapter<ChooseCoachAdapter.ViewHolder>() {
-    lateinit var userID:String
+    lateinit var userID: String
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
         var my_type = itemView.findViewById<TextView>(R.id.tx_type) as TextView
@@ -32,7 +34,14 @@ class ChooseCoachAdapter(private val context: Context, private var coaches: Arra
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = coaches[position]
         holder.my_name.text = data.name
-        holder.my_image.setImageResource(data.image.toInt())
+        holder.my_image.setImageResource(R.drawable.logo)
+
+        if (data.image != "null") {
+            val imgurll = data.image.substringAfter("images")
+            Glide.with(context).load("http://${Data.url}:8000/images${imgurll}")
+                .into(holder.my_image)
+        }
+        
         holder.my_type.text = data.speciality
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(
@@ -42,7 +51,7 @@ class ChooseCoachAdapter(private val context: Context, private var coaches: Arra
         )
         holder.itemView.setOnClickListener {
             val i = Intent(context, NewSubscriptionActivity::class.java)
-            i.putExtra("userID",coaches[position].userID)
+            i.putExtra("userID", coaches[position].userID)
             i.putExtra("coachID", coaches[position].id)
             Toast.makeText(context, coaches[position].userID, Toast.LENGTH_SHORT).show()
             context.startActivity(i)

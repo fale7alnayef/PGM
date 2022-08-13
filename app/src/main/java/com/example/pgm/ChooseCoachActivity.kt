@@ -37,11 +37,11 @@ class ChooseCoachActivity : AppCompatActivity() {
                     val id = coachArr.getJSONObject(i).getJSONObject("info").getString("id")
                     val email = coachArr.getJSONObject(i).getJSONObject("info").getString("email")
                     val birthday = coachArr.getJSONObject(i).getJSONObject("info").getString("birthday")
-
+                    val img = coachArr.getJSONObject(i).getJSONObject("info").getString("img_url")
                     coach.add(
                         CoachData(
                             "$firstName $lastName,",
-                            "null",
+                            img,
                             phoneNumber,
                             "",
                             id,

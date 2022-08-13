@@ -72,6 +72,7 @@ class ShowCoachInformation : AppCompatActivity() {
                     startDate.text = "no contract yet"
                 }
             })
+
         queue.add(jsonObjectRequest)
 
         back.setOnClickListener {

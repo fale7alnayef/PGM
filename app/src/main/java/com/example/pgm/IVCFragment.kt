@@ -56,6 +56,7 @@ class IVCFragment : Fragment() {
                         usersarray.getJSONObject(i).getJSONObject("info").getString("first_name")
                     val lastName =
                         usersarray.getJSONObject(i).getJSONObject("info").getString("last_name")
+
                     contractt.add(
                         SCData(
                             "$firstName $lastName",

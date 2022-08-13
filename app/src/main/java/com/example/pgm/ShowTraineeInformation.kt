@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import com.balysv.materialripple.MaterialRippleLayout
+import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
 
@@ -42,7 +43,15 @@ class ShowTraineeInformation : AppCompatActivity() {
         age.text = intent.extras?.get("age").toString()
         height.text = intent.extras?.get("height").toString()
         weight.text = intent.extras?.get("weight").toString()
-        image.setImageResource(intent.extras?.get("image").toString().toInt())
+        var img = intent.extras?.get("image").toString()
+
+        if (img != "null") {
+            val imgurll = img.substringAfter("images")
+            Glide.with(applicationContext).load("http://${Data.url}:8000/images${imgurll}")
+                .into(image)
+        } else {
+            image.setImageResource(R.drawable.logo)
+        }
 
 
 
