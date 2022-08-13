@@ -32,7 +32,7 @@ class NormalPrivateTraineeAdapter(
         val data = coaches[position]
         holder.my_name.text = data.name
         holder.my_type.text = data.type
-        holder.my_image.setImageResource(data.image)
+        holder.my_image.setImageResource(R.drawable.logo)
         holder.card_View.startAnimation(
             AnimationUtils.loadAnimation(
                 holder.itemView.context,

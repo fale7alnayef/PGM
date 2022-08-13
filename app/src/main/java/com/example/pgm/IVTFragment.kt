@@ -64,12 +64,13 @@ class IVTFragment : Fragment() {
                     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
                     val date = LocalDate.parse(birthday, formatter)
                     val age = (LocalDate.now().compareTo(date)).toString()
+                    val imgURL = usersarray.getJSONObject(i).getString("img_url")
 
                     trainee.add(
                         TraineeData(
                             "$firstName $lastName",
                             "blah",
-                            R.drawable.download1,
+                            imgURL,
                             age,
                             height,
                             weight,

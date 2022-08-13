@@ -3,20 +3,21 @@ package com.example.pgm
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -92,6 +93,14 @@ class AddTraineeActivity : AppCompatActivity() {
         val Token = "Bearer " + Data.Token
 
         submit.setOnClickListener {
+
+            val bitmap = (pickImage.drawable as BitmapDrawable).bitmap
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream)
+            val image = stream.toByteArray()
+
+            val token = "Bearer " + Data.Token
+
             val jsonBody = JSONObject()
             try {
                 jsonBody.put("email", email.text.toString())
@@ -107,25 +116,50 @@ class AddTraineeActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
 
-            val jsonObjectRequest = object : JsonObjectRequest(
+            val addNewCoachRequest = object : VolleyMultipartRequest(
                 Method.POST,
                 url,
-                jsonBody,
                 {
                     Toast.makeText(applicationContext, "added", Toast.LENGTH_SHORT).show()
                     submitForm()
                 },
                 {
-                    Log.e("error", Token)
+                    if (it.networkResponse.statusCode == 401) {
+                        Toast.makeText(applicationContext, "validation error", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             ) {
+
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String>()
-                    headers.put("Authorization", Token)
+                    headers["Authorization"] = token
                     return headers
+
                 }
+
+                override fun getByteData(): Map<String, DataPart>? {
+                    val photo = HashMap<String, DataPart>()
+                    photo["img_url"] = DataPart("coach", image)
+                    return photo
+                }
+
+                override fun getParams(): MutableMap<String, String>? {
+                    val jsonBody = HashMap<String, String>()
+                    jsonBody.put("email", email.text.toString())
+                    jsonBody.put("password", password.text.toString())
+                    jsonBody.put("phone_number", number.text.toString())
+                    jsonBody.put("birthday", birthday.text.toString())
+                    jsonBody.put("height", height.text.toString())
+                    jsonBody.put("weight", weight.text.toString())
+                    jsonBody.put("first_name", firstName.text.toString())
+                    jsonBody.put("last_name", lastName.text.toString())
+                    return jsonBody
+                }
+
             }
-            queue.add(jsonObjectRequest)
+
+            queue.add(addNewCoachRequest)
         }
 
 
