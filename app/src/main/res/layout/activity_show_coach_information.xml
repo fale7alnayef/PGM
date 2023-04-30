@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
-    tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp"
+    android:background="@drawable/lines"
     tools:context=".ShowCoachInformation"
-    >
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
     <TextView
         android:id="@+id/textView990"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
         android:layout_marginBottom="420dp"
-        android:layout_marginStart="60dp"
         android:text="@string/specialty"
-        android:textColor="@color/black"
+        android:textColor="@color/gray"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,14 +28,13 @@
         android:id="@+id/specialty"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="370dp"
         android:layout_marginStart="10dp"
+        android:layout_marginBottom="370dp"
         android:background="@drawable/white_border"
         android:maxLines="1"
         android:paddingTop="10dp"
-        android:text="coach"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +49,7 @@
         android:layout_marginEnd="220dp"
         android:layout_marginBottom="150dp"
         android:stateListAnimator="@null"
-        app:cardBackgroundColor="@color/blue"
+        app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,10 +87,10 @@
         android:id="@+id/card0"
         android:layout_width="170dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="150dp"
         android:layout_marginStart="200dp"
+        android:layout_marginBottom="150dp"
         android:stateListAnimator="@null"
-        app:cardBackgroundColor="@color/blue"
+        app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -126,19 +125,17 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <TextView
         android:id="@+id/salary"
         android:layout_width="170dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="370dp"
         android:background="@drawable/white_border"
-        android:layout_marginEnd="10dp"
         android:maxLines="1"
         android:paddingTop="10dp"
-        android:text="@string/Nine_million"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -150,10 +147,10 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="420dp"
         android:layout_marginEnd="60dp"
+        android:layout_marginBottom="420dp"
         android:text="@string/salary"
-        android:textColor="@color/black"
+        android:textColor="@color/gray"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -168,7 +165,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="140dp"
         android:text="@string/start_date"
-        android:textColor="@color/black"
+        android:textColor="@color/gray"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -185,8 +182,8 @@
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
-        android:text="22/22/2022"
-        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,7 +200,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="140dp"
         android:text="@string/end_date"
-        android:textColor="@color/black"
+        android:textColor="@color/gray"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -220,9 +217,8 @@
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
-        android:text="22/22/2022"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -237,7 +233,7 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_marginTop="-70dp"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/black"
         app:cardCornerRadius="75dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -268,8 +264,7 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/faleh"
-                android:textColor="#689F38"
+                android:textColor="@color/gold"
                 android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -284,8 +279,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="28dp"
-                android:text="@string/phone"
-                android:textColor="#2196F3"
+                android:textColor="@color/gold"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -311,11 +305,13 @@
                     android:layout_height="35dp"
                     android:layout_marginBottom="180dp"
                     android:contentDescription="@string/todo"
+                    app:iconTint="@color/gold"
                     app:srcCompat="@drawable/menu" />
             </com.balysv.materialripple.MaterialRippleLayout>
 
             <com.balysv.materialripple.MaterialRippleLayout
                 android:id="@+id/bbbbb"
+
                 style="@style/RippleStyle"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -333,6 +329,7 @@
                     android:layout_height="35dp"
                     android:layout_marginBottom="172dp"
                     android:contentDescription="@string/todo"
+                    app:iconTint="@color/gold"
                     app:srcCompat="@drawable/arrow_back" />
 
             </com.balysv.materialripple.MaterialRippleLayout>
@@ -340,7 +337,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

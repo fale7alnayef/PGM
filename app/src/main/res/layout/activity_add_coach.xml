@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".AddCoachActivity">
 
 
@@ -67,11 +68,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:textIsSelectable="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="190dp"
         android:layout_marginEnd="210dp"
         android:hint="@string/birth_day"
+        android:textIsSelectable="true"
         app:startIconDrawable="@drawable/date"
 
         >
@@ -80,9 +81,9 @@
             android:id="@+id/birthDayCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="date"
             android:clickable="false"
             android:focusable="false"
+            android:inputType="date"
             android:lines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -113,9 +114,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailCoachContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -128,9 +126,8 @@
         android:layout_marginTop="270dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/email_address"
-        app:startIconDrawable="@drawable/email"
         app:endIconMode="clear_text"
-        >
+        app:startIconDrawable="@drawable/email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailCoachEditText"
@@ -142,11 +139,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/passwordCoachContainer"
-        app:startIconDrawable="@drawable/lock"
-        app:endIconMode="password_toggle"
-        android:hint="@string/password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -155,9 +149,13 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="350dp"
         android:layout_marginEnd="20dp"
+        android:hint="@string/password"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/lock"
 
 
         >
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordCoachEditText"
             android:layout_width="match_parent"
@@ -167,20 +165,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/confirmPasswordCoachContainer"
-        app:startIconDrawable="@drawable/lock"
-        app:endIconMode="password_toggle"
-        android:hint="@string/confirm_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+
         android:layout_marginStart="20dp"
         android:layout_marginTop="430dp"
         android:layout_marginEnd="20dp"
+        android:hint="@string/confirm_password"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/lock"
 
 
         >
@@ -195,19 +193,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/specialtyCoachContainer"
-        app:startIconDrawable="@drawable/star"
-        android:hint="@string/specialty"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="510dp"
         android:layout_marginEnd="20dp"
+        android:hint="@string/specialty"
+        app:startIconDrawable="@drawable/star"
 
         >
 
@@ -215,10 +213,11 @@
             android:id="@+id/specialtyCoachEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:lines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/pickCoachImage"
         android:layout_width="120dp"
@@ -229,9 +228,9 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="590dp"
         android:layout_marginEnd="100dp"
-        android:src="@drawable/ic_baseline_coronavirus_24"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
+        android:src="@drawable/camera"
 
         />
 
@@ -245,6 +244,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="720dp"
         android:layout_marginEnd="100dp"
+        android:backgroundTint="@color/black"
         android:maxLines="1"
         android:text="@string/submit"
         android:textSize="28sp"

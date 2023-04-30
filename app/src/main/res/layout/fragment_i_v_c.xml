@@ -6,9 +6,9 @@
     tools:context=".IVCFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inactiveContsRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/inactiveContsRecycler"
 
         />
 

@@ -1,7 +1,6 @@
 package com.example.pgm
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 
-class CoachTraineeAdapter (private val context: Context, private val coaches : ArrayList<TraineeData>): RecyclerView.Adapter<CoachTraineeAdapter.ViewHolder>() {
+class CoachTraineeAdapter(
+    private val context: Context,
+    private val coaches: ArrayList<TraineeData>
+) : RecyclerView.Adapter<CoachTraineeAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var my_name = itemView.findViewById<TextView>(R.id.tx_name) as TextView
         var my_type = itemView.findViewById<TextView>(R.id.tx_type) as TextView
@@ -22,7 +25,7 @@ class CoachTraineeAdapter (private val context: Context, private val coaches : A
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.design,parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.design, parent, false)
         return ViewHolder(v)
     }
 
@@ -30,8 +33,19 @@ class CoachTraineeAdapter (private val context: Context, private val coaches : A
         val data = coaches[position]
         holder.my_name.text = data.name
         holder.my_type.text = data.type
-        holder.my_image.setImageResource(data.image)
-        holder.card_View.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.main_anim))
+        holder.my_image.setImageResource(R.drawable.logo)
+
+        if (data.image != "null") {
+            val imgurll = data.image.substringAfter("images")
+            Glide.with(context).load("http://${Data.url}:8000/images${imgurll}")
+                .into(holder.my_image)
+        }
+        holder.card_View.startAnimation(
+            AnimationUtils.loadAnimation(
+                holder.itemView.context,
+                R.anim.main_anim
+            )
+        )
 
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".NewContractActivity">
 
 
@@ -16,8 +17,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="200dp"
+        android:layout_marginEnd="20dp"
         android:hint="@string/start_date"
         android:textIsSelectable="true"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +46,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="300dp"
+        android:layout_marginEnd="20dp"
         android:hint="@string/end_date"
         android:textIsSelectable="true"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,8 +74,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="400dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/salary"
         android:textIsSelectable="true"
@@ -100,6 +101,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:text="@string/submit"
+        android:backgroundTint="@color/black"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/salaryContractContainer"

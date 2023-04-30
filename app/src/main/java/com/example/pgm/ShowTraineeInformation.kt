@@ -3,18 +3,24 @@ package com.example.pgm
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.MenuInflater
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import com.balysv.materialripple.MaterialRippleLayout
+import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
+
 class ShowTraineeInformation : AppCompatActivity() {
+    lateinit var id: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_trainee_information)
@@ -30,12 +36,22 @@ class ShowTraineeInformation : AppCompatActivity() {
         val subs = findViewById<MaterialRippleLayout>(R.id.subs)
         val newSubs = findViewById<MaterialRippleLayout>(R.id.newSubscription)
 
+
+        id = intent.extras?.get("id").toString()
         name.text = intent.extras?.get("name").toString()
         phone.text = intent.extras?.get("phone").toString()
         age.text = intent.extras?.get("age").toString()
         height.text = intent.extras?.get("height").toString()
         weight.text = intent.extras?.get("weight").toString()
-        image.setImageResource(intent.extras?.get("image").toString().toInt())
+        var img = intent.extras?.get("image").toString()
+
+        if (img != "null") {
+            val imgurll = img.substringAfter("images")
+            Glide.with(applicationContext).load("http://${Data.url}:8000/images${imgurll}")
+                .into(image)
+        } else {
+            image.setImageResource(R.drawable.logo)
+        }
 
 
 
@@ -69,50 +85,42 @@ class ShowTraineeInformation : AppCompatActivity() {
     }
 
 
-
-
-    private  fun popUpMenu(view : View){
+    private fun popUpMenu(view: View) {
         val popup = PopupMenu(this, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.smenu, popup.menu)
+
         popup.setOnMenuItemClickListener { menuItem ->
-            when(menuItem.itemId){
-                R.id.edit-> {
+            when (menuItem.itemId) {
+                R.id.edit -> {
                     navigateToUpdateTrainee()
                 }
-                R.id.remove-> {
-                    showDefaultDialog(this)
-                }
+
             }
             true
         }
         popup.show()
     }
-    private fun showDefaultDialog(context: Context) {
-        val alertDialog = AlertDialog.Builder(context)
 
-        alertDialog.apply {
-            setTitle("ALERT")
-            setMessage(" DO YOU WANT TO REMOVE THIS COACH")
-            setPositiveButton("CANCEL") { _: DialogInterface?, _: Int ->
-                Toast.makeText(context, "CANCELED", Toast.LENGTH_SHORT).show()
-            }
-            setNegativeButton("REMOVE") { _, _ ->
-                Toast.makeText(context, "REMOVED", Toast.LENGTH_SHORT).show()
-            }
 
-        }.create().show()
-    }
 
     private fun navigateToUpdateTrainee() {
-        startActivity(Intent(applicationContext, UpdateTraineeActivity::class.java))
+        val i = Intent(applicationContext, UpdateTraineeActivity::class.java)
+        i.putExtra("id",id)
+        startActivity(i)
 
     }
+
     private fun navigateToNewSubs() {
-        startActivity(Intent(applicationContext, NewSubscriptionActivity::class.java))
+        val i = Intent(applicationContext, NewSubscriptionActivity::class.java)
+        i.putExtra("userID", id)
+        startActivity(i)
 
     }
+
     private fun navigateToSubs() {
-        startActivity(Intent(applicationContext, SubscriptionActivity::class.java))
+        val i = Intent(applicationContext, SubscriptionActivity::class.java)
+        i.putExtra("id", id)
+        startActivity(i)
     }
-    }
+}

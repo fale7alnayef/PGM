@@ -4,9 +4,10 @@
     <style name="RippleStyle">
 
         <item name="mrl_rippleOverlay">true</item>
-        <item name="mrl_rippleColor">#ff0000</item>
+        <item name="mrl_rippleColor">@color/gray</item>
         <item name="mrl_rippleAlpha">0.1</item>
 
 
     </style>
+
 </resources>

@@ -3,35 +3,35 @@
     <string name="todo">Todo</string>
     <string name="faleh">Faleh</string>
     <string name="progym">ProGym</string>
-    <string name="coaches">Coaches</string>
-    <string name="trainees">Trainees</string>
+    <string name="coaches" translatable="false">Coaches</string>
+    <string name="trainees" translatable="false">Trainees</string>
     <string name="subscription">Subscription</string>
     <string name="admin">Admin</string>
     <string name="coach">Coach</string>
     <string name="trainee">Trainee</string>
     <string name="name">Name</string>
     <string name="type">Type</string>
-    <string name="search">Search</string>
-    <string name="sort_by">Sort by</string>
-    <string name="email">faleh213456789@gmail.com</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="sort_by" translatable="false">Sort by</string>
+    <string name="email" translatable="false">faleh213456789@gmail.com</string>
     <string name="number">Number</string>
     <string name="gym_name">Gym_name</string>
-    <string name="phone">00963123456789</string>
-    <string name="gymname">Gym Name</string>
+    <string name="phone" translatable="false">00963123456789</string>
+    <string name="gymname" translatable="false">Gym Name</string>
     <string name="salary">Salary</string>
-    <string name="Nine_million">9000000</string>
+    <string name="Nine_million" translatable="false">9000000</string>
     <string name="contract">Contract</string>
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
-    <string name="_1_1_2022">1/1/2022</string>
-    <string name="_1_9_2022">1/9/2022</string>
-    <string name="title_activity_admin_trainee">AdminTraineeActivity</string>
+    <string name="_1_1_2022" translatable="false">1/1/2022</string>
+    <string name="_1_9_2022" translatable="false">1/9/2022</string>
+    <string name="title_activity_admin_trainee" translatable="false">AdminTraineeActivity</string>
     <string name="age">Age</string>
-    <string name="_21">21</string>
+    <string name="_21" translatable="false">21</string>
     <string name="weight">weight</string>
-    <string name="_55">55</string>
+    <string name="_55" translatable="false">55</string>
     <string name="height">height</string>
-    <string name="_1_70">1.70</string>
+    <string name="_1_70" translatable="false">1.70</string>
     <string name="required">Required</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -69,6 +69,19 @@
     <string name="pay">Pay</string>
     <string name="viewpager">ViewPager</string>
     <string name="specialty">Specialty</string>
+    <string name="renew">Renew</string>
+    <string name="exercises">Exercises</string>
+    <string name="_email">Email</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="amount_required">Amount Required</string>
+    <string name="date">Date</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
 
     >
 

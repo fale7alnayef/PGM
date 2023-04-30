@@ -4,98 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".UpdateTraineeActivity">
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/updatefirstNameTraineeContainer"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/first_name"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/person"
-
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/updatefirstNameTraineeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textPersonName"
-            android:lines="1" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/updatelastNameTraineeContainer"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/last_name"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/person"
-
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/updatelastNameTraineeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textPersonName"
-            android:lines="1" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/updatebirthDayTraineeContainer"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:textIsSelectable="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="190dp"
-        android:layout_marginEnd="210dp"
-        android:hint="@string/birth_day"
-        app:startIconDrawable="@drawable/date"
-
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/updatebirthDayTraineeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="date"
-            android:clickable="false"
-            android:focusable="false"
-            android:lines="1" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/updatephoneNumberTraineeContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="150dp"
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="210dp"
-        android:layout_marginTop="190dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="30dp"
         android:hint="@string/_phone"
         app:startIconDrawable="@drawable/phone"
 
@@ -110,21 +32,21 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/updateheightTraineeContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="150dp"
+        android:layout_width="146dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginEnd="210dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="236dp"
         android:hint="@string/height"
-        app:startIconDrawable="@drawable/height"
         app:endIconMode="clear_text"
-        >
+        app:startIconDrawable="@drawable/height">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/updateheightTraineeEditText"
@@ -135,22 +57,20 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/updateweightTraineeContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="210dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="206dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="30dp"
         android:hint="@string/weight"
-        app:startIconDrawable="@drawable/weight"
         app:endIconMode="clear_text"
-        >
+        app:startIconDrawable="@drawable/weight">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/updateweightTraineeEditText"
@@ -161,7 +81,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/updateemailTraineeContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -170,13 +89,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="251dp"
+        android:layout_marginEnd="30dp"
         android:hint="@string/email_address"
-        app:startIconDrawable="@drawable/email"
         app:endIconMode="clear_text"
-        >
+        app:startIconDrawable="@drawable/email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/updateemailTraineeEditText"
@@ -188,22 +106,23 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/updatepasswordTraineeContainer"
-        app:startIconDrawable="@drawable/lock"
-        app:endIconMode="password_toggle"
-        android:hint="@string/password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="430dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="343dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/password"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/lock"
 
 
         >
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/updatepasswordTraineeEditText"
             android:layout_width="match_parent"
@@ -213,20 +132,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/updateconfirmPasswordTraineeContainer"
-        app:startIconDrawable="@drawable/lock"
-        app:endIconMode="password_toggle"
-        android:hint="@string/confirm_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="510dp"
-        android:layout_marginEnd="20dp"
+
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="436dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/confirm_password"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/lock"
 
 
         >
@@ -248,9 +167,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="590dp"
+        android:layout_marginTop="503dp"
         android:layout_marginEnd="100dp"
-        android:src="@drawable/ic_baseline_coronavirus_24"
+        android:src="@drawable/camera"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
 
@@ -263,9 +182,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="710dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="651dp"
+        android:layout_marginEnd="102dp"
+        android:backgroundTint="@color/black"
         android:maxLines="1"
         android:text="@string/submit"
         android:textSize="28sp"
