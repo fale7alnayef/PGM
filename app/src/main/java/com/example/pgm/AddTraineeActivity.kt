@@ -16,6 +16,8 @@ import java.util.*
 
 class AddTraineeActivity : AppCompatActivity() {
 
+    private var exampleForGit
+
     private lateinit var calendar: Calendar
     private lateinit var pickImage: CircleImageView
 
